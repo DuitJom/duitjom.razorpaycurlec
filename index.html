@@ -171,8 +171,12 @@
                         <input type="text" id="inputIC" required placeholder="Contoh: 950102035432" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-800 mb-1.5">ID Loan *</label>
-                        <input type="text" id="inputLoanID" required placeholder="Cth: DG88321" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm">
+                        <label class="block text-xs font-bold text-slate-800 mb-1.5">DJ/CUST NUMBER *</label>
+                        <input type="text" id="inputLoanID" required placeholder="e.g DJ/CUST00000" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm">
+                        <p class="text-red-500 text-xs mt-1.5 flex items-start gap-1">
+                            <i class="fas fa-info-circle flex-shrink-0 mt-0.5"></i>
+                            <span>Sila rujuk di halaman website www.duitjom.com untuk cari DJ/CUST NUMBER</span>
+                        </p>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-800 mb-1.5">Nombor Telefon *</label>
@@ -207,7 +211,7 @@
                 <div class="space-y-3 border-t border-gray-200 pt-4 text-xs">
                     <div class="flex justify-between"><span class="text-gray-500">Nama Penuh:</span><span id="reviewNama" class="font-bold text-slate-900">-</span></div>
                     <div class="flex justify-between"><span class="text-gray-500">No. IC:</span><span id="reviewIC" class="font-bold text-slate-900">-</span></div>
-                    <div class="flex justify-between"><span class="text-gray-500">ID Loan:</span><span id="reviewLoanID" class="font-bold text-blue-400">-</span></div>
+                    <div class="flex justify-between"><span class="text-gray-500">DJ/CUST NUMBER:</span><span id="reviewLoanID" class="font-bold text-blue-400">-</span></div>
                     <div class="flex justify-between"><span class="text-gray-500">Nombor Telefon:</span><span id="reviewPhone" class="font-bold text-slate-900">-</span></div>
                     <div class="flex justify-between border-t border-dashed border-gray-300 pt-2"><span class="font-bold text-gray-700">Jumlah Bayaran:</span><span id="reviewAmaun" class="font-extrabold text-blue-500">RM 0.00</span></div>
                 </div>
@@ -240,7 +244,7 @@
                 <div class="flex justify-between items-start text-xs font-semibold text-slate-900 mb-2">
                     <span>Jumlah Pembayaran</span>
                     <div class="text-right">
-                        <span class="text-gray-500 font-normal">ID Loan:</span> 
+                        <span class="text-gray-500 font-normal">DJ/CUST NUMBER:</span> 
                         <span id="displayLoanID" class="text-slate-900 font-bold ml-1">-</span>
                     </div>
                 </div>
@@ -330,7 +334,7 @@
                     <p class="text-xs font-extrabold text-slate-800">FXD_13121199</p>
                 </div>
                 <div>
-                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-tight">ID LOAN</p>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-tight">DJ/CUST NUMBER</p>
                     <p id="qrLoanID" class="text-xs font-extrabold text-slate-800">-</p>
                 </div>
             </div>
@@ -452,8 +456,8 @@
                         <p class="font-extrabold text-[#2E7D32] text-sm">Laman Web Rasmi</p>
                     </div>
                     <p class="text-gray-600 font-medium mb-3">Kami hanya ada <span class="font-bold text-gray-900">satu (1)</span> laman web rasmi:</p>
-                    <a href="https://duitjom.my/" target="_blank" class="inline-flex items-center gap-2 bg-[#E8F5E9] text-[#2E7D32] font-bold px-4 py-2 rounded-xl border border-[#C8E6C9] hover:bg-[#C8E6C9] transition">
-                        <i class="fas fa-globe"></i> www.duitjom.my
+                    <a href="https://www.duitjom.com/" target="_blank" class="inline-flex items-center gap-2 bg-[#E8F5E9] text-[#2E7D32] font-bold px-4 py-2 rounded-xl border border-[#C8E6C9] hover:bg-[#C8E6C9] transition">
+                        <i class="fas fa-globe"></i> www.duitjom.com
                     </a>
                 </div>
 
