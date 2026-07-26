@@ -28,7 +28,7 @@
         <header class="bg-white shadow-sm">
             <div class="max-w-md mx-auto px-4 py-4 flex justify-between items-center">
                 <div class="flex items-center space-x-2">
-                    <img src="IMG_6715.png" alt="DuitJom Logo" class="h-8 object-contain" onerror="this.outerHTML='<span class=\'font-bold text-xl text-slate-800\'>Duit<span class=\'text-blue-400\'>Jom</span></span>\''">
+                    <img src="IMG_6715.png" alt="DuitJom Logo" class="h-8 object-contain" onerror="this.outerHTML='<span class=\'font-bold text-xl text-slate-800\'>Duit<span class=\'text-blue-400\'>Jom</span></span>'">
                 </div>
                 <button class="text-gray-700 hover:text-gray-900"><i class="fas fa-bars text-2xl"></i></button>
             </div>
@@ -46,7 +46,7 @@
             </p>
 
             <div class="w-full max-w-xs mb-16">
-                <button onclick="goToPaymentPage()" class="w-full bg-blue-400 hover:bg-blue-500 text-white font-bold text-md px-6 py-4 rounded-xl shadow-lg shadow-blue-400/30 transition duration-200 flex items-center justify-center gap-3 cursor-pointer">
+                <button onclick="goToPaymentPage()" class="w-full bg-blue-400 hover:bg-blue-500 text-white font-bold text-md px-6 py-4 rounded-xl shadow-lg shadow-blue-400/30 transition duration-200">
                     Pembayaran Pinjaman <i class="fas fa-arrow-right text-sm"></i>
                 </button>
             </div>
@@ -54,6 +54,95 @@
         <footer class="bg-[#111827] text-gray-400 py-6 text-xs text-center border-t border-gray-800">
             <p>&copy; 2026 DuitJom. Hak cipta terpelihara.</p>
         </footer>
+    </div>
+
+
+    <!-- TUTORIAL POPUP - CARA MENGGUNAKAN WEBSITE -->
+    <div id="tutorialModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden z-50">
+        <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl overflow-hidden flex flex-col border border-gray-200">
+            
+            <div class="bg-gradient-to-r from-blue-400 to-blue-600 text-white text-center py-5 font-extrabold text-sm uppercase tracking-wider flex items-center justify-center gap-2">
+                <i class="fas fa-book-open text-lg"></i>
+                Cara Menggunakan Website
+            </div>
+            
+            <div class="p-6 space-y-4 max-h-[65vh] overflow-y-auto no-scrollbar text-sm">
+                
+                <!-- Step 1 -->
+                <div class="bg-blue-50 rounded-2xl p-4 border-l-4 border-blue-400 shadow-xs">
+                    <div class="flex items-start gap-3">
+                        <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">1</div>
+                        <div>
+                            <p class="font-extrabold text-slate-900 mb-1">Isi Maklumat Peribadi</p>
+                            <p class="text-gray-600 text-xs leading-relaxed">Masukkan nama penuh anda (mengikut IC), nombor kad pengenalan, ID Loan, nombor telefon, dan jumlah pembayaran yang perlu dibuat.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-blue-50 rounded-2xl p-4 border-l-4 border-blue-400 shadow-xs">
+                    <div class="flex items-start gap-3">
+                        <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">2</div>
+                        <div>
+                            <p class="font-extrabold text-slate-900 mb-1">Semak Maklumat Anda</p>
+                            <p class="text-gray-600 text-xs leading-relaxed">Pastikan semua maklumat yang anda isi adalah betul. Jika ada kesilapan, klik butang "Sebelum" untuk membetulkannya.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-blue-50 rounded-2xl p-4 border-l-4 border-blue-400 shadow-xs">
+                    <div class="flex items-start gap-3">
+                        <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">3</div>
+                        <div>
+                            <p class="font-extrabold text-slate-900 mb-1">Pilih Kaedah Pembayaran</p>
+                            <p class="text-gray-600 text-xs leading-relaxed">Pilih kaedah pembayaran yang anda inginkan dan pilih bank atau e-wallet anda. Saat ini hanya DuitNow yang tersedia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-blue-50 rounded-2xl p-4 border-l-4 border-blue-400 shadow-xs">
+                    <div class="flex items-start gap-3">
+                        <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">4</div>
+                        <div>
+                            <p class="font-extrabold text-slate-900 mb-1">Scan Kod QR</p>
+                            <p class="text-gray-600 text-xs leading-relaxed">Buka apl banking atau e-wallet anda dan scan kod QR yang dipaparkan. Ikuti arahan di apl anda untuk menyelesaikan transaksi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="bg-blue-50 rounded-2xl p-4 border-l-4 border-blue-400 shadow-xs">
+                    <div class="flex items-start gap-3">
+                        <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">5</div>
+                        <div>
+                            <p class="font-extrabold text-slate-900 mb-1">Muat Naik Resit</p>
+                            <p class="text-gray-600 text-xs leading-relaxed">Ambil tangkapan skrin resit pembayaran anda dan muat naiknya di sini. Ini untuk pengesahan pembayaran anda.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Important Note -->
+                <div class="bg-yellow-50 rounded-2xl p-4 border-l-4 border-yellow-400 shadow-xs">
+                    <div class="flex items-start gap-2">
+                        <i class="fas fa-lightbulb text-yellow-500 text-lg flex-shrink-0 mt-0.5"></i>
+                        <div>
+                            <p class="font-extrabold text-yellow-800 text-xs mb-1 uppercase">Catatan Penting</p>
+                            <p class="text-gray-700 text-xs leading-relaxed">Sila sahaja gunakan laman web rasmi DuitJom. Jangan percayai pautan yang dihantar melalui email, WhatsApp, atau Facebook. Semua pembayaran mesti dilakukan melalui laman web ini sahaja.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="p-4 bg-white border-t border-gray-100 flex justify-center">
+                <button onclick="closeTutorialModal()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-xl text-xs shadow-md flex items-center justify-center gap-2 transition duration-200">
+                    <i class="fas fa-check-circle"></i> Saya Faham, Teruskan
+                </button>
+            </div>
+
+        </div>
     </div>
 
 
@@ -94,7 +183,7 @@
                         <input type="number" step="0.01" id="inputAmaun" required placeholder="0.00" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm">
                     </div>
                     <div class="pt-4">
-                        <button type="submit" class="w-full bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold text-sm py-3 px-6 rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+                        <button type="submit" class="w-full bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold text-sm py-3 px-6 rounded-xl shadow-lg flex items-center justify-center gap-2 transition duration-200 hover:from-blue-500 hover:to-blue-700">
                             Seterusnya <i class="fas fa-arrow-right text-xs"></i>
                         </button>
                     </div>
@@ -120,13 +209,15 @@
                     <div class="flex justify-between"><span class="text-gray-500">No. IC:</span><span id="reviewIC" class="font-bold text-slate-900">-</span></div>
                     <div class="flex justify-between"><span class="text-gray-500">ID Loan:</span><span id="reviewLoanID" class="font-bold text-blue-400">-</span></div>
                     <div class="flex justify-between"><span class="text-gray-500">Nombor Telefon:</span><span id="reviewPhone" class="font-bold text-slate-900">-</span></div>
-                    <div class="flex justify-between border-t border-dashed border-gray-300 pt-2"><span class="font-bold text-gray-700">Jumlah Bayaran:</span><span id="reviewAmaun" class="font-extrabold text-blue-400 text-sm">RM 0.00</span></div>
+                    <div class="flex justify-between border-t border-dashed border-gray-300 pt-2"><span class="font-bold text-gray-700">Jumlah Bayaran:</span><span id="reviewAmaun" class="font-extrabold text-blue-500">RM 0.00</span></div>
                 </div>
             </div>
 
             <div class="w-full flex gap-3">
-                <button onclick="backToInformationPage()" class="flex-1 bg-gray-200 text-gray-700 font-bold py-3 rounded-xl text-xs cursor-pointer">← Sebelum</button>
-                <button onclick="goToStep3Page()" class="flex-1 bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-1 cursor-pointer">Seterusnya →</button>
+                <button onclick="backToInformationPage()" class="flex-1 bg-gray-200 text-gray-700 font-bold py-3 rounded-xl text-xs cursor-pointer hover:bg-gray-300 transition">← Sebelum</button>
+                <button onclick="goToStep3Page()" class="flex-1 bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-1 cursor-pointer transition hover:from-blue-500 hover:to-blue-700">
+                    Seterusnya <i class="fas fa-arrow-right text-xs"></i>
+                </button>
             </div>
         </main>
     </div>
@@ -180,7 +271,7 @@
                     <span class="text-sm font-bold text-slate-900">DuitNow</span>
                 </button>
 
-                <button onclick="alert('Maaf, kaedah pembayaran ini tidak tersedia buat masa sekarang. Sila gunakan saluran DuitNow sahaja.')" class="bg-white border border-gray-200 rounded-xl p-4 text-left flex flex-col justify-between h-24 hover:bg-gray-50 cursor-pointer">
+                <button onclick="alert('Maaf, kaedah pembayaran ini tidak tersedia buat masa sekarang. Sila gunakan saluran DuitNow sahaja.')" class="bg-white border border-gray-200 rounded-xl p-4 text-left flex flex-col justify-between h-24 shadow-xs cursor-not-allowed hover:bg-gray-50">
                     <i class="fas fa-lock text-gray-400 text-sm"></i>
                     <span class="text-sm font-bold text-gray-700">Online Banking</span>
                 </button>
@@ -197,7 +288,7 @@
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1.5">Bank *</label>
                     <div class="relative">
-                        <select id="selectBank" onchange="checkBankSelection()" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-xl text-xs font-semibold text-slate-900 appearance-none focus:ring-2 focus:ring-blue-400 focus:outline-none cursor-pointer">
+                        <select id="selectBank" onchange="checkBankSelection()" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-xl text-xs font-semibold text-slate-900 appearance-none">
                             <option value="" disabled selected>-- SILA PILIH BANK --</option>
                             <option value="TNG">1- TOUCH'N GO</option>
                             <option value="MAYBANK">2- MAYBANK QRPAY</option>
@@ -214,8 +305,8 @@
             </div>
 
             <div class="flex gap-3 pt-4 border-t border-gray-100">
-                <button onclick="backToStep2Page()" class="flex-1 bg-white border border-gray-200 text-slate-700 font-bold py-3.5 rounded-xl text-xs text-center shadow-xs cursor-pointer">Kembali</button>
-                <button id="btnFinalNext" onclick="goToQRPage()" disabled class="flex-1 bg-gray-400 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-xs cursor-not-allowed transition duration-150">Seterusnya</button>
+                <button onclick="backToStep2Page()" class="flex-1 bg-white border border-gray-200 text-slate-700 font-bold py-3.5 rounded-xl text-xs text-center shadow-xs cursor-pointer hover:bg-gray-50 transition">Kembali</button>
+                <button id="btnFinalNext" onclick="goToQRPage()" disabled class="flex-1 bg-gray-400 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-xs cursor-not-allowed transition">Teruskan</button>
             </div>
         </main>
     </div>
@@ -256,7 +347,7 @@
                 </h1>
 
                 <div class="w-64 p-4 border-[12px] border-blue-400 rounded-3xl bg-white shadow-md flex flex-col items-center justify-center relative">
-                    <img src="F534F3AA-ACF5-40DB-BEF0-7300EC9FA735.jpeg" alt="QR Code" class="w-full h-auto object-contain rounded-lg" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=DuitJomPayment'">
+                    <img src="F534F3AA-ACF5-40DB-BEF0-7300EC9FA735.jpeg" alt="QR Code" class="w-full h-auto object-contain rounded-lg" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=DuitJom'">
                     
                     <p class="text-[9px] font-bold text-gray-400 mt-3 tracking-tighter">ONE TIME USE, VALID TILL 2026-06-02</p>
                     
@@ -298,7 +389,7 @@
                 <button onclick="backToStep3Page()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold py-3.5 rounded-xl text-xs text-center transition cursor-pointer">
                     Sebelum
                 </button>
-                <button id="btnSubmitForm" onclick="finalSubmission()" disabled class="flex-1 bg-gray-400 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-md cursor-not-allowed transition duration-150">
+                <button id="btnSubmitForm" onclick="finalSubmission()" disabled class="flex-1 bg-gray-400 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-md cursor-not-allowed transition">
                     Hantar Permohonan
                 </button>
             </div>
@@ -410,7 +501,7 @@
             </div>
             
             <div class="p-4 bg-white border-t border-gray-100 flex justify-center">
-                <button onclick="closeScammerModal()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-xl text-xs shadow-md flex items-center justify-center gap-2 transition cursor-pointer active:scale-98">
+                <button onclick="closeScammerModal()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-xl text-xs shadow-md flex items-center justify-center gap-2 transition">
                     <i class="fas fa-check-circle"></i> Saya Faham
                 </button>
             </div>
@@ -426,7 +517,18 @@
         function goToPaymentPage() {
             document.getElementById('mainPage').classList.add('hidden');
             document.getElementById('paymentPage').classList.remove('hidden');
-            setTimeout(() => { document.getElementById('scammerModal').classList.remove('hidden'); }, 200);
+            // Tambahkan tutorial popup sebelum payment page
+            setTimeout(() => { 
+                document.getElementById('tutorialModal').classList.remove('hidden'); 
+            }, 200);
+        }
+
+        function closeTutorialModal() {
+            document.getElementById('tutorialModal').classList.add('hidden');
+            // Tutup selepas tutorial ditutup, papar scammer warning
+            setTimeout(() => { 
+                document.getElementById('scammerModal').classList.remove('hidden'); 
+            }, 200);
         }
 
         function closeScammerModal() {
@@ -488,7 +590,7 @@
             
             if (selectBank !== "") {
                 btnFinalNext.disabled = false;
-                btnFinalNext.className = "flex-1 bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-xs cursor-pointer transition duration-150";
+                btnFinalNext.className = "flex-1 bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-xs cursor-pointer transition duration-200 hover:from-blue-500 hover:to-blue-700";
             }
         }
 
@@ -548,14 +650,14 @@
                 fileNameDisplay.innerText = "Fail dipilih: " + file.name;
                 
                 btnSubmitForm.disabled = false;
-                btnSubmitForm.className = "flex-1 bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-md cursor-pointer transition duration-150 active:scale-95";
+                btnSubmitForm.className = "flex-1 bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-md cursor-pointer transition duration-200 hover:from-blue-500 hover:to-blue-700";
             }
         }
 
         function finalSubmission() {
             clearInterval(timerInstance);
             
-            const susunanAyat = "Terima kasih <span class='font-extrabold text-slate-900'>" + namaPelangganGlobal + "</span> kerana telah berjaya membuat bayaran balik pinjaman anda di <span class='font-extrabold text-blue-400'>DUITJOM</span>.";
+            const susunanAyat = "Terima kasih <span class='font-extrabold text-slate-900'>" + namaPelangganGlobal + "</span> kerana telah berjaya membuat bayaran balik pinjaman anda di <span class='text-blue-400 font-bold'>DuitJom</span>. Pembayaran anda sedang diproses dan akan disemak dalam masa <span class='font-bold'>24 jam</span>. Anda akan menerima notifikasi melalui SMS atau email apabila pembayaran telah disahkan.";
             document.getElementById('thanksMessage').innerHTML = susunanAyat;
 
             document.getElementById('qrPage').classList.add('hidden');
