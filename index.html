@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DuitJom - Portal Pembayaran</title>
 
+    <!-- Google Identity Services Script -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <meta name="google-signin-client_id" content="1005364184697-1d1nl9p1d7vp41pr3fudb6ok1rejoe2i.apps.googleusercontent.com">
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://duitjom.my/">
     <meta property="og:title" content="DuitJom - Portal Pembayaran">
@@ -58,13 +62,36 @@
             </p>
 
             <div class="w-full max-w-xs mb-16">
-                <button onclick="goToPaymentPage()" class="w-full bg-blue-400 hover:bg-blue-500 text-white font-bold text-md px-6 py-4 rounded-xl shadow-lg shadow-blue-400/30 transition duration-200">
+                <button onclick="goToPaymentPage()" class="w-full bg-blue-400 hover:bg-blue-500 text-white font-bold text-md px-6 py-4 rounded-xl shadow-lg shadow-blue-400/30 transition duration-200 mb-6">
                     Pembayaran Pinjaman <i class="fas fa-arrow-right text-sm"></i>
                 </button>
+
+                <!-- GOOGLE OAUTH LOGIN -->
+                <div class="border-t border-gray-300 relative mt-4 pt-6">
+                    <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#FAF6F0] px-3 text-xs text-gray-500 font-medium">atau log masuk dengan</span>
+                    
+                    <div id="g_id_onload"
+                         data-client_id="1005364184697-1d1nl9p1d7vp41pr3fudb6ok1rejoe2i.apps.googleusercontent.com"
+                         data-callback="handleGoogleLogin">
+                    </div>
+                    
+                    <div class="flex justify-center w-full">
+                        <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"></div>
+                    </div>
+                </div>
+                <!-- END GOOGLE OAUTH LOGIN -->
+
             </div>
         </main>
+        
+        <!-- FOOTER LEGAL LINKS (META / FACEBOOK COMPATIBILITY) -->
         <footer class="bg-[#111827] text-gray-400 py-6 text-xs text-center border-t border-gray-800">
             <p>&copy; 2026 DuitJom. Hak cipta terpelihara.</p>
+            <p class="mt-3 flex flex-wrap justify-center gap-2 px-4">
+                <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a> |
+                <a href="terms.html" class="hover:text-white transition">Terms & Conditions</a> |
+                <a href="data-deletion.html" class="hover:text-white transition">Data Deletion</a>
+            </p>
         </footer>
     </div>
 
@@ -471,8 +498,14 @@
             </div>
         </main>
 
+        <!-- FOOTER LEGAL LINKS (META / FACEBOOK COMPATIBILITY) -->
         <footer class="bg-gray-50 text-gray-400 py-4 text-[10px] text-center border-t border-gray-100">
             <p>&copy; 2026 DuitJom. Transaksi Selamat & Terenkripsi.</p>
+            <p class="mt-2 flex flex-wrap justify-center gap-2 px-4">
+                <a href="privacy-policy.html" class="hover:text-gray-600 transition">Privacy Policy</a> |
+                <a href="terms.html" class="hover:text-gray-600 transition">Terms & Conditions</a> |
+                <a href="data-deletion.html" class="hover:text-gray-600 transition">Data Deletion</a>
+            </p>
         </footer>
     </div>
 
@@ -784,6 +817,13 @@
             document.getElementById('qrPage').classList.add('hidden');
             document.getElementById('thanksPage').classList.remove('hidden');
             window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // FUNGSI CALLBACK GOOGLE OAUTH LOGIN
+        function handleGoogleLogin(response) {
+            console.log("Google Login berjaya");
+            console.log(response.credential);
+            // Anda boleh memasukkan kod tambahan di sini untuk memproses token (contoh: hantar ke backend)
         }
     </script>
 
