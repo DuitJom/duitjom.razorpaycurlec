@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DuitJom - Portal Pembayaran Digital Baharu</title>
+    <title>DuitJom - Portal Pembayaran Digital Baharu DuitJom</title>
 
     <!-- Google Identity Services Script -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -19,7 +19,7 @@
     <meta property="og:image:height" content="630">
     <meta name="robots" content="noimageindex">
 
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -38,42 +38,148 @@
         }
     </style>
 </head>
-<body class="font-sans bg-[#FAF6F0] text-gray-900 min-h-screen flex flex-col justify-between">
+<body class="font-sans bg-[#FAF6F0] text-gray-900 min-h-screen flex flex-col pt-[72px]">
 
-    <div id="mainPage" class="flex flex-col min-h-screen justify-between">
-        <header class="bg-white shadow-sm">
-            <div class="max-w-md mx-auto px-4 py-4 flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <img src="IMG_6715.png" alt="DuitJom Logo" class="h-8 object-contain" onerror="this.outerHTML='<span class=\'font-bold text-xl text-slate-800\'>Duit<span class=\'text-blue-400\'>Jom</span></span>'">
-                </div>
-                <button class="text-gray-700 hover:text-gray-900"><i class="fas fa-bars text-2xl"></i></button>
+    <!-- GLOBAL FIXED NAVBAR UNTUK SEMUA HALAMAN -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-white shadow-sm border-b border-gray-100">
+        <div class="max-w-md mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="IMG_6715.png" alt="DuitJom Logo" class="h-8 object-contain" onerror="this.outerHTML='<span class=\'font-bold text-xl text-slate-800\'>Duit<span class=\'text-blue-400\'>Jom</span></span>'">
             </div>
-        </header>
+            
+            <div class="flex items-center gap-3">
+                <!-- Dropdown Bahasa -->
+                <div class="relative inline-block text-left group">
+                    <button class="flex items-center gap-1.5 text-[11px] font-bold text-gray-700 bg-gray-50 px-2.5 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
+                        🇲🇾 BM <i class="fas fa-chevron-down text-[9px] text-gray-400"></i>
+                    </button>
+                    <!-- Senarai Dropdown -->
+                    <div class="absolute right-0 mt-2 w-36 bg-white border border-gray-200 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+                        <a href="javascript:void(0)" class="block px-4 py-2.5 text-xs font-bold text-blue-600 bg-blue-50 border-b border-gray-50 hover:bg-blue-100">
+                            <span class="mr-2">🇲🇾</span> Bahasa Malaysia
+                        </a>
+                        <a href="javascript:void(0)" class="block px-4 py-2.5 text-xs font-bold text-gray-500 hover:bg-gray-50">
+                            <span class="mr-2">🇺🇸</span> English
+                        </a>
+                    </div>
+                </div>
 
+                <!-- Butang Hamburger -->
+                <button onclick="openSidebar()" class="text-gray-700 hover:text-blue-500 transition">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SIDEBAR MENU -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300 opacity-0" onclick="closeSidebar()"></div>
+    <div id="sidebarMenu" class="fixed top-0 right-0 w-[280px] h-full bg-white shadow-2xl z-[60] transform translate-x-full transition-transform duration-300 flex flex-col border-l border-gray-100">
+        
+        <!-- Header Sidebar -->
+        <div class="flex justify-between items-center px-4 py-4 border-b border-gray-100 bg-gray-50/50">
+            <div class="flex items-center gap-3">
+                <button onclick="closeSidebar()" class="text-xs font-bold text-gray-500 hover:text-blue-500 flex items-center gap-1 transition">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <div class="h-4 w-[1px] bg-gray-300"></div> <!-- Pemisah (Divider) -->
+                <img src="IMG_6715.png" alt="Logo DuitJom" class="h-6 object-contain">
+            </div>
+            <button onclick="closeSidebar()" class="text-red-500 hover:text-red-700 text-lg transition">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Kandungan Sidebar -->
+        <div class="p-5 flex flex-col flex-grow">
+            <p class="text-xs font-bold text-gray-500 mb-3 text-center">Log Masuk Pantas</p>
+            
+            <!-- GOOGLE OAUTH LOGIN (Di dalam Sidebar) -->
+            <div class="flex justify-center w-full mb-6">
+                <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"></div>
+            </div>
+
+            <hr class="border-gray-100 mb-4">
+
+            <!-- Pautan Polisi (Paparan Sahaja) -->
+            <div class="space-y-1">
+                <a href="javascript:void(0)" class="flex items-center gap-3 text-sm font-bold text-gray-600 hover:bg-gray-50 px-3 py-3 rounded-xl transition">
+                    <div class="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
+                        <i class="fas fa-shield-alt text-xs"></i>
+                    </div>
+                    Privasi
+                </a>
+                <a href="javascript:void(0)" class="flex items-center gap-3 text-sm font-bold text-gray-600 hover:bg-gray-50 px-3 py-3 rounded-xl transition">
+                    <div class="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
+                        <i class="fas fa-file-contract text-xs"></i>
+                    </div>
+                    Terma & Syarat
+                </a>
+            </div>
+        </div>
+        
+        <div class="p-4 text-center border-t border-gray-100 text-[10px] text-gray-400 font-semibold bg-gray-50">
+            DuitJom &copy; 2026
+        </div>
+    </div>
+    <!-- END SIDEBAR MENU -->
+
+    <!-- LOADING SPINNER (SELEPAS GOOGLE SIGN IN - 5 SAAT) -->
+    <div id="loginSpinnerOverlay" class="fixed inset-0 bg-white/95 backdrop-blur-sm z-[100] hidden flex-col justify-center items-center">
+        <div class="flex flex-col items-center gap-6">
+            <img src="IMG_6715.png" alt="Logo" class="w-16 h-16 object-contain animate-bounce">
+            <div class="spinner"></div>
+            <p class="text-center text-slate-800 font-bold text-sm tracking-wide">
+                Sedang di Log Masuk...
+            </p>
+            <p class="text-xs text-gray-500 font-medium">Sila tunggu sebentar</p>
+        </div>
+    </div>
+
+    <!-- LOADING SPINNER (TRANSISI HALAMAN PINJAMAN - 7 SAAT) -->
+    <div id="pageTransitionSpinner" class="fixed inset-0 bg-white/95 backdrop-blur-sm z-[100] hidden flex-col justify-center items-center">
+        <div class="flex flex-col items-center gap-6">
+            <img src="IMG_6715.png" alt="Logo DuitJom" class="w-16 h-16 object-contain animate-bounce">
+            <div class="spinner"></div>
+            <p class="text-center text-slate-800 font-bold text-sm tracking-wide max-w-xs leading-relaxed">
+                Sila tunggu - Sedang memindahkan anda ke halaman seterusnya
+            </p>
+        </div>
+    </div>
+
+    <!-- MAIN CONFIG GOOGLE CLIENT ID -->
+    <div id="g_id_onload"
+         data-client_id="1005364184697-1d1nl9p1d7vp41pr3fudb6ok1rejoe2i.apps.googleusercontent.com"
+         data-callback="handleGoogleLogin">
+    </div>
+
+    <div id="mainPage" class="flex flex-col min-h-screen justify-between -mt-[72px] pt-[72px]">
         <main class="max-w-md mx-auto px-4 py-12 text-center flex-grow flex flex-col justify-center items-center">
             <div class="inline-block bg-blue-100 text-blue-600 font-semibold text-xs px-3 py-1.5 rounded-full uppercase tracking-wider mb-6">
-                • PEMBAYARAN DIGITAL, EXPRESS
+                • SELAMAT • DIGITAL • EXPRESS •
             </div>
             <h1 class="text-3xl font-extrabold text-slate-950 tracking-tight leading-tight mb-6">
-                Dapatkan Kemaskini <span class="text-blue-400">dalam minit,</span> bukan minggu
+                Keputusan kemaskini sistem secara<span class="text-blue-400">AUTOMATIK,</span> Selepas menerima Email pengesahan
             </h1>
             <p class="text-gray-600 text-sm max-w-xl mx-auto mb-10">
                 Keputusan Kemaskini Sepantas Kilat. Pembayaran Hanya Di Hujung Jari Anda.
             </p>
 
             <div class="w-full max-w-xs mb-16">
-                <button onclick="goToPaymentPage()" class="w-full bg-blue-400 hover:bg-blue-500 text-white font-bold text-md px-6 py-4 rounded-xl shadow-lg shadow-blue-400/30 transition duration-200 mb-6">
+                
+                <!-- Butang Pembayaran (Disembunyikan pada awalnya) -->
+                <button id="btnPembayaranPinjaman" onclick="goToPaymentPage()" class="hidden w-full bg-blue-400 hover:bg-blue-500 text-white font-bold text-md px-6 py-4 rounded-xl shadow-lg shadow-blue-400/30 transition duration-200 mb-6 flex justify-center items-center gap-2">
                     Pembayaran Pinjaman <i class="fas fa-arrow-right text-sm"></i>
                 </button>
 
-                <!-- GOOGLE OAUTH LOGIN -->
-                <div class="border-t border-gray-300 relative mt-4 pt-6">
-                    <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#FAF6F0] px-3 text-xs text-gray-500 font-medium">atau log masuk dengan</span>
+                <!-- GOOGLE OAUTH LOGIN (Halaman Utama) -->
+                <div id="googleSignInSection" class="border-t border-gray-300 relative mt-4 pt-8">
+                    <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#FAF6F0] px-3 text-xs text-gray-500 font-medium whitespace-nowrap">Log Masuk ke Google</span>
                     
-                    <div id="g_id_onload"
-                         data-client_id="1005364184697-1d1nl9p1d7vp41pr3fudb6ok1rejoe2i.apps.googleusercontent.com"
-                         data-callback="handleGoogleLogin">
-                    </div>
+                    <!-- Arahan kepada pelanggan -->
+                    <p class="text-[13px] text-red-600 font-bold mb-4 leading-tight">
+                        Sila Log Masuk menggunakan Google-Email yang sama di daftarkan di www.duitjom.com
+                    </p>
                     
                     <div class="flex justify-center w-full">
                         <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"></div>
@@ -102,7 +208,7 @@
             
             <div class="bg-gradient-to-r from-blue-400 to-blue-600 text-white text-center py-5 font-extrabold text-sm uppercase tracking-wider flex items-center justify-center gap-2">
                 <i class="fas fa-book-open text-lg"></i>
-                Cara Menggunakan Website Duitjom X GitHub Razorpay.
+                Cara Menggunakan Website Duitjom X GitHub, Razorpay Curlec.
             </div>
             
             <div class="p-6 space-y-4 max-h-[65vh] overflow-y-auto no-scrollbar text-sm">
@@ -113,7 +219,7 @@
                         <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">1</div>
                         <div>
                             <p class="font-extrabold text-slate-900 mb-1">Isi Maklumat Peribadi</p>
-                            <p class="text-gray-600 text-xs leading-relaxed">Masukkan nama penuh anda (mengikut IC), nombor kad pengenalan, DJ/CUST e.g dj30002300, nombor telefon, dan jumlah pembayaran yang perlu dibuat.</p>
+                            <p class="text-gray-600 text-xs leading-relaxed">Masukkan nama penuh anda (mengikut IC), nombor kad pengenalan, DJ/CUST (e.g dj30002300), nombor telefon, dan jumlah bayaran.</p>
                         </div>
                     </div>
                 </div>
@@ -123,8 +229,8 @@
                     <div class="flex items-start gap-3">
                         <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">2</div>
                         <div>
-                            <p class="font-extrabold text-slate-900 mb-1">Semak Maklumat Anda</p>
-                            <p class="text-gray-600 text-xs leading-relaxed">Pastikan semua maklumat yang anda isi adalah betul. Jika ada kesilapan, klik butang "Sebelum" untuk kembali ke halaman sebelum.</p>
+                            <p class="font-extrabold text-slate-900 mb-1">Sahkan Maklumat Anda</p>
+                            <p class="text-gray-600 text-xs leading-relaxed">Sila pastikan maklumat yang di berikan adalah betul. Jika berlaku kesalahan, klik butang "Sebelum" untuk kembali ke halaman sebelum.</p>
                         </div>
                     </div>
                 </div>
@@ -157,7 +263,7 @@
                         <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">5</div>
                         <div>
                             <p class="font-extrabold text-slate-900 mb-1">Muat Naik Resit</p>
-                            <p class="text-gray-600 text-xs leading-relaxed">Ambil tangkapan skrin resit pembayaran anda dan muat naiknya di sini. Ini untuk pengesahan dan kemaskini pembayaran anda.</p>
+                            <p class="text-gray-600 text-xs leading-relaxed">Sila Muat-naik resit pembayaran untuk pengesahan. Anda di minta untuk simpan resit bayaran atau tangkapan skrin email yang anda terima untuk rujukan </p>
                         </div>
                     </div>
                 </div>
@@ -167,8 +273,8 @@
                     <div class="flex items-start gap-2">
                         <i class="fas fa-lightbulb text-yellow-500 text-lg flex-shrink-0 mt-0.5"></i>
                         <div>
-                            <p class="font-extrabold text-yellow-800 text-xs mb-1 uppercase">Catatan Penting</p>
-                            <p class="text-gray-700 text-xs leading-relaxed">Pembayaran hanya di website "Duitjom x Github Razorpay" sahaja. Pembayaran di website hanya mengambil masa kurang dari 2 minit untuk kemaskini sistem. Semua pembayaran mesti dilakukan melalui laman web ini sahaja.</p>
+                            <p class="font-extrabold text-yellow-800 text-xs mb-1 uppercase">PENTING⁉️</p>
+                            <p class="text-gray-700 text-xs leading-relaxed">Pembayaran hanya di website "Duitjom x Github Razorpay" sahaja. Untuk pembayaran secara manual sila hubungi Agent rasmi Duitjom di WhatsApp Sahaja.</p>
                         </div>
                     </div>
                 </div>
@@ -185,31 +291,32 @@
     </div>
 
 
-    <!-- LOADING PAGE -->
-    <div id="loadingPage" class="hidden flex-col min-h-screen bg-white justify-center items-center">
+    <!-- LOADING PAGE (UNTUK MASA HANTAR BORANG MAKLUMAT) -->
+    <div id="loadingPage" class="hidden flex-col min-h-screen bg-white justify-center items-center -mt-[72px]">
         <div class="flex flex-col items-center gap-6">
             <img src="IMG_6715.png" alt="Logo" class="w-16 h-16 object-contain">
             <div class="spinner"></div>
             <p class="text-center text-gray-600 font-semibold text-sm max-w-xs">
-                Sila tunggu, kami sedang semak maklumat anda
+                Sila tunggu, sehingga pengesahan maklumat berjaya
             </p>
         </div>
     </div>
 
 
-    <div id="paymentPage" class="hidden flex-col min-h-screen bg-white">
+    <!-- PAYMENT PAGE (Borang Maklumat Diri) -->
+    <div id="paymentPage" class="hidden flex-col min-h-screen bg-white -mt-[72px] pt-[72px]">
         <main class="max-w-md w-full mx-auto px-4 py-6 flex-grow flex flex-col items-center">
             <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs mb-4 flex items-center justify-center">
                 <img src="IMG_6715.png" alt="Logo" class="w-full h-full object-contain">
             </div>
             <h2 class="text-gray-500 font-semibold text-center text-xs max-w-xs mb-6 leading-relaxed">
-                Halaman Web Rasmi Pembayaran Duitjom x GitHub, Razorpay Curlec
+                Halaman Pembayaran Duitjom x GitHub, Razorpay Curlec
             </h2>
 
             <div class="w-full bg-white rounded-2xl p-1">
                 <div class="text-lg font-bold text-slate-900 flex items-center gap-2 mb-6 px-1">
                     <span>📋</span>
-                    <h3>Langkah 1 : Masukan Maklumat Diri</h3>
+                    <h3>Langkah 1 : Maklumat Diri Pelanggan</h3>
                 </div>
 
                 <form onsubmit="goToNextStepPage(event)" class="space-y-4">
@@ -222,7 +329,7 @@
                         <input type="text" id="inputIC" required placeholder="000000-00-0000" maxlength="14" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm" oninput="formatIC(this)">
                         <p id="icError" class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
                             <i class="fas fa-exclamation-circle flex-shrink-0 mt-0.5"></i>
-                            <span>Nombor kad pengenalan mesti tepat 12 digit dalam format (######-##-####)</span>
+                            <span>Nombor kad pengenalan format e.g (000000-00-0000)</span>
                         </p>
                     </div>
                     <div>
@@ -232,7 +339,7 @@
                             <i class="fas fa-exclamation-circle flex-shrink-0 mt-0.5"></i>
                             <span>DJ/CUST NUMBER Tidak Sah</span>
                         </p>
-                        <p class="text-red-500 text-xs mt-1.5 flex items-start gap-1">
+                        <p class="text-blue-500 text-xs mt-1.5 flex items-start gap-1">
                             <i class="fas fa-info-circle flex-shrink-0 mt-0.5"></i>
                             <span>Sila pergi ke website www.duitjom.com(Duitjom) untuk dapatkan DJ/CUST NUMBER(.e.g : dj30001234)</span>
                         </p>
@@ -260,7 +367,8 @@
     </div>
 
 
-    <div id="nextStepPage" class="hidden flex-col min-h-screen bg-white">
+    <!-- NEXT STEP PAGE -->
+    <div id="nextStepPage" class="hidden flex-col min-h-screen bg-white -mt-[72px] pt-[72px]">
         <main class="max-w-md w-full mx-auto px-4 py-6 flex-grow flex flex-col items-center">
             <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs mb-4 flex items-center justify-center">
                 <img src="IMG_6715.png" alt="Logo" class="w-full h-full object-contain">
@@ -269,7 +377,7 @@
             <div class="w-full bg-[#FAF6F0] rounded-2xl border border-gray-200 p-5 mb-6">
                 <div class="text-md font-bold text-slate-900 flex items-center gap-2 mb-4">
                     <span>🔍</span>
-                    <h3>Pastikan⁉️Semak Maklumat Anda</h3>
+                    <h3>⁉️Sila Semak Kembali Maklumat Anda</h3>
                 </div>
                 <div class="space-y-3 border-t border-gray-200 pt-4 text-xs">
                     <div class="flex justify-between"><span class="text-gray-500">Nama Penuh(IC):</span><span id="reviewNama" class="font-bold text-slate-900">-</span></div>
@@ -290,14 +398,8 @@
     </div>
 
 
-    <div id="step3Page" class="hidden flex-col min-h-screen bg-white">
-        <header class="bg-white border-b border-gray-100 py-3.5 px-4 shadow-xs">
-            <div class="max-w-md mx-auto flex justify-between items-center">
-                <img src="IMG_6715.png" alt="DuitJom" class="h-6 object-contain">
-                <button class="text-slate-800"><i class="fas fa-bars text-xl"></i></button>
-            </div>
-        </header>
-
+    <!-- STEP 3 PAGE -->
+    <div id="step3Page" class="hidden flex-col min-h-screen bg-white -mt-[72px] pt-[72px]">
         <main class="max-w-md w-full mx-auto px-4 py-4 flex-grow">
             <button onclick="backToStep2Page()" class="flex items-center gap-2 text-slate-800 font-bold text-sm mb-4 cursor-pointer">
                 <i class="fas fa-chevron-left text-xs"></i> Bayaran Balik
@@ -307,7 +409,7 @@
                 <div class="flex justify-between items-start text-xs font-semibold text-slate-900 mb-2">
                     <span>Jumlah Pembayaran</span>
                     <div class="text-right">
-                        <span class="text-gray-500 font-normal">DJ/CUST NUMBER (e.g dj30001234):</span> 
+                        <span class="text-gray-500 font-normal">DJ/CUST NUMBER:</span> 
                         <span id="displayLoanID" class="text-slate-900 font-bold ml-1">-</span>
                     </div>
                 </div>
@@ -348,7 +450,7 @@
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1.5">Saluran</label>
                     <select disabled class="w-full bg-white border border-gray-200 px-4 py-3 rounded-xl text-xs font-semibold text-slate-900 appearance-none">
-                        <option>Duitnow</option>
+                        <option>DuitNow</option>
                     </select>
                 </div>
 
@@ -379,8 +481,9 @@
     </div>
 
 
-    <div id="qrPage" class="hidden flex-col min-h-screen bg-gray-50">
-        <div class="max-w-md w-full mx-auto bg-white min-h-screen flex flex-col shadow-lg border-x border-gray-100">
+    <!-- QR PAGE -->
+    <div id="qrPage" class="hidden flex-col min-h-screen bg-gray-50 -mt-[72px] pt-[72px]">
+        <div class="max-w-md w-full mx-auto bg-white min-h-[calc(100vh-72px)] flex flex-col shadow-lg border-x border-gray-100">
             
             <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100 text-[11px] font-bold text-gray-500 tracking-wider">
                 <div class="flex items-center gap-1.5">
@@ -465,20 +568,15 @@
     </div>
 
 
-    <div id="thanksPage" class="hidden flex-col min-h-screen bg-white justify-between">
-        <header class="bg-white border-b border-gray-100 py-4 px-4 shadow-xs text-center">
-            <div class="max-w-md mx-auto flex justify-center">
-                <img src="IMG_6715.png" alt="DuitJom Logo" class="h-8 object-contain">
-            </div>
-        </header>
-
+    <!-- THANKS PAGE -->
+    <div id="thanksPage" class="hidden flex-col min-h-screen bg-white justify-between -mt-[72px] pt-[72px]">
         <main class="max-w-md w-full mx-auto px-6 py-12 flex-grow flex flex-col items-center justify-center text-center">
             <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-500 text-4xl mb-6 shadow-xs">
                 <i class="fas fa-check-circle animate-pulse"></i>
             </div>
 
             <h1 class="text-2xl font-black text-slate-900 tracking-tight mb-2">
-                Pembayaran Berjaya
+                Transaksi Berjaya
             </h1>
             
             <div class="inline-block bg-blue-50 border border-blue-200 text-blue-600 font-bold text-xs px-4 py-2 rounded-xl mb-8">
@@ -510,6 +608,7 @@
     </div>
 
 
+    <!-- SCAMMER MODAL -->
     <div id="scammerModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden z-50">
         <div class="bg-[#F5F5F5] rounded-3xl max-w-md w-full shadow-2xl overflow-hidden flex flex-col border border-gray-200">
             
@@ -538,7 +637,7 @@
                     <ul class="space-y-2 text-gray-600 font-medium list-none pl-0">
                         <li class="flex items-start gap-2">
                             <span class="text-blue-400 mt-0.5">•</span>
-                            <span>Login menggunakan Google atau akaun anda sendiri di laman web rasmi untuk mendapatkan <span class="font-bold text-gray-900">QR DuitNow Pembayaran</span>.</span>
+                            <span>Login menggunakan akaun anda sendiri di laman web pembayaran untuk mendapatkan <span class="font-bold text-gray-900">QR DuitNow Pembayaran</span>.</span>
                         </li>
                         <li class="flex items-start gap-2">
                             <span class="text-blue-400 mt-0.5">•</span>
@@ -587,6 +686,27 @@
         let timerInstance = null;
         let namaPelangganGlobal = "";
 
+        // ---- KAWALAN SIDEBAR ----
+        function openSidebar() {
+            const overlay = document.getElementById('sidebarOverlay');
+            const menu = document.getElementById('sidebarMenu');
+            overlay.classList.remove('hidden');
+            setTimeout(() => {
+                overlay.classList.remove('opacity-0');
+                menu.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeSidebar() {
+            const overlay = document.getElementById('sidebarOverlay');
+            const menu = document.getElementById('sidebarMenu');
+            overlay.classList.add('opacity-0');
+            menu.classList.add('translate-x-full');
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 300);
+        }
+
         // Format IC dengan dashes
         function formatIC(input) {
             let value = input.value.replace(/\D/g, '');
@@ -613,11 +733,9 @@
             const value = input.value.toUpperCase();
             const djcustError = document.getElementById('djcustError');
             
-            // Allow only D, J, C, U, S, T letters and 0-9 numbers
             const allowedChars = /^[DJCUST0-9/]*$/;
             
             if (!allowedChars.test(value)) {
-                // Remove invalid character
                 input.value = value.replace(/[^DJCUST0-9/]/g, '');
                 djcustError.classList.remove('hidden');
             } else {
@@ -644,12 +762,28 @@
             }
         }
 
+        // ---- KAWALAN HALAMAN PEMBAYARAN PINJAMAN (DENGAN 7 SAAT SPINNER) ----
         function goToPaymentPage() {
-            document.getElementById('mainPage').classList.add('hidden');
-            document.getElementById('paymentPage').classList.remove('hidden');
-            setTimeout(() => { 
-                document.getElementById('tutorialModal').classList.remove('hidden'); 
-            }, 200);
+            // Tunjukkan spinner transisi 7 saat
+            const transitionSpinner = document.getElementById('pageTransitionSpinner');
+            transitionSpinner.classList.remove('hidden');
+            transitionSpinner.classList.add('flex');
+
+            // Set masa 7 saat (7000 ms) sebelum pindah halaman
+            setTimeout(() => {
+                // Sembunyikan spinner
+                transitionSpinner.classList.add('hidden');
+                transitionSpinner.classList.remove('flex');
+
+                // Pindah ke Halaman Pembayaran (Langkah 1)
+                document.getElementById('mainPage').classList.add('hidden');
+                document.getElementById('paymentPage').classList.remove('hidden');
+                
+                // Munculkan Modal Tutorial
+                setTimeout(() => { 
+                    document.getElementById('tutorialModal').classList.remove('hidden'); 
+                }, 200);
+            }, 7000);
         }
 
         function closeTutorialModal() {
@@ -666,7 +800,6 @@
         function goToNextStepPage(event) {
             event.preventDefault();
 
-            // Validation
             const ic = document.getElementById('inputIC').value.replace(/\D/g, '');
             const phone = document.getElementById('inputPhone').value;
             const djcust = document.getElementById('inputLoanID').value;
@@ -687,11 +820,10 @@
                 return;
             }
 
-            // Show loading page
             document.getElementById('paymentPage').classList.add('hidden');
             document.getElementById('loadingPage').classList.remove('hidden');
+            document.getElementById('loadingPage').classList.add('flex');
 
-            // After 7 seconds, proceed to next step
             setTimeout(() => {
                 const nama = document.getElementById('inputNama').value;
                 const loanID = document.getElementById('inputLoanID').value;
@@ -715,6 +847,7 @@
                 document.getElementById('qrMainAmaun').innerText = "RM " + amaunFormat;
 
                 document.getElementById('loadingPage').classList.add('hidden');
+                document.getElementById('loadingPage').classList.remove('flex');
                 document.getElementById('nextStepPage').classList.remove('hidden');
                 window.scrollTo({top: 0, behavior: 'smooth'});
             }, 7000);
@@ -819,26 +952,34 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        // FUNGSI CALLBACK GOOGLE OAUTH LOGIN
-function handleGoogleLogin(response) {
-    console.log("Google Login berjaya");
-    console.log(response.credential);
+        // FUNGSI CALLBACK GOOGLE OAUTH LOGIN (BARU & LENGKAP)
+        function handleGoogleLogin(response) {
+            console.log("Google Login berjaya");
+            
+            // Simpan status login
+            localStorage.setItem("googleLogin", "success");
 
-    // Simpan status login
-    localStorage.setItem("googleLogin", "success");
+            // 1. Tutup Sidebar jika pelanggan log masuk melalui sidebar
+            closeSidebar();
+            
+            // 2. Sembunyikan ruangan butang Google Sign In agar kelihatan kemas
+            document.getElementById("googleSignInSection").classList.add("hidden");
 
-    // Sembunyikan halaman utama
-    document.getElementById("mainPage").classList.add("hidden");
+            // 3. Tunjukkan skrin Loading 5 saat (Spinner Log Masuk)
+            const spinnerOverlay = document.getElementById("loginSpinnerOverlay");
+            spinnerOverlay.classList.remove("hidden");
+            spinnerOverlay.classList.add("flex"); // aktifkan flexbox
 
-    // Buka halaman isi maklumat pelanggan
-    document.getElementById("paymentPage").classList.remove("hidden");
+            // Tunggu 5 saat
+            setTimeout(() => {
+                // Sembunyikan spinner log masuk
+                spinnerOverlay.classList.add("hidden");
+                spinnerOverlay.classList.remove("flex");
 
-    // Pergi ke atas halaman
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
+                // Munculkan butang Pembayaran Pinjaman secara automatik
+                document.getElementById("btnPembayaranPinjaman").classList.remove("hidden");
+            }, 5000);
+        }
     </script>
 
     <!-- Start of LiveChat (www.livechat.com) code -->
