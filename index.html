@@ -820,11 +820,25 @@
         }
 
         // FUNGSI CALLBACK GOOGLE OAUTH LOGIN
-        function handleGoogleLogin(response) {
-            console.log("Google Login berjaya");
-            console.log(response.credential);
-            // Anda boleh memasukkan kod tambahan di sini untuk memproses token (contoh: hantar ke backend)
-        }
+function handleGoogleLogin(response) {
+    console.log("Google Login berjaya");
+    console.log(response.credential);
+
+    // Simpan status login
+    localStorage.setItem("googleLogin", "success");
+
+    // Sembunyikan halaman utama
+    document.getElementById("mainPage").classList.add("hidden");
+
+    // Buka halaman isi maklumat pelanggan
+    document.getElementById("paymentPage").classList.remove("hidden");
+
+    // Pergi ke atas halaman
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
     </script>
 
     <!-- Start of LiveChat (www.livechat.com) code -->
