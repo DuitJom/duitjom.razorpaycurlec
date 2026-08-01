@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DuitJom - Portal Pembayaran Digital Baharu DuitJom</title>
+    <title>DuitJom - Portal Pembayaran Digital Baharu</title>
 
     <!-- Google Identity Services Script -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -22,20 +22,173 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .spinner {
-            border: 4px solid rgba(59, 130, 246, 0.1);
-            border-top: 4px solid #3b82f6;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        /* Sembunyikan scrollbar lalai */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* KOTAK UTAMA (Gaya Fintech Mewah) */
+.duitjom-news {
+    position: relative;
+    width: 100%;
+    max-width: 420px; /* Boleh laras ikut kesesuaian */
+    margin-top: 30px;
+    padding: 30px 20px;
+    border-radius: 28px;
+    background: linear-gradient(145deg, #052e16 0%, #021f0e 100%);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
+    text-align: left;
+    overflow: hidden;
+    perspective: 1000px; /* Penting untuk kesan 3D */
+}
+
+/* Kesan Cahaya (Glow Orb) di latar belakang kotak */
+.duitjom-news::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.4) 0%, transparent 70%);
+    filter: blur(20px);
+    border-radius: 50%;
+    animation: pulse-glow 4s infinite alternate;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.news-title {
+    position: relative;
+    text-align: center;
+    margin-bottom: 25px;
+    z-index: 1;
+}
+
+.news-title span {
+    display: inline-block;
+    font-size: 12px;
+    color: #86efac;
+    font-weight: 800;
+    background: rgba(34, 197, 94, 0.15);
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.news-title h2 {
+    color: white;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 10px 0 5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.news-title p {
+    color: #bbf7d0;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+/* TRACK ANIMASI BERGERAK (TICKER) */
+.news-wrapper {
+    position: relative;
+    height: 380px; /* Ketinggian tetingkap berita */
+    overflow: hidden;
+    z-index: 1;
+    /* Mask untuk efek pudar (fade) di atas dan bawah */
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+.news-track {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Animasi skrol ke atas secara infiniti */
+    animation: scroll-vertical 15s linear infinite;
+}
+
+/* Berhenti skrol apabila pengguna sentuh/hover */
+.news-wrapper:hover .news-track {
+    animation-play-state: paused;
+}
+
+/* KOTAK BERITA (GLASSMORPHISM & 3D) */
+.news-item {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #22c55e;
+    border-radius: 16px;
+    padding: 18px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+/* Kesan Hover 3D Hebat */
+.news-item:hover {
+    transform: translateZ(30px) translateY(-5px) scale(1.02);
+    background: rgba(255, 255, 255, 0.08);
+    border-left: 4px solid #4ade80;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 15px rgba(34, 197, 94, 0.2);
+}
+
+.news-item h3 {
+    color: white;
+    font-size: 15px;
+    font-weight: 800;
+    margin: 12px 0 6px;
+    transition: color 0.3s ease;
+}
+
+.news-item:hover h3 {
+    color: #4ade80;
+}
+
+.news-item p {
+    color: #d1fae5;
+    font-size: 12px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.news-item small {
+    display: block;
+    margin-top: 10px;
+    color: #86efac;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* LABEL KATEGORI */
+.news-label {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.latest { background: linear-gradient(135deg, #22c55e, #16a34a); color: #052e16; }
+.security { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; }
+.info { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+
+/* KEYFRAMES ANIMASI */
+@keyframes scroll-vertical {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+@keyframes pulse-glow {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.3); opacity: 0.8; }
+}
     </style>
 </head>
 <body class="font-sans bg-[#FAF6F0] text-gray-900 min-h-screen flex flex-col pt-[72px]">
@@ -130,7 +283,7 @@
             <img src="IMG_6715.png" alt="Logo" class="w-16 h-16 object-contain animate-bounce">
             <div class="spinner"></div>
             <p class="text-center text-slate-800 font-bold text-sm tracking-wide">
-                Sedang di Log Masuk...
+                Mengelog Masuk...
             </p>
             <p class="text-xs text-gray-500 font-medium">Sila tunggu sebentar</p>
         </div>
@@ -142,7 +295,7 @@
             <img src="IMG_6715.png" alt="Logo DuitJom" class="w-16 h-16 object-contain animate-bounce">
             <div class="spinner"></div>
             <p class="text-center text-slate-800 font-bold text-sm tracking-wide max-w-xs leading-relaxed">
-                Sila tunggu - Sedang memindahkan anda ke halaman seterusnya
+                Sila tunggu - Sistem memindahkan anda ke halaman berikut
             </p>
         </div>
     </div>
@@ -156,13 +309,13 @@
     <div id="mainPage" class="flex flex-col min-h-screen justify-between -mt-[72px] pt-[72px]">
         <main class="max-w-md mx-auto px-4 py-12 text-center flex-grow flex flex-col justify-center items-center">
             <div class="inline-block bg-blue-100 text-blue-600 font-semibold text-xs px-3 py-1.5 rounded-full uppercase tracking-wider mb-6">
-                • SELAMAT • DIGITAL • EXPRESS •
+                PANTAS • DIGITAL • SELAMAT
             </div>
             <h1 class="text-3xl font-extrabold text-slate-950 tracking-tight leading-tight mb-6">
-                kemaskini sistem secara <span class="text-blue-400">AUTOMATIK,</span> selepas terima e-mail 
+                Dapatkan Kemaskini <span class="text-blue-400">dalam minit,</span> bukan minggu
             </h1>
             <p class="text-gray-600 text-sm max-w-xl mx-auto mb-10">
-                Keputusan Kemaskini Sistem DiBantu Komputer A.I GitHub. Terima Keputusan Serta Merta Tanpa Perlu Bantuan Agent.
+                Keputusan Kemas-Kini 100% dijana oleh Komputer A.I GitHub untuk dapatkan keputusan serta merta.
             </p>
 
             <div class="w-full max-w-xs mb-16">
@@ -174,11 +327,11 @@
 
                 <!-- GOOGLE OAUTH LOGIN (Halaman Utama) -->
                 <div id="googleSignInSection" class="border-t border-gray-300 relative mt-4 pt-8">
-                    <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#FAF6F0] px-3 text-xs text-gray-500 font-medium whitespace-nowrap">Log Masuk ke Google</span>
+                    <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#FAF6F0] px-3 text-xs text-gray-500 font-medium whitespace-nowrap">atau log masuk dengan</span>
                     
                     <!-- Arahan kepada pelanggan -->
                     <p class="text-[13px] text-red-600 font-bold mb-4 leading-tight">
-                        Sila Log Masuk menggunakan Google-Email yang sama di daftarkan di www.duitjom.com
+                     Sila Log Masuk menggunakan Email yang sama di daftarkan di www.duitjom.com
                     </p>
                     
                     <div class="flex justify-center w-full">
@@ -186,7 +339,68 @@
                     </div>
                 </div>
                 <!-- END GOOGLE OAUTH LOGIN -->
+                
+                <!-- DuitJom News Hub -->
+<section class="duitjom-news">
 
+    <div class="news-title">
+        <span>📰 News Hub</span>
+        <h2>Berita & Pengumuman</h2>
+        <p>Kemas kini terkini daripada DuitJom</p>
+    </div>
+
+    <!-- Wrapper untuk animasi -->
+    <div class="news-wrapper">
+        <div class="news-track">
+            
+            <!-- SET BERITA PERTAMA -->
+            <div class="news-item">
+                <div class="news-label latest">BAHARU</div>
+                <h3>Sistem Pembayaran Digital Baharu Duitjom x GitHub</h3>
+                <p>Sistem pembayaran DuitJom kini dipertingkatkan keselamatan pengguna yang dilindungi oleh Google.</p>
+                <small>🔐 19 Julai 2026</small>
+            </div>
+
+            <div class="news-item">
+                <div class="news-label security">KESELAMATAN</div>
+                <h3>Log Masuk Google</h3>
+                <p>Hanya Log Masuk menggunakan akaun email anda yang telah terdaftar di www.duitjom.com untuk privasi dan keselamatan.</p>
+                <small>🆘 Perlindungan Data&Privasi Pelanggan</small>
+            </div>
+
+            <div class="news-item">
+                <div class="news-label info">MAKLUMAN</div>
+                <h3>Penyelenggaraan Sistem</h3>
+                <p>Sebarang kerja baik pulih sistem, Pihak Duitjom akan memberitahu melalui email anda.</p>
+                <small>📍 Notis sistem</small>
+            </div>
+
+            <!-- SET BERITA KEDUA (Salinan untuk loop infiniti yang lancar) -->
+            <div class="news-item">
+                <div class="news-label latest">PESANAN</div>
+                <h3>Perlindungan Privasi Pelanggan</h3>
+                <p>Sistem akan Log Keluar pelanggan secara automatik selepas tiada respon dalam masa 5 minit.</p>
+                <small>Privasi Terlindung 📋</small>
+            </div>
+
+            <div class="news-item">
+                <div class="news-label security">KESELAMATAN</div>
+                <h3>Peringatan Akaun</h3>
+                <p>Sila gunakan email yang sama seperti yang didaftarkan bagi memastikan proses pengesahan berjalan lancar.</p>
+                <small>🆘 Kemas kini keselamatan 🆘</small>
+            </div>
+
+            <div class="news-item">
+                <div class="news-label info">MAKLUMAN</div>
+                <h3>Permohonan Pinjaman Kembali</h3>
+                <p>Sebarang permohonan pinjaman kembali mesti di buat di halaman website Duitjom.com.</p>
+                <small>RELOAN 💳</small>
+            </div>
+
+        </div>
+    </div>
+
+</section>
             </div>
         </main>
         
@@ -208,7 +422,7 @@
             
             <div class="bg-gradient-to-r from-blue-400 to-blue-600 text-white text-center py-5 font-extrabold text-sm uppercase tracking-wider flex items-center justify-center gap-2">
                 <i class="fas fa-book-open text-lg"></i>
-                Cara Menggunakan Website Duitjom X GitHub, Razorpay Curlec.
+                Cara Menggunakan Website Duitjom X GitHub Razorpay.
             </div>
             
             <div class="p-6 space-y-4 max-h-[65vh] overflow-y-auto no-scrollbar text-sm">
@@ -219,7 +433,7 @@
                         <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">1</div>
                         <div>
                             <p class="font-extrabold text-slate-900 mb-1">Isi Maklumat Peribadi</p>
-                            <p class="text-gray-600 text-xs leading-relaxed">Masukkan nama penuh anda (mengikut IC), nombor kad pengenalan, DJ/CUST (e.g dj30002300), nombor telefon, dan jumlah bayaran.</p>
+                            <p class="text-gray-600 text-xs leading-relaxed">Masukkan nama penuh anda (mengikut IC), nombor kad pengenalan, DJ/CUST e.g dj30002300, nombor telefon, dan jumlah pembayaran yang perlu dibuat.</p>
                         </div>
                     </div>
                 </div>
@@ -229,8 +443,8 @@
                     <div class="flex items-start gap-3">
                         <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">2</div>
                         <div>
-                            <p class="font-extrabold text-slate-900 mb-1">Sahkan Maklumat Anda</p>
-                            <p class="text-gray-600 text-xs leading-relaxed">Sila pastikan maklumat yang di berikan adalah betul. Jika berlaku kesalahan, klik butang "Sebelum" untuk kembali ke halaman sebelum.</p>
+                            <p class="font-extrabold text-slate-900 mb-1">Semak Butiran Maklumat Anda</p>
+                            <p class="text-gray-600 text-xs leading-relaxed">Pastikan semua maklumat yang anda isi adalah benar. Jika berlaku kesalahan, klik butang "Sebelum" untuk kembali ke halaman sebelum.</p>
                         </div>
                     </div>
                 </div>
@@ -262,8 +476,8 @@
                     <div class="flex items-start gap-3">
                         <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">5</div>
                         <div>
-                            <p class="font-extrabold text-slate-900 mb-1">Muat Naik Resit</p>
-                            <p class="text-gray-600 text-xs leading-relaxed">Sila Muat-naik resit pembayaran untuk pengesahan. Anda di minta untuk simpan resit bayaran atau tangkapan skrin email yang anda terima untuk rujukan </p>
+                            <p class="font-extrabold text-slate-900 mb-1">Muat-Naik Resit</p>
+                            <p class="text-gray-600 text-xs leading-relaxed">Muat-Naik bukti pembayaran anda disini untuk pengesahan.</p>
                         </div>
                     </div>
                 </div>
@@ -273,8 +487,8 @@
                     <div class="flex items-start gap-2">
                         <i class="fas fa-lightbulb text-yellow-500 text-lg flex-shrink-0 mt-0.5"></i>
                         <div>
-                            <p class="font-extrabold text-yellow-800 text-xs mb-1 uppercase">PENTING⁉️</p>
-                            <p class="text-gray-700 text-xs leading-relaxed">Pembayaran hanya di website "Duitjom x Github Razorpay" sahaja. Untuk pembayaran secara manual sila hubungi Agent rasmi Duitjom di WhatsApp Sahaja.</p>
+                            <p class="font-extrabold text-yellow-800 text-xs mb-1 uppercase">Catatan Penting</p>
+                            <p class="text-gray-700 text-xs leading-relaxed">Pembayaran hanya di website "Duitjom x Github Razorpay" sahaja. Pembayaran di website hanya mengambil masa kurang dari 2 minit untuk kemaskini sistem. Semua pembayaran mesti dilakukan melalui laman web ini sahaja.</p>
                         </div>
                     </div>
                 </div>
@@ -297,7 +511,7 @@
             <img src="IMG_6715.png" alt="Logo" class="w-16 h-16 object-contain">
             <div class="spinner"></div>
             <p class="text-center text-gray-600 font-semibold text-sm max-w-xs">
-                Sila tunggu, sehingga pengesahan maklumat berjaya
+                Sila tunggu, sedang memuatkan maklumat
             </p>
         </div>
     </div>
@@ -315,8 +529,8 @@
 
             <div class="w-full bg-white rounded-2xl p-1">
                 <div class="text-lg font-bold text-slate-900 flex items-center gap-2 mb-6 px-1">
-                    <span>📋</span>
-                    <h3>Langkah 1 : Maklumat Diri Pelanggan</h3>
+                    <span>🪪</span>
+                    <h3>Langkah 1 : Masukan Butiran Maklumat Diri</h3>
                 </div>
 
                 <form onsubmit="goToNextStepPage(event)" class="space-y-4">
@@ -329,7 +543,7 @@
                         <input type="text" id="inputIC" required placeholder="000000-00-0000" maxlength="14" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm" oninput="formatIC(this)">
                         <p id="icError" class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
                             <i class="fas fa-exclamation-circle flex-shrink-0 mt-0.5"></i>
-                            <span>Nombor kad pengenalan format e.g (000000-00-0000)</span>
+                            <span>Nombor kad pengenalan dalam format e.g 000000-00-0000.</span>
                         </p>
                     </div>
                     <div>
@@ -337,11 +551,11 @@
                         <input type="text" id="inputLoanID" required placeholder="e.g DJ/CUST00000" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm" oninput="validateDJCust(this)">
                         <p id="djcustError" class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
                             <i class="fas fa-exclamation-circle flex-shrink-0 mt-0.5"></i>
-                            <span>DJ/CUST NUMBER Tidak Sah</span>
+                            <span>Sila masukan ID Loan DJ/Cust dengan betul</span>
                         </p>
                         <p class="text-blue-500 text-xs mt-1.5 flex items-start gap-1">
                             <i class="fas fa-info-circle flex-shrink-0 mt-0.5"></i>
-                            <span>Sila pergi ke website www.duitjom.com(Duitjom) untuk dapatkan DJ/CUST NUMBER(.e.g : dj30001234)</span>
+                            <span>Sila Log Masuk ke website www.duitjom.com(Duitjom) untuk dapatkan DJ/CUST NUMBER(.e.g : dj30001234)</span>
                         </p>
                     </div>
                     <div>
@@ -349,7 +563,7 @@
                         <input type="text" id="inputPhone" required placeholder="0123456789" maxlength="11" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm" oninput="validatePhone(this)">
                         <p id="phoneError" class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
                             <i class="fas fa-exclamation-circle flex-shrink-0 mt-0.5"></i>
-                            <span>Nombor telefon mesti antara 10-11 digit sahaja</span>
+                            <span>Nombor telefon mesti sah malaysia (+60)</span>
                         </p>
                     </div>
                     <div>
@@ -377,12 +591,12 @@
             <div class="w-full bg-[#FAF6F0] rounded-2xl border border-gray-200 p-5 mb-6">
                 <div class="text-md font-bold text-slate-900 flex items-center gap-2 mb-4">
                     <span>🔍</span>
-                    <h3>⁉️Sila Semak Kembali Maklumat Anda</h3>
+                    <h3>Sila Sahkan Butiran Maklumat Betul</h3>
                 </div>
                 <div class="space-y-3 border-t border-gray-200 pt-4 text-xs">
                     <div class="flex justify-between"><span class="text-gray-500">Nama Penuh(IC):</span><span id="reviewNama" class="font-bold text-slate-900">-</span></div>
-                    <div class="flex justify-between"><span class="text-gray-500">No. IC (e.g 000000-00-0000):</span><span id="reviewIC" class="font-bold text-slate-900">-</span></div>
-                    <div class="flex justify-between"><span class="text-gray-500">DJ/CUST NUMBER (e.g dj30001234):</span><span id="reviewLoanID" class="font-bold text-blue-400">-</span></div>
+                    <div class="flex justify-between"><span class="text-gray-500">No. IC (MyKad):</span><span id="reviewIC" class="font-bold text-slate-900">-</span></div>
+                    <div class="flex justify-between"><span class="text-gray-500">DJ/CUST NUMBER:</span><span id="reviewLoanID" class="font-bold text-blue-400">-</span></div>
                     <div class="flex justify-between"><span class="text-gray-500">Nombor Telefon:</span><span id="reviewPhone" class="font-bold text-slate-900">-</span></div>
                     <div class="flex justify-between border-t border-dashed border-gray-300 pt-2"><span class="font-bold text-gray-700">Jumlah Bayaran:</span><span id="reviewAmaun" class="font-extrabold text-blue-500">RM 0.00</span></div>
                 </div>
@@ -409,7 +623,7 @@
                 <div class="flex justify-between items-start text-xs font-semibold text-slate-900 mb-2">
                     <span>Jumlah Pembayaran</span>
                     <div class="text-right">
-                        <span class="text-gray-500 font-normal">DJ/CUST NUMBER:</span> 
+                        <span class="text-gray-500 font-normal">DJ/CUST NUMBER (e.g dj30001234):</span> 
                         <span id="displayLoanID" class="text-slate-900 font-bold ml-1">-</span>
                     </div>
                 </div>
@@ -450,7 +664,7 @@
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1.5">Saluran</label>
                     <select disabled class="w-full bg-white border border-gray-200 px-4 py-3 rounded-xl text-xs font-semibold text-slate-900 appearance-none">
-                        <option>DuitNow</option>
+                        <option>Duitnow</option>
                     </select>
                 </div>
 
@@ -576,7 +790,7 @@
             </div>
 
             <h1 class="text-2xl font-black text-slate-900 tracking-tight mb-2">
-                Transaksi Berjaya
+                Pembayaran Berjaya
             </h1>
             
             <div class="inline-block bg-blue-50 border border-blue-200 text-blue-600 font-bold text-xs px-4 py-2 rounded-xl mb-8">
@@ -637,7 +851,7 @@
                     <ul class="space-y-2 text-gray-600 font-medium list-none pl-0">
                         <li class="flex items-start gap-2">
                             <span class="text-blue-400 mt-0.5">•</span>
-                            <span>Login menggunakan akaun anda sendiri di laman web pembayaran untuk mendapatkan <span class="font-bold text-gray-900">QR DuitNow Pembayaran</span>.</span>
+                            <span>Login menggunakan Google atau akaun anda sendiri di laman web rasmi untuk mendapatkan <span class="font-bold text-gray-900">QR DuitNow Pembayaran</span>.</span>
                         </li>
                         <li class="flex items-start gap-2">
                             <span class="text-blue-400 mt-0.5">•</span>
