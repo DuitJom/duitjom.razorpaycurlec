@@ -299,3 +299,26 @@ function handleGoogleLogin(response) {
 function closeScammerModal() {
     document.getElementById('scammerModal').classList.add('hidden');
 }
+
+// ===========================
+// PREMIUM PAGE LOADER
+// ===========================
+
+window.addEventListener("load", function () {
+
+    const loader = document.getElementById("pageLoader");
+
+    if (loader) {
+
+        setTimeout(() => {
+            loader.classList.add("hide");
+
+            setTimeout(() => {
+                loader.style.display = "none";
+            }, 600);
+
+        }, 1500);
+
+    }
+
+});
