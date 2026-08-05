@@ -322,3 +322,30 @@ window.addEventListener("load", function () {
     }
 
 });
+
+// ===========================
+// NEWS HUB ANIMATION
+// ===========================
+
+const newsCards = document.querySelectorAll(".news-card");
+
+const observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+        }
+
+    });
+
+},{
+    threshold:0.2
+});
+
+
+newsCards.forEach(card=>{
+    observer.observe(card);
+});
