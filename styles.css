@@ -298,3 +298,18 @@
         transform: scale(1.3);
     }
 }
+
+/* ===========================
+   NEWS HUB SCROLL ANIMATION
+=========================== */
+
+.news-card{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .7s ease;
+}
+
+.news-card.show{
+    opacity:1;
+    transform:translateY(0);
+}
