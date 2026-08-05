@@ -21,35 +21,177 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    
+    <style>
+        /* Sembunyikan scrollbar lalai */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* KOTAK UTAMA (Gaya Fintech Mewah) */
+.duitjom-news {
+    position: relative;
+    width: 100%;
+    max-width: 420px; /* Boleh laras ikut kesesuaian */
+    margin-top: 30px;
+    padding: 30px 20px;
+    border-radius: 28px;
+    background: linear-gradient(145deg, #052e16 0%, #021f0e 100%);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
+    text-align: left;
+    overflow: hidden;
+    perspective: 1000px; /* Penting untuk kesan 3D */
+}
+
+/* Kesan Cahaya (Glow Orb) di latar belakang kotak */
+.duitjom-news::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.4) 0%, transparent 70%);
+    filter: blur(20px);
+    border-radius: 50%;
+    animation: pulse-glow 4s infinite alternate;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.news-title {
+    position: relative;
+    text-align: center;
+    margin-bottom: 25px;
+    z-index: 1;
+}
+
+.news-title span {
+    display: inline-block;
+    font-size: 12px;
+    color: #86efac;
+    font-weight: 800;
+    background: rgba(34, 197, 94, 0.15);
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.news-title h2 {
+    color: white;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 10px 0 5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.news-title p {
+    color: #bbf7d0;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+/* TRACK ANIMASI BERGERAK (TICKER) */
+.news-wrapper {
+    position: relative;
+    height: 380px; /* Ketinggian tetingkap berita */
+    overflow: hidden;
+    z-index: 1;
+    /* Mask untuk efek pudar (fade) di atas dan bawah */
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+.news-track {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Animasi skrol ke atas secara infiniti */
+    animation: scroll-vertical 15s linear infinite;
+}
+
+/* Berhenti skrol apabila pengguna sentuh/hover */
+.news-wrapper:hover .news-track {
+    animation-play-state: paused;
+}
+
+/* KOTAK BERITA (GLASSMORPHISM & 3D) */
+.news-item {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #22c55e;
+    border-radius: 16px;
+    padding: 18px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+/* Kesan Hover 3D Hebat */
+.news-item:hover {
+    transform: translateZ(30px) translateY(-5px) scale(1.02);
+    background: rgba(255, 255, 255, 0.08);
+    border-left: 4px solid #4ade80;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 15px rgba(34, 197, 94, 0.2);
+}
+
+.news-item h3 {
+    color: white;
+    font-size: 15px;
+    font-weight: 800;
+    margin: 12px 0 6px;
+    transition: color 0.3s ease;
+}
+
+.news-item:hover h3 {
+    color: #4ade80;
+}
+
+.news-item p {
+    color: #d1fae5;
+    font-size: 12px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.news-item small {
+    display: block;
+    margin-top: 10px;
+    color: #86efac;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* LABEL KATEGORI */
+.news-label {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.latest { background: linear-gradient(135deg, #22c55e, #16a34a); color: #052e16; }
+.security { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; }
+.info { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+
+/* KEYFRAMES ANIMASI */
+@keyframes scroll-vertical {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+@keyframes pulse-glow {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.3); opacity: 0.8; }
+}
+    </style>
 </head>
 <body class="font-sans bg-[#FAF6F0] text-gray-900 min-h-screen flex flex-col pt-[72px]">
-    
-    <!-- PAGE LOADER -->
-    <div id="pageLoader" class="page-loader">
-
-        <div class="loader-card">
-
-            <div class="glow-circle"></div>
-
-            <img src="IMG_6715.png" alt="DuitJom" class="loader-logo">
-
-            <div class="spinner"></div>
-
-            <h2>DuitJom</h2>
-
-            <p>Memuatkan Sistem Pembayaran Digital...</p>
-
-            <div class="progress-bar">
-
-                <div class="progress-fill"></div>
-
-            </div>
-
-        </div>
-
-    </div>
 
     <!-- GLOBAL FIXED NAVBAR UNTUK SEMUA HALAMAN -->
     <header class="fixed top-0 left-0 right-0 z-40 bg-white shadow-sm border-b border-gray-100">
@@ -198,257 +340,64 @@
                 </div>
                 <!-- END GOOGLE OAUTH LOGIN -->
                 
-                <!-- ===========================
-                     DUITJOM NEWS HUB
-                =========================== -->
+                <!-- DuitJom News Hub -->
+<section class="duitjom-news">
 
-  <section id="news" class="py-16 px-6 bg-blue">
+    <div class="news-title">
+        <span>DuitJom X GitHub</span>
+        <h2>Update Semasa</h2>
+        <p>Kemas-Kini Sistem Pembayaran Baharu Duitjom</p>
+    </div>
 
-    <div class="max-w-6xl mx-auto">
+    <!-- Wrapper untuk animasi -->
+    <div class="news-wrapper">
+        <div class="news-track">
+            
+            <!-- SET BERITA PERTAMA -->
+            <div class="news-item">
+                <div class="news-label latest">BAHARU</div>
+                <h3>Sistem Pembayaran Digital Baharu Duitjom x GitHub</h3>
+                <p>Sistem pembayaran DuitJom kini dipertingkatkan keselamatan pengguna yang dilindungi oleh Google.</p>
+                <small>Data Privasi Terlindung</small>
+            </div>
 
-        <!-- Header -->
-        <div class="text-center mb-12">
+            <div class="news-item">
+                <div class="news-label security">KESELAMATAN</div>
+                <h3>Log Masuk Google</h3>
+                <p>Ciri Khas Log Masuk menggunakan Google telah ditambah dan naik taraf untuk sistem pembayaran DuitJom X GitHub.</p>
+                <small>Jaminan Keselamatan Akaun</small>
+            </div>
 
-            <span class="inline-block px-4 py-1 text-sm font-semibold text-white-700 bg-blue-100">
-                UPDATE SEMASA
-            </span>
+            <div class="news-item">
+                <div class="news-label info">MAKLUMAN</div>
+                <h3>Pengumuman Awal</h3>
+                <p>Sebarang kerja baik pulih sistem, Pihak Duitjom akan memberitahu melalui email anda.</p>
+                <small>Notis Awal</small>
+            </div>
 
-            <h2 class="text-3xl font-extrabold mt-4 text-gray-900">
-                DuitJom News Hub
-            </h2>
+            <!-- SET BERITA KEDUA (Salinan untuk loop infiniti yang lancar) -->
+            <div class="news-item">
+                <div class="news-label latest">PENTING</div>
+                <h3>Ciri baharu perlindungan Data Pengguna</h3>
+                <p>Sistem akan Log Keluar pelanggan secara automatik selepas tiada respon dalam masa 5 minit.</p>
+                <small>Jaminan Kawalan Data</small>
+            </div>
 
-            <p class="text-gray-600 mt-3">
-                Dapatkan informasi terkini mengenai kemas kini sistem,
-                ciri baharu dan keselamatan platform DuitJom.
-            </p>
+            <div class="news-item">
+                <div class="news-label security">CIRI-BAHARU</div>
+                <h3>Pinjaman Berulang (RELOAN)</h3>
+                <p>Ciri khas telah di tambah ke dalam sistem untuk memudahkan pengguna membuat pinjaman berulang.</p>
+                <small>Proses-RELOAN</small>
+            </div>
+
+            <div class="news-item">
+                <div class="news-label info">MAKLUMAM</div>
+                <h3>Bahagian Upload Resit</h3>
+                <p>DuitJom telah menambah baik fungsi UPLOAD RESIT yang sebelum ini bermasalah.</p>
+                <small>Lebih Senang-Pantas</small>
+            </div>
 
         </div>
-
-
-        <!-- News Cards -->
-        <div class="grid md:grid-cols-3 gap-6">
-
-
-            <!-- Card 1 -->
-            <div class="bg-[#2563EB] border rounded-3xl p-6 shadow-lg news-card">
-
-                <div class="flex items-center gap-3 mb-4">
-
-                    <div class="w-12 h-12 flex items-center justify-center rounded-2xl bg-green-100 text-green-700 text-xl">
-                        🔐
-                    </div>
-
-                    <span class="text-xs font-bold text-green-700">
-                        KESELAMATAN
-                    </span>
-
-                </div>
-
-
-                <h3 class="font-bold text-xl mb-3">
-                    Sistem Pembayaran Digital Baharu DuitJom
-                </h3>
-
-
-                <p class="text-gray-600 text-sm leading-relaxed">
-                    Sistem pembayaran DuitJom kini dipertingkatkan
-                    dengan ciri keselamatan baharu untuk memberikan
-                    pengalaman transaksi yang lebih selamat.
-                </p>
-
-
-                <div class="mt-5 text-sm font-semibold text-green-600">
-                    ✓ Data Privasi Terlindung
-                </div>
-
-            </div>
-
-
-
-            <!-- Card 2 -->
-            <div class="bg-white border rounded-3xl p-6 shadow-lg news-card">
-
-                <div class="flex items-center gap-3 mb-4">
-
-                    <div class="w-12 h-12 flex items-center justify-center rounded-2xl bg-blue-100 text-blue-700 text-xl">
-                        🌐
-                    </div>
-
-                    <span class="text-xs font-bold text-blue-700">
-                        CIRI BAHARU
-                    </span>
-
-                </div>
-
-
-                <h3 class="font-bold text-xl mb-3">
-                    Log Masuk Google
-                </h3>
-
-
-                <p class="text-gray-600 text-sm leading-relaxed">
-                    Fungsi log masuk menggunakan Google telah
-                    ditambah untuk memudahkan akses pengguna
-                    serta meningkatkan perlindungan akaun.
-                </p>
-
-
-                <div class="mt-5 text-sm font-semibold text-blue-600">
-                    ✓ Jaminan Keselamatan Akaun
-                </div>
-
-            </div>
-
-
-
-
-            <!-- Card 3 -->
-            <div class="bg-white border rounded-3xl p-6 shadow-lg news-card">
-
-                <div class="flex items-center gap-3 mb-4">
-
-                    <div class="w-12 h-12 flex items-center justify-center rounded-2xl bg-purple-100 text-purple-700 text-xl">
-                        🔄
-                    </div>
-
-                    <span class="text-xs font-bold text-purple-700">
-                        CIRI BAHARU
-                    </span>
-
-                </div>
-
-
-                <h3 class="font-bold text-xl mb-3">
-                    Pinjaman Berulang (RELOAN)
-                </h3>
-
-
-                <p class="text-gray-600 text-sm leading-relaxed">
-                    Ciri RELOAN diperkenalkan bagi memudahkan
-                    pengguna yang layak membuat permohonan
-                    berulang dengan proses lebih lancar.
-                </p>
-
-
-                <div class="mt-5 text-sm font-semibold text-purple-600">
-                    ✓ Proses RELOAN Lebih Mudah
-                </div>
-
-            </div>
-
-
-
-
-            <!-- Card 4 -->
-            <div class="bg-white border rounded-3xl p-6 shadow-lg news-card">
-
-                <div class="flex items-center gap-3 mb-4">
-
-                    <div class="w-12 h-12 flex items-center justify-center rounded-2xl bg-yellow-100 text-yellow-700 text-xl">
-                        📢
-                    </div>
-
-                    <span class="text-xs font-bold text-yellow-700">
-                        MAKLUMAN
-                    </span>
-
-                </div>
-
-
-                <h3 class="font-bold text-xl mb-3">
-                    Pengumuman Awal Sistem
-                </h3>
-
-
-                <p class="text-gray-600 text-sm leading-relaxed">
-                    Sebarang kerja penyelenggaraan sistem akan
-                    dimaklumkan terlebih dahulu melalui saluran
-                    rasmi DuitJom.
-                </p>
-
-
-                <div class="mt-5 text-sm font-semibold text-yellow-600">
-                    ✓ Notis Awal Pengguna
-                </div>
-
-            </div>
-
-
-
-
-            <!-- Card 5 -->
-            <div class="bg-white border rounded-3xl p-6 shadow-lg news-card">
-
-                <div class="flex items-center gap-3 mb-4">
-
-                    <div class="w-12 h-12 flex-center justify-center rounded-2xl bg-red-100 text-red-700 text-xl">
-                        🛡️
-                    </div>
-
-                    <span class="text-xs font-bold text-red-700">
-                        PENTING
-                    </span>
-
-                </div>
-
-
-                <h3 class="font-bold text-xl mb-3">
-                    Perlindungan Data Pengguna
-                </h3>
-
-
-                <p class="text-gray-600 text-sm leading-relaxed">
-                    Sistem keselamatan akaun dipertingkatkan
-                    bagi membantu melindungi maklumat pengguna.
-                </p>
-
-
-                <div class="mt-5 text-sm font-semibold text-red-600">
-                    ✓ Kawalan Data Dipertingkat
-                </div>
-
-            </div>
-
-
-
-
-            <!-- Card 6 -->
-            <div class="bg-white border rounded-3xl p-6 shadow-lg news-card">
-
-                <div class="flex items-center gap-3 mb-4">
-
-                    <div class="w-12 h-12 flex items-center justify-center rounded-2xl bg-orange-100 text-orange-700 text-xl">
-                        📤
-                    </div>
-
-                    <span class="text-xs font-bold text-orange-700">
-                        KEMAS KINI
-                    </span>
-
-                </div>
-
-
-                <h3 class="font-bold text-xl mb-3">
-                    Fungsi Upload Resit
-                </h3>
-
-
-                <p class="text-gray-600 text-sm leading-relaxed">
-                    Fungsi muat naik resit telah ditambah baik
-                    untuk proses pembayaran yang lebih mudah
-                    dan pantas.
-                </p>
-
-
-                <div class="mt-5 text-sm font-semibold text-orange-600">
-                    ✓ Lebih Mudah & Pantas
-                </div>
-
-            </div>
-
-
-        </div>
-
     </div>
 
 </section>
@@ -947,7 +896,306 @@
     </div>
 
 
-    <script src="script.js"></script>
+    <script>
+        let timerInstance = null;
+        let namaPelangganGlobal = "";
+
+        // ---- KAWALAN SIDEBAR ----
+        function openSidebar() {
+            const overlay = document.getElementById('sidebarOverlay');
+            const menu = document.getElementById('sidebarMenu');
+            overlay.classList.remove('hidden');
+            setTimeout(() => {
+                overlay.classList.remove('opacity-0');
+                menu.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeSidebar() {
+            const overlay = document.getElementById('sidebarOverlay');
+            const menu = document.getElementById('sidebarMenu');
+            overlay.classList.add('opacity-0');
+            menu.classList.add('translate-x-full');
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 300);
+        }
+
+        // Format IC dengan dashes
+        function formatIC(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length > 12) value = value.slice(0, 12);
+            
+            if (value.length <= 6) {
+                input.value = value;
+            } else if (value.length <= 8) {
+                input.value = value.slice(0, 6) + '-' + value.slice(6);
+            } else {
+                input.value = value.slice(0, 6) + '-' + value.slice(6, 8) + '-' + value.slice(8, 12);
+            }
+
+            const icError = document.getElementById('icError');
+            if (value.length === 12) {
+                icError.classList.add('hidden');
+            } else if (input.value.length > 0) {
+                icError.classList.remove('hidden');
+            }
+        }
+
+        // Validate DJ/CUST NUMBER
+        function validateDJCust(input) {
+            const value = input.value.toUpperCase();
+            const djcustError = document.getElementById('djcustError');
+            
+            const allowedChars = /^[DJCUST0-9/]*$/;
+            
+            if (!allowedChars.test(value)) {
+                input.value = value.replace(/[^DJCUST0-9/]/g, '');
+                djcustError.classList.remove('hidden');
+            } else {
+                input.value = value;
+                djcustError.classList.add('hidden');
+            }
+        }
+
+        // Validate Phone Number
+        function validatePhone(input) {
+            const value = input.value.replace(/\D/g, '');
+            const phoneError = document.getElementById('phoneError');
+            
+            if (value.length > 11) {
+                input.value = value.slice(0, 11);
+            } else {
+                input.value = value;
+            }
+
+            if (value.length > 0 && (value.length < 10 || value.length > 11)) {
+                phoneError.classList.remove('hidden');
+            } else {
+                phoneError.classList.add('hidden');
+            }
+        }
+
+        // ---- KAWALAN HALAMAN PEMBAYARAN PINJAMAN (DENGAN 7 SAAT SPINNER) ----
+        function goToPaymentPage() {
+            // Tunjukkan spinner transisi 7 saat
+            const transitionSpinner = document.getElementById('pageTransitionSpinner');
+            transitionSpinner.classList.remove('hidden');
+            transitionSpinner.classList.add('flex');
+
+            // Set masa 7 saat (7000 ms) sebelum pindah halaman
+            setTimeout(() => {
+                // Sembunyikan spinner
+                transitionSpinner.classList.add('hidden');
+                transitionSpinner.classList.remove('flex');
+
+                // Pindah ke Halaman Pembayaran (Langkah 1)
+                document.getElementById('mainPage').classList.add('hidden');
+                document.getElementById('paymentPage').classList.remove('hidden');
+                
+                // Munculkan Modal Tutorial
+                setTimeout(() => { 
+                    document.getElementById('tutorialModal').classList.remove('hidden'); 
+                }, 200);
+            }, 7000);
+        }
+
+        function closeTutorialModal() {
+            document.getElementById('tutorialModal').classList.add('hidden');
+            setTimeout(() => { 
+                document.getElementById('scammerModal').classList.remove('hidden'); 
+            }, 200);
+        }
+
+        function closeScammerModal() {
+            document.getElementById('scammerModal').classList.add('hidden');
+        }
+
+        function goToNextStepPage(event) {
+            event.preventDefault();
+
+            const ic = document.getElementById('inputIC').value.replace(/\D/g, '');
+            const phone = document.getElementById('inputPhone').value;
+            const djcust = document.getElementById('inputLoanID').value;
+
+            if (ic.length !== 12) {
+                alert('Sila masukkan nombor kad pengenalan yang sah (12 digit)');
+                return;
+            }
+
+            if (phone.length < 10 || phone.length > 11) {
+                alert('Sila masukkan nombor telefon yang sah (10-11 digit)');
+                return;
+            }
+
+            const djcustRegex = /^[DJCUST0-9/]*$/;
+            if (!djcustRegex.test(djcust)) {
+                alert('DJ/CUST NUMBER Tidak Sah');
+                return;
+            }
+
+            document.getElementById('paymentPage').classList.add('hidden');
+            document.getElementById('loadingPage').classList.remove('hidden');
+            document.getElementById('loadingPage').classList.add('flex');
+
+            setTimeout(() => {
+                const nama = document.getElementById('inputNama').value;
+                const loanID = document.getElementById('inputLoanID').value;
+                const amaun = document.getElementById('inputAmaun').value;
+
+                namaPelangganGlobal = nama;
+
+                document.getElementById('reviewNama').innerText = nama;
+                document.getElementById('reviewIC').innerText = document.getElementById('inputIC').value;
+                document.getElementById('reviewLoanID').innerText = loanID.toUpperCase();
+                document.getElementById('reviewPhone').innerText = phone;
+                
+                const amaunFormat = parseFloat(amaun).toFixed(2);
+                document.getElementById('reviewAmaun').innerText = "RM " + amaunFormat;
+
+                document.getElementById('displayLoanID').innerText = loanID.toUpperCase();
+                document.getElementById('displayMainAmaun').innerText = "RM " + amaunFormat;
+                document.getElementById('displaySubAmaun').innerText = "RM " + amaunFormat;
+
+                document.getElementById('qrLoanID').innerText = loanID.toUpperCase();
+                document.getElementById('qrMainAmaun').innerText = "RM " + amaunFormat;
+
+                document.getElementById('loadingPage').classList.add('hidden');
+                document.getElementById('loadingPage').classList.remove('flex');
+                document.getElementById('nextStepPage').classList.remove('hidden');
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }, 7000);
+        }
+
+        function backToInformationPage() {
+            document.getElementById('nextStepPage').classList.add('hidden');
+            document.getElementById('paymentPage').classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function goToStep3Page() {
+            document.getElementById('nextStepPage').classList.add('hidden');
+            document.getElementById('step3Page').classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function backToStep2Page() {
+            document.getElementById('step3Page').classList.add('hidden');
+            document.getElementById('nextStepPage').classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function checkBankSelection() {
+            const selectBank = document.getElementById('selectBank').value;
+            const btnFinalNext = document.getElementById('btnFinalNext');
+            
+            if (selectBank !== "") {
+                btnFinalNext.disabled = false;
+                btnFinalNext.className = "flex-1 bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-xs cursor-pointer transition duration-200 hover:from-blue-500 hover:to-blue-700";
+            }
+        }
+
+        function goToQRPage() {
+            const selectBank = document.getElementById('selectBank');
+            const bankText = selectBank.options[selectBank.selectedIndex].text.substring(3);
+            document.getElementById('qrBankBadge').innerText = bankText;
+
+            document.getElementById('step3Page').classList.add('hidden');
+            document.getElementById('qrPage').classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+
+            startCountdown();
+        }
+
+        function backToStep3Page() {
+            clearInterval(timerInstance);
+            document.getElementById('qrPage').classList.add('hidden');
+            document.getElementById('step3Page').classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function startCountdown() {
+            clearInterval(timerInstance);
+            let timeAllocated = 119; 
+            const display = document.getElementById('countdownTimer');
+
+            timerInstance = setInterval(function () {
+                let minutes = parseInt(timeAllocated / 60, 10);
+                let seconds = parseInt(timeAllocated % 60, 10);
+
+                minutes = minutes < 10 ? minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.innerText = minutes + "m " + seconds + "s";
+
+                if (--timeAllocated < 0) {
+                    clearInterval(timerInstance);
+                    display.innerText = "QR Code Expired";
+                    alert("Masa transaksi telah tamat. Sila dapatkan semula kod pembayaran baharu.");
+                    backToStep3Page();
+                }
+            }, 1000);
+        }
+
+        function handleFileSelected() {
+            const fileInput = document.getElementById('receiptUpload');
+            const placeholder = document.getElementById('uploadPlaceholder');
+            const successDiv = document.getElementById('uploadSuccess');
+            const fileNameDisplay = document.getElementById('fileNameDisplay');
+            const btnSubmitForm = document.getElementById('btnSubmitForm');
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                placeholder.classList.add('hidden');
+                successDiv.classList.remove('hidden');
+                fileNameDisplay.innerText = "Fail dipilih: " + file.name;
+                
+                btnSubmitForm.disabled = false;
+                btnSubmitForm.className = "flex-1 bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-md cursor-pointer transition duration-200 hover:from-blue-500 hover:to-blue-700";
+            }
+        }
+
+        function finalSubmission() {
+            clearInterval(timerInstance);
+            
+            const susunanAyat = "Terima kasih <span class='font-extrabold text-slate-900'>" + namaPelangganGlobal + "</span> kerana telah berjaya membuat bayaran balik pinjaman anda di <span class='text-blue-400 font-bold'>DuitJom</span>. Pembayaran anda sedang diproses dan akan disemak dalam masa <span class='font-bold'>24 jam</span>. Anda akan menerima notifikasi melalui SMS atau email apabila pembayaran telah disahkan.";
+            document.getElementById('thanksMessage').innerHTML = susunanAyat;
+
+            document.getElementById('qrPage').classList.add('hidden');
+            document.getElementById('thanksPage').classList.remove('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // FUNGSI CALLBACK GOOGLE OAUTH LOGIN (BARU & LENGKAP)
+        function handleGoogleLogin(response) {
+            console.log("Google Login berjaya");
+            
+            // Simpan status login
+            localStorage.setItem("googleLogin", "success");
+
+            // 1. Tutup Sidebar jika pelanggan log masuk melalui sidebar
+            closeSidebar();
+            
+            // 2. Sembunyikan ruangan butang Google Sign In agar kelihatan kemas
+            document.getElementById("googleSignInSection").classList.add("hidden");
+
+            // 3. Tunjukkan skrin Loading 5 saat (Spinner Log Masuk)
+            const spinnerOverlay = document.getElementById("loginSpinnerOverlay");
+            spinnerOverlay.classList.remove("hidden");
+            spinnerOverlay.classList.add("flex"); // aktifkan flexbox
+
+            // Tunggu 5 saat
+            setTimeout(() => {
+                // Sembunyikan spinner log masuk
+                spinnerOverlay.classList.add("hidden");
+                spinnerOverlay.classList.remove("flex");
+
+                // Munculkan butang Pembayaran Pinjaman secara automatik
+                document.getElementById("btnPembayaranPinjaman").classList.remove("hidden");
+            }, 5000);
+        }
+    </script>
+
     <!-- Start of LiveChat (www.livechat.com) code -->
     <script>
         window.__lc = window.__lc || {};
