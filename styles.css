@@ -180,3 +180,121 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* ===========================
+   PREMIUM PAGE LOADER
+=========================== */
+
+.page-loader{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#f8fafc,#eef6ff);
+    z-index: 999999;
+    transition: .6s;
+}
+
+.page-loader.hide{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-card{
+    position: relative;
+    width: 320px;
+    padding: 40px 30px;
+    text-align: center;
+    border-radius: 28px;
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 25px 60px rgba(0,0,0,.15);
+    overflow: hidden;
+}
+
+.glow-circle{
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: #60a5fa;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: .35;
+    top: -70px;
+    right: -70px;
+    animation: glow 3s infinite alternate;
+}
+
+.loader-logo{
+    width: 90px;
+    margin-bottom: 20px;
+    animation: bounce 1.5s infinite;
+}
+
+.loader-card h2{
+    margin-top: 18px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.loader-card p{
+    color: #6b7280;
+    font-size: 13px;
+    margin-top: 8px;
+    margin-bottom: 22px;
+}
+
+.progress-bar{
+    width: 100%;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill{
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg,#3b82f6,#60a5fa);
+    animation: loading 2s linear infinite;
+}
+
+/* Spinner khas untuk Premium Page Loader */
+.page-spinner{
+    width: 42px;
+    height: 42px;
+    margin: auto;
+    border: 4px solid #dbeafe;
+    border-top: 4px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes loading{
+    from{
+        width:0%;
+    }
+    to{
+        width:100%;
+    }
+}
+
+@keyframes bounce{
+    0%,100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes glow{
+    from{
+        transform: scale(.9);
+    }
+    to{
+        transform: scale(1.3);
+    }
+}
