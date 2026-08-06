@@ -22,184 +22,228 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Sembunyikan scrollbar lalai */
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* ===== DUITJOM NEWS PREMIUM FINTECH ===== */
 
-/* KOTAK UTAMA (Gaya Fintech Mewah) */
 .duitjom-news {
     position: relative;
     width: 100%;
-    max-width: 420px; /* Boleh laras ikut kesesuaian */
+    max-width: 420px;
     margin-top: 30px;
     padding: 30px 20px;
-    border-radius: 28px;
-    /* Latar belakang ditukar ke Kelabu Gelap (Gray) ke Hitam (Black) */
-    background: linear-gradient(145deg, #27272a 0%, #000000 100%);
-    /* Sempadan menggunakan warna Biru Biasa */
-    border: 1px solid rgba(59, 130, 246, 0.3);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,0.05);
-    text-align: left;
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f8fbff 0%,
+            #e0f2fe 45%,
+            #ecfdf5 100%
+        );
+
+    border: 1px solid rgba(255,255,255,0.8);
+
+    box-shadow:
+        0 25px 60px rgba(37,99,235,0.18),
+        inset 0 0 30px rgba(255,255,255,0.8);
+
     overflow: hidden;
-    perspective: 1000px; /* Penting untuk kesan 3D */
+    perspective: 1000px;
 }
 
-/* Kesan Cahaya (Glow Orb) di latar belakang kotak */
+
+/* Animated Glow */
 .duitjom-news::before {
-    content: '';
-    position: absolute;
-    top: -40px;
-    right: -40px;
-    width: 150px;
-    height: 150px;
-    /* Cahaya menggunakan Biru #90D5FF */
-    background: radial-gradient(circle, rgba(144, 213, 255, 0.35) 0%, transparent 70%);
-    filter: blur(20px);
-    border-radius: 50%;
-    animation: pulse-glow 4s infinite alternate;
-    z-index: 0;
-    pointer-events: none;
+    content:"";
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    top:-80px;
+    right:-70px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(59,130,246,0.35),
+            transparent 70%
+        );
+
+    filter:blur(30px);
+
+    animation:
+        floatingGlow 6s ease-in-out infinite alternate;
+
+    pointer-events:none;
 }
 
-.news-title {
-    position: relative;
-    text-align: center;
-    margin-bottom: 25px;
-    z-index: 1;
+
+.duitjom-news::after {
+    content:"";
+    position:absolute;
+
+    width:120px;
+    height:120px;
+
+    bottom:-40px;
+    left:-30px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(16,185,129,0.25),
+            transparent 70%
+        );
+
+    filter:blur(25px);
+
+    animation:
+        floatingGlow 5s ease-in-out infinite alternate-reverse;
 }
 
-.news-title span {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    /* Teks menggunakan Biru #90D5FF */
-    color: #90D5FF;
-    font-weight: 800;
-    background: rgba(144, 213, 255, 0.15);
-    padding: 4px 12px;
-    border-radius: 20px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
 
-.news-title h2 {
-    color: white;
-    font-size: 22px;
-    font-weight: 800;
-    margin: 10px 0 5px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
+/* Kotak Berita */
 
-.news-title p {
-    /* Warna kelabu cerah untuk teks sokongan */
-    color: #a1a1aa;
-    font-size: 13px;
-    opacity: 0.9;
-}
-
-/* TRACK ANIMASI BERGERAK (TICKER) */
-.news-wrapper {
-    position: relative;
-    height: 380px; /* Ketinggian tetingkap berita */
-    overflow: hidden;
-    z-index: 1;
-    /* Mask untuk efek pudar (fade) di atas dan bawah */
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-}
-
-.news-track {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    /* Animasi skrol ke atas secara infiniti */
-    animation: scroll-vertical 15s linear infinite;
-}
-
-/* Berhenti skrol apabila pengguna sentuh/hover */
-.news-wrapper:hover .news-track {
-    animation-play-state: paused;
-}
-
-/* KOTAK BERITA (GLASSMORPHISM & 3D) */
 .news-item {
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    /* Garis tepi asal menggunakan Biru Biasa */
-    border-left: 4px solid #3b82f6; 
-    border-radius: 16px;
-    padding: 18px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform-style: preserve-3d;
-    cursor: pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.85),
+            rgba(255,255,255,0.55)
+        );
+
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,0.9);
+
+
+    border-left:
+        5px solid #2563eb;
+
+
+    padding:18px;
+
+
+    box-shadow:
+        0 10px 25px rgba(15,23,42,0.08);
+
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+
+
+    animation:
+        cardFloat 4s ease-in-out infinite;
+
 }
 
-/* Kesan Hover 3D Hebat */
+
+/* Hover Premium */
+
 .news-item:hover {
-    transform: translateZ(30px) translateY(-5px) scale(1.02);
-    background: rgba(255, 255, 255, 0.08);
-    /* Garis tepi berubah ke #90D5FF apabila di-hover */
-    border-left: 4px solid #90D5FF;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 15px rgba(144, 213, 255, 0.25);
+
+    transform:
+        translateY(-8px)
+        scale(1.03);
+
+
+    border-left:
+        5px solid #10b981;
+
+
+    box-shadow:
+
+        0 20px 45px rgba(37,99,235,0.22),
+
+        0 0 25px rgba(16,185,129,0.25);
+
 }
+
+
+/* Tajuk */
 
 .news-item h3 {
-    color: white;
-    font-size: 15px;
-    font-weight: 800;
-    margin: 12px 0 6px;
-    transition: color 0.3s ease;
+
+    color:#0f172a;
+
+    font-size:16px;
+
+    font-weight:800;
+
 }
+
 
 .news-item:hover h3 {
-    /* Teks tajuk berubah ke #90D5FF */
-    color: #90D5FF;
+
+    color:#2563eb;
+
 }
+
+
+/* Text */
 
 .news-item p {
-    color: #d4d4d8; /* Kelabu lembut */
-    font-size: 12px;
-    line-height: 1.6;
-    opacity: 0.9;
+
+    color:#475569;
+
+    line-height:1.6;
+
 }
+
+
+/* Small text */
 
 .news-item small {
-    display: block;
-    margin-top: 10px;
-    /* Menggunakan warna Biru Biasa */
-    color: #60a5fa; 
-    font-size: 11px;
-    font-weight: 600;
+
+    color:#059669;
+
+    font-weight:700;
+
 }
 
-/* LABEL KATEGORI */
+
+/* Label */
+
 .news-label {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 10px;
-    font-weight: 900;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.12);
+
 }
 
-/* Kategori digabungkan dengan tona Biru Biasa, Hitam/Kelabu dan #90D5FF */
-.latest { background: linear-gradient(135deg, #90D5FF, #3b82f6); color: #000000; }
-.security { background: linear-gradient(135deg, #52525b, #27272a); color: #90D5FF; border: 1px solid #3f3f46; }
-.info { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; }
 
-/* KEYFRAMES ANIMASI */
-@keyframes scroll-vertical {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-50%); }
+/* Animasi */
+
+@keyframes floatingGlow {
+
+    from {
+        transform:translate(0,0);
+    }
+
+    to {
+        transform:translate(-20px,20px);
+    }
+
 }
 
-@keyframes pulse-glow {
-    0% { transform: scale(1); opacity: 0.4; }
-    100% { transform: scale(1.3); opacity: 0.7; }
+
+@keyframes cardFloat {
+
+    0%,100% {
+        transform:translateY(0);
+    }
+
+    50% {
+        transform:translateY(-3px);
+    }
+
 }
     </style>
 </head>
@@ -359,10 +403,12 @@
 
     <div class="news-title">
     <span>
-        <img src="IMG_6715.png" alt="Logo" style="height: 20px; width: auto; object-fit: contain;"> 
+        <img src="IMG_6715.png" alt="Logo" style="height: 22px; width: auto; object-fit: contain;"> 
         Duitjom X GitHub
     </span>
-    <h2>Notis Berita</h2>
+    <h2 class="text-[22px] text-red-600 font-bold">
+    Notis Berita
+</h2>
     <p>Kemas-Kini Sistem Pembayaran Baharu Duitjom</p>
 </div>
 
@@ -371,18 +417,22 @@
         <div class="news-track">
             
             <!-- SET BERITA PERTAMA -->
-            <div class="news-item">
-                <div class="news-label latest">BAHARU</div>
-                <h3>Sistem Pembayaran Digital Baharu Duitjom x GitHub</h3>
-                <p>Sistem pembayaran DuitJom kini dipertingkatkan keselamatan pengguna yang dilindungi oleh Google.</p>
-                <small>Perlindungan Data Privasi</small>
-            </div>
+<div class="news-item">
+    <div class="news-label latest">BAHARU</div>
+    <h3>Sistem Pembayaran Digital Baharu DuitJom x GitHub</h3>
+    <p>
+        DuitJom kini memperkenalkan sistem pembayaran digital yang dipertingkatkan 
+        dengan ciri keselamatan moden bagi memastikan pengalaman transaksi yang 
+        lebih selamat, pantas dan dipercayai untuk semua pengguna.
+    </p>
+    <small>Data & Privasi</small>
+</div>
 
             <div class="news-item">
                 <div class="news-label security">KESELAMATAN</div>
                 <h3>Log Masuk Google</h3>
                 <p>Ciri Khas Log Masuk menggunakan Google telah ditambah dan naik taraf untuk sistem pembayaran DuitJom X GitHub.</p>
-                <small>Jaminan Keselamatan Akaun</small>
+                <small>Keselamatan Akaun</small>
             </div>
 
             <div class="news-item">
@@ -392,27 +442,27 @@
                 <small>Notis Awal</small>
             </div>
 
-            <!-- SET BERITA KEDUA (Salinan untuk loop infiniti yang lancar) -->
-            <div class="news-item">
-                <div class="news-label latest">PENTING</div>
-                <h3>Ciri baharu perlindungan Data Pengguna</h3>
-                <p>Sistem akan Log Keluar pelanggan secara automatik selepas tiada respon dalam masa 5 minit.</p>
-                <small>Jaminan Kawalan Data</small>
-            </div>
+            <!-- SET BERITA KEDUA -->
+<div class="news-item">
+    <div class="news-label latest">PENTING</div>
+    <h3>Perlindungan Data Pengguna Dipertingkatkan</h3>
+    <p>Sistem akan log keluar secara automatik selepas 5 minit tiada aktiviti bagi keselamatan akaun.</p>
+    <small>Kawalan Data Pengguna</small>
+</div>
 
-            <div class="news-item">
-                <div class="news-label security">CIRI-BAHARU</div>
-                <h3>Pinjaman Berulang (RELOAN)</h3>
-                <p>Ciri khas telah di tambah ke dalam sistem untuk memudahkan pengguna membuat pinjaman berulang.</p>
-                <small>Proses-RELOAN</small>
-            </div>
+<div class="news-item">
+    <div class="news-label security">CIRI-BAHARU</div>
+    <h3>Fungsi Pinjaman Berulang (RELOAN)</h3>
+    <p>Ciri baharu RELOAN memudahkan pengguna membuat permohonan pinjaman berulang dengan lebih pantas.</p>
+    <small>Proses RELOAN</small>
+</div>
 
-            <div class="news-item">
-                <div class="news-label info">MAKLUMAM</div>
-                <h3>Bahagian Upload Resit</h3>
-                <p>DuitJom telah menambah baik fungsi UPLOAD RESIT yang sebelum ini bermasalah.</p>
-                <small>Lebih Senang-Pantas</small>
-            </div>
+<div class="news-item">
+    <div class="news-label info">MAKLUMAN</div>
+    <h3>Penambahbaikan Upload Resit</h3>
+    <p>Fungsi muat naik resit telah dinaik taraf untuk pengalaman pengguna yang lebih lancar.</p>
+    <small>Sistem Lebih Pantas</small>
+</div>
 
         </div>
     </div>
