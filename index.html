@@ -34,9 +34,11 @@
     margin-top: 30px;
     padding: 30px 20px;
     border-radius: 28px;
-    background: linear-gradient(145deg, #052e16 0%, #021f0e 100%);
-    border: 1px solid rgba(34, 197, 94, 0.2);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
+    /* Ditukar ke warna Hitam */
+    background: linear-gradient(145deg, #111111 0%, #000000 100%);
+    /* Ditukar ke #90D5FF */
+    border: 1px solid rgba(144, 213, 255, 0.2);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,0.1);
     text-align: left;
     overflow: hidden;
     perspective: 1000px; /* Penting untuk kesan 3D */
@@ -50,7 +52,8 @@
     right: -40px;
     width: 150px;
     height: 150px;
-    background: radial-gradient(circle, rgba(34, 197, 94, 0.4) 0%, transparent 70%);
+    /* Ditukar ke #90D5FF */
+    background: radial-gradient(circle, rgba(144, 213, 255, 0.4) 0%, transparent 70%);
     filter: blur(20px);
     border-radius: 50%;
     animation: pulse-glow 4s infinite alternate;
@@ -66,11 +69,15 @@
 }
 
 .news-title span {
-    display: inline-block;
+    display: inline-flex; /* Ditukar kepada inline-flex untuk susunan logo dan teks */
+    align-items: center; /* Pastikan logo selari dengan teks di tengah */
+    gap: 6px; /* Jarak antara logo dan teks */
     font-size: 12px;
-    color: #86efac;
+    /* Ditukar ke #90D5FF */
+    color: #90D5FF;
     font-weight: 800;
-    background: rgba(34, 197, 94, 0.15);
+    /* Ditukar ke #90D5FF */
+    background: rgba(144, 213, 255, 0.15);
     padding: 4px 12px;
     border-radius: 20px;
     letter-spacing: 1px;
@@ -86,7 +93,8 @@
 }
 
 .news-title p {
-    color: #bbf7d0;
+    /* Ditukar ke biru cair supaya sesuai dengan tema #90D5FF */
+    color: #cceaff;
     font-size: 13px;
     opacity: 0.8;
 }
@@ -121,7 +129,8 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    border-left: 4px solid #22c55e;
+    /* Ditukar ke #90D5FF */
+    border-left: 4px solid #90D5FF;
     border-radius: 16px;
     padding: 18px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -133,8 +142,9 @@
 .news-item:hover {
     transform: translateZ(30px) translateY(-5px) scale(1.02);
     background: rgba(255, 255, 255, 0.08);
-    border-left: 4px solid #4ade80;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 15px rgba(34, 197, 94, 0.2);
+    /* Ditukar ke #90D5FF */
+    border-left: 4px solid #90D5FF;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 15px rgba(144, 213, 255, 0.2);
 }
 
 .news-item h3 {
@@ -146,11 +156,13 @@
 }
 
 .news-item:hover h3 {
-    color: #4ade80;
+    /* Ditukar ke #90D5FF */
+    color: #90D5FF;
 }
 
 .news-item p {
-    color: #d1fae5;
+    /* Ditukar ke biru cair */
+    color: #cceaff;
     font-size: 12px;
     line-height: 1.6;
     opacity: 0.9;
@@ -159,7 +171,8 @@
 .news-item small {
     display: block;
     margin-top: 10px;
-    color: #86efac;
+    /* Ditukar ke #90D5FF */
+    color: #90D5FF;
     font-size: 11px;
     font-weight: 600;
 }
@@ -175,7 +188,8 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.latest { background: linear-gradient(135deg, #22c55e, #16a34a); color: #052e16; }
+/* Ditukar label utama ke #90D5FF dan teks Hitam */
+.latest { background: linear-gradient(135deg, #90D5FF, #5ab8ff); color: #000000; }
 .security { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; }
 .info { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
 
@@ -280,7 +294,7 @@
     <!-- LOADING SPINNER (SELEPAS GOOGLE SIGN IN - 5 SAAT) -->
     <div id="loginSpinnerOverlay" class="fixed inset-0 bg-white/95 backdrop-blur-sm z-[100] hidden flex-col justify-center items-center">
         <div class="flex flex-col items-center gap-6">
-            <img src="IMG_6715.png" alt="Logo" class="w-16 h-16 object-contain animate-bounce">
+            <img src="IMG_6715.png" alt="Logo" class="w-24 h-24 object-contain animate-bounce">
             <div class="spinner"></div>
             <p class="text-center text-slate-800 font-bold text-sm tracking-wide">
                 Sedang Dimuat...
@@ -292,7 +306,7 @@
     <!-- LOADING SPINNER (TRANSISI HALAMAN PINJAMAN - 7 SAAT) -->
     <div id="pageTransitionSpinner" class="fixed inset-0 bg-white/95 backdrop-blur-sm z-[100] hidden flex-col justify-center items-center">
         <div class="flex flex-col items-center gap-6">
-            <img src="IMG_6715.png" alt="Logo DuitJom" class="w-16 h-16 object-contain animate-bounce">
+            <img src="IMG_6715.png" alt="Logo DuitJom" class="w-24 h-24 object-contain animate-bounce">
             <div class="spinner"></div>
             <p class="text-center text-slate-800 font-bold text-sm tracking-wide max-w-xs leading-relaxed">
                 Sila tunggu - Beralih ke halaman berikut
@@ -323,7 +337,7 @@
             <div class="w-full max-w-xs mb-16">
                 
                 <!-- Butang Pembayaran (Disembunyikan pada awalnya) -->
-                <button id="btnPembayaranPinjaman" onclick="goToPaymentPage()" class="hidden w-full bg-blue-400 hover:bg-blue-500 text-white font-bold text-md px-6 py-4 rounded-xl shadow-lg shadow-blue-400/30 transition duration-200 mb-6 flex justify-center items-center gap-2">
+                <button id="btnPembayaranPinjaman" onclick="goToPaymentPage()" class="hidden w-full bg-green-300 hover:bg-green-300 text-black font-semibold text-md px-6 py-4 rounded-xl shadow-lg shadow-gray-400/30 transition duration-200 mb-6 flex justify-center items-center gap-2">
                     Teruskan <i class="fas fa-arrow-right text-sm"></i>
                 </button>
 
@@ -332,7 +346,7 @@
                     <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#FAF6F0] px-3 text-xs text-black-600 font-medium whitespace-nowrap">Log Masuk</span>
                     
                     <!-- Arahan kepada pelanggan -->
-                    <p class="text-[10px] text-red-700 font-bold mb-4 leading-tight">
+                    <p class="text-[10px] text-red-700 font-medium mb-4 leading-tight">
                      Log masuk menggunakan akaun Google yang berdaftar di www.duitjom.com
                     </p>
                     
@@ -346,10 +360,13 @@
 <section class="duitjom-news">
 
     <div class="news-title">
-        <span>DuitJom X GitHub</span>
-        <h2>Update Semasa</h2>
-        <p>Laporan Kemas-Kini Sistem Duitjom x Github</p>
-    </div>
+    <span>
+        <img src="IMG_6270.png" alt="Logo" style="height: 14px; width: auto; object-fit: contain;"> 
+        Duitjom X GitHub
+    </span>
+    <h2>Update Semasa</h2>
+    <p>Kemas-Kini Sistem Pembayaran Baharu Duitjom</p>
+</div>
 
     <!-- Wrapper untuk animasi -->
     <div class="news-wrapper">
