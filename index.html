@@ -34,11 +34,11 @@
     margin-top: 30px;
     padding: 30px 20px;
     border-radius: 28px;
-    /* Ditukar ke warna Hitam */
-    background: linear-gradient(145deg, #111111 0%, #000000 100%);
-    /* Ditukar ke #90D5FF */
-    border: 1px solid rgba(144, 213, 255, 0.2);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,0.1);
+    /* Latar belakang ditukar ke Kelabu Gelap (Gray) ke Hitam (Black) */
+    background: linear-gradient(145deg, #27272a 0%, #000000 100%);
+    /* Sempadan menggunakan warna Biru Biasa */
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,0.05);
     text-align: left;
     overflow: hidden;
     perspective: 1000px; /* Penting untuk kesan 3D */
@@ -52,8 +52,8 @@
     right: -40px;
     width: 150px;
     height: 150px;
-    /* Ditukar ke #90D5FF */
-    background: radial-gradient(circle, rgba(144, 213, 255, 0.4) 0%, transparent 70%);
+    /* Cahaya menggunakan Biru #90D5FF */
+    background: radial-gradient(circle, rgba(144, 213, 255, 0.35) 0%, transparent 70%);
     filter: blur(20px);
     border-radius: 50%;
     animation: pulse-glow 4s infinite alternate;
@@ -69,14 +69,13 @@
 }
 
 .news-title span {
-    display: inline-flex; /* Ditukar kepada inline-flex untuk susunan logo dan teks */
-    align-items: center; /* Pastikan logo selari dengan teks di tengah */
-    gap: 6px; /* Jarak antara logo dan teks */
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-size: 12px;
-    /* Ditukar ke #90D5FF */
+    /* Teks menggunakan Biru #90D5FF */
     color: #90D5FF;
     font-weight: 800;
-    /* Ditukar ke #90D5FF */
     background: rgba(144, 213, 255, 0.15);
     padding: 4px 12px;
     border-radius: 20px;
@@ -89,14 +88,14 @@
     font-size: 22px;
     font-weight: 800;
     margin: 10px 0 5px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .news-title p {
-    /* Ditukar ke biru cair supaya sesuai dengan tema #90D5FF */
-    color: #cceaff;
+    /* Warna kelabu cerah untuk teks sokongan */
+    color: #a1a1aa;
     font-size: 13px;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 /* TRACK ANIMASI BERGERAK (TICKER) */
@@ -125,12 +124,12 @@
 
 /* KOTAK BERITA (GLASSMORPHISM & 3D) */
 .news-item {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    /* Ditukar ke #90D5FF */
-    border-left: 4px solid #90D5FF;
+    /* Garis tepi asal menggunakan Biru Biasa */
+    border-left: 4px solid #3b82f6; 
     border-radius: 16px;
     padding: 18px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -142,9 +141,9 @@
 .news-item:hover {
     transform: translateZ(30px) translateY(-5px) scale(1.02);
     background: rgba(255, 255, 255, 0.08);
-    /* Ditukar ke #90D5FF */
+    /* Garis tepi berubah ke #90D5FF apabila di-hover */
     border-left: 4px solid #90D5FF;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 15px rgba(144, 213, 255, 0.2);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 15px rgba(144, 213, 255, 0.25);
 }
 
 .news-item h3 {
@@ -156,13 +155,12 @@
 }
 
 .news-item:hover h3 {
-    /* Ditukar ke #90D5FF */
+    /* Teks tajuk berubah ke #90D5FF */
     color: #90D5FF;
 }
 
 .news-item p {
-    /* Ditukar ke biru cair */
-    color: #cceaff;
+    color: #d4d4d8; /* Kelabu lembut */
     font-size: 12px;
     line-height: 1.6;
     opacity: 0.9;
@@ -171,8 +169,8 @@
 .news-item small {
     display: block;
     margin-top: 10px;
-    /* Ditukar ke #90D5FF */
-    color: #90D5FF;
+    /* Menggunakan warna Biru Biasa */
+    color: #60a5fa; 
     font-size: 11px;
     font-weight: 600;
 }
@@ -185,13 +183,13 @@
     font-size: 10px;
     font-weight: 900;
     letter-spacing: 0.5px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 
-/* Ditukar label utama ke #90D5FF dan teks Hitam */
-.latest { background: linear-gradient(135deg, #90D5FF, #5ab8ff); color: #000000; }
-.security { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; }
-.info { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+/* Kategori digabungkan dengan tona Biru Biasa, Hitam/Kelabu dan #90D5FF */
+.latest { background: linear-gradient(135deg, #90D5FF, #3b82f6); color: #000000; }
+.security { background: linear-gradient(135deg, #52525b, #27272a); color: #90D5FF; border: 1px solid #3f3f46; }
+.info { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; }
 
 /* KEYFRAMES ANIMASI */
 @keyframes scroll-vertical {
@@ -200,8 +198,8 @@
 }
 
 @keyframes pulse-glow {
-    0% { transform: scale(1); opacity: 0.5; }
-    100% { transform: scale(1.3); opacity: 0.8; }
+    0% { transform: scale(1); opacity: 0.4; }
+    100% { transform: scale(1.3); opacity: 0.7; }
 }
     </style>
 </head>
@@ -346,7 +344,7 @@
                     <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#FAF6F0] px-3 text-xs text-black-600 font-medium whitespace-nowrap">Log Masuk</span>
                     
                     <!-- Arahan kepada pelanggan -->
-                    <p class="text-[10px] text-red-700 font-medium mb-4 leading-tight">
+                    <p class="text-[10px] text-red-600 font-medium mb-4 leading-tight">
                      Log masuk menggunakan akaun Google yang berdaftar di www.duitjom.com
                     </p>
                     
@@ -361,7 +359,7 @@
 
     <div class="news-title">
     <span>
-        <img src="IMG_6270.png" alt="Logo" style="height: 14px; width: auto; object-fit: contain;"> 
+        <img src="IMG_6270.png" alt="Logo" style="height: 20px; width: auto; object-fit: contain;"> 
         Duitjom X GitHub
     </span>
     <h2>Update Semasa</h2>
