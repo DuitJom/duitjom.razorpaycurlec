@@ -294,6 +294,7 @@ function handleGoogleLogin(response) {
         // Munculkan butang Pembayaran Pinjaman secara automatik
         document.getElementById("btnPembayaranPinjaman").classList.remove("hidden");
     }, 5000);
+ }
     /* =========================================================
    DUITJOM NEWS AUTOMATIC SLIDER
    AUTO SLIDE: 2.6 SECONDS
