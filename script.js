@@ -294,4 +294,186 @@ function handleGoogleLogin(response) {
         // Munculkan butang Pembayaran Pinjaman secara automatik
         document.getElementById("btnPembayaranPinjaman").classList.remove("hidden");
     }, 5000);
-}
+    /* =========================================================
+   DUITJOM NEWS AUTOMATIC SLIDER
+   AUTO SLIDE: 2.6 SECONDS
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const newsTrack = document.getElementById("newsTrack");
+    const newsItems = document.querySelectorAll(".news-item");
+    const newsDots = document.querySelectorAll(".news-dot");
+
+    if (!newsTrack || newsItems.length === 0) {
+        return;
+    }
+
+    let currentNewsSlide = 0;
+    let newsAutoTimer = null;
+    const NEWS_INTERVAL = 2600;
+
+    function updateNewsSlider(index) {
+
+        currentNewsSlide = index;
+
+        newsTrack.style.transform =
+            `translateX(-${currentNewsSlide * 100}%)`;
+
+        newsDots.forEach((dot, dotIndex) => {
+
+            dot.classList.toggle(
+                "active",
+                dotIndex === currentNewsSlide
+            );
+
+        });
+
+    }
+
+    function nextNewsSlide() {
+
+        currentNewsSlide++;
+
+        if (currentNewsSlide >= newsItems.length) {
+            currentNewsSlide = 0;
+        }
+
+        updateNewsSlider(currentNewsSlide);
+    }
+
+    function startNewsAutoSlider() {
+
+        clearInterval(newsAutoTimer);
+
+        newsAutoTimer = setInterval(
+            nextNewsSlide,
+            NEWS_INTERVAL
+        );
+
+    }
+
+    function restartNewsAutoSlider() {
+
+        clearInterval(newsAutoTimer);
+
+        startNewsAutoSlider();
+
+    }
+
+    /* Dot Navigation */
+
+    newsDots.forEach((dot, index) => {
+
+        dot.addEventListener("click", function () {
+
+            updateNewsSlider(index);
+
+            restartNewsAutoSlider();
+
+        });
+
+    });
+
+
+    /* Touch / Swipe Support */
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    newsTrack.addEventListener(
+        "touchstart",
+        function (event) {
+
+            touchStartX =
+                event.changedTouches[0].screenX;
+
+        },
+        { passive: true }
+    );
+
+    newsTrack.addEventListener(
+        "touchend",
+        function (event) {
+
+            touchEndX =
+                event.changedTouches[0].screenX;
+
+            const swipeDistance =
+                touchStartX - touchEndX;
+
+            if (Math.abs(swipeDistance) < 45) {
+                return;
+            }
+
+            if (swipeDistance > 0) {
+
+                currentNewsSlide++;
+
+                if (
+                    currentNewsSlide >=
+                    newsItems.length
+                ) {
+                    currentNewsSlide = 0;
+                }
+
+            } else {
+
+                currentNewsSlide--;
+
+                if (currentNewsSlide < 0) {
+                    currentNewsSlide =
+                        newsItems.length - 1;
+                }
+
+            }
+
+            updateNewsSlider(currentNewsSlide);
+
+            restartNewsAutoSlider();
+
+        },
+        { passive: true }
+    );
+
+
+    /* Pause ketika pengguna touch/hover */
+
+    newsTrack.addEventListener(
+        "mouseenter",
+        function () {
+            clearInterval(newsAutoTimer);
+        }
+    );
+
+    newsTrack.addEventListener(
+        "mouseleave",
+        function () {
+            startNewsAutoSlider();
+        }
+    );
+
+    newsTrack.addEventListener(
+        "touchstart",
+        function () {
+            clearInterval(newsAutoTimer);
+        },
+        { passive: true }
+    );
+
+    newsTrack.addEventListener(
+        "touchend",
+        function () {
+            restartNewsAutoSlider();
+        },
+        { passive: true }
+    );
+
+
+    /* Initial State */
+
+    updateNewsSlider(0);
+
+    startNewsAutoSlider();
+
+});
