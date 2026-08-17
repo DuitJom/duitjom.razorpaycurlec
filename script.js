@@ -59,18 +59,24 @@ function validateDJCust(input) {
     }
 }
 
-// Validate Phone Number
+// Validate Malaysia Phone Number (+60)
 function validatePhone(input) {
-    const value = input.value.replace(/\D/g, '');
+    let value = input.value.replace(/\D/g, '');
+
     const phoneError = document.getElementById('phoneError');
-    
-    if (value.length > 11) {
-        input.value = value.slice(0, 11);
-    } else {
-        input.value = value;
+
+    // Jika pengguna masukkan 0 di hadapan, buang 0 tersebut
+    if (value.startsWith('0')) {
+        value = value.slice(1);
     }
 
-    if (value.length > 0 && (value.length < 10 || value.length > 11)) {
+    // Maksimum 10 digit selepas +60
+    value = value.slice(0, 10);
+
+    input.value = value;
+
+    // Nombor Malaysia mesti 9 atau 10 digit selepas +60
+    if (value.length > 0 && (value.length < 9 || value.length > 10)) {
         phoneError.classList.remove('hidden');
     } else {
         phoneError.classList.add('hidden');
