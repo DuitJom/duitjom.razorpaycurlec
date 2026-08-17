@@ -52,7 +52,7 @@
                 </div>
 
                 <!-- Butang Hamburger -->
-                <button onclick="openSidebar()" class="text-gray-500 hover:text-black-500 transition">
+                <button onclick="openSidebar()" class="text-gray-500 hover:text-black transition">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
@@ -689,7 +689,7 @@
     </div>
 
     <!-- TUTORIAL POPUP -->
-    <div id="tutorialModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden z-50">
+    <div id="tutorialModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 hidden z-50">
         <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl overflow-hidden flex flex-col border border-gray-200">
             <div class="bg-gradient-to-r from-blue-400 to-blue-600 text-white text-center py-5 font-extrabold text-sm uppercase tracking-wider flex items-center justify-center gap-2">
                 <i class="fas fa-book-open text-lg"></i>
@@ -771,65 +771,474 @@
     </div>
 
     <!-- PAYMENT PAGE (Borang Maklumat Diri) -->
-    <div id="paymentPage" class="hidden flex-col min-h-screen bg-white -mt-[72px] pt-[72px]">
-        <main class="max-w-md w-full mx-auto px-4 py-6 flex-grow flex flex-col items-center">
-            <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs mb-4 flex items-center justify-center">
-                <img src="IMG_6715.png" alt="Logo" class="w-full h-full object-contain">
+<div id="paymentPage" class="hidden flex-col min-h-screen bg-white -mt-[72px] pt-[72px]">
+
+    <main class="max-w-md w-full mx-auto px-4 py-6 flex-grow flex flex-col items-center">
+
+        <!-- LOGO -->
+        <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs mb-4 flex items-center justify-center">
+            <img src="IMG_6715.png"
+                 alt="Logo DuitJom"
+                 class="w-full h-full object-contain">
+        </div>
+
+        <!-- PAGE DESCRIPTION -->
+        <h2 class="text-gray-500 font-semibold text-center text-xs max-w-xs mb-6 leading-relaxed">
+            Halaman Pembayaran DuitJom
+        </h2>
+
+        <div class="w-full bg-white rounded-2xl p-1">
+
+            <!-- SECTION TITLE -->
+            <div class="text-lg font-bold text-slate-900 flex items-center gap-3 mb-6 px-1">
+
+                <!-- User / Form SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.8"
+                     class="w-6 h-6 text-blue-500 flex-shrink-0"
+                     aria-hidden="true">
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M15.75 6.75a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M4.5 20.25a7.5 7.5 0 0 1 15 0"/>
+
+                </svg>
+
+                <h3>
+                    Pertama: Masukkan Butiran Maklumat Diri
+                </h3>
+
             </div>
-            <h2 class="text-gray-500 font-semibold text-center text-xs max-w-xs mb-6 leading-relaxed">
-                Halaman Pembayaran Duitjom x GitHub, Razorpay Curlec
-            </h2>
-            <div class="w-full bg-white rounded-2xl p-1">
-                <div class="text-lg font-bold text-slate-900 flex items-center gap-2 mb-6 px-1">
-                    <span><i class="fa-solid fa-id-card"></i></span>
-                    <h3>Pertama : Masukkan Butiran Maklumat Diri</h3>
+
+
+            <form onsubmit="goToNextStepPage(event)" class="space-y-5">
+
+
+                <!-- ===================================== -->
+                <!-- NAMA PENUH -->
+                <!-- ===================================== -->
+                <div>
+
+                    <label class="flex items-center gap-2 text-xs font-bold text-slate-800 mb-1.5">
+
+                        <!-- User SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             class="w-4 h-4 text-blue-500"
+                             aria-hidden="true">
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M15.75 6.75a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M4.5 20.25a7.5 7.5 0 0 1 15 0"/>
+
+                        </svg>
+
+                        <span>Nama Penuh (IC)</span>
+
+                        <span class="text-red-500">*</span>
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="inputNama"
+                        required
+                        placeholder="Ali Bin Abu"
+                        autocomplete="name"
+                        class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm"
+                    >
+
                 </div>
-                <form onsubmit="goToNextStepPage(event)" class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-800 mb-1.5">Nama Penuh (IC) *</label>
-                        <input type="text" id="inputNama" required placeholder="Ali Bin Abu" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm">
+
+
+                <!-- ===================================== -->
+                <!-- NOMBOR KAD PENGENALAN -->
+                <!-- ===================================== -->
+                <div>
+
+                    <label class="flex items-center gap-2 text-xs font-bold text-slate-800 mb-1.5">
+
+                        <!-- ID Card SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             class="w-4 h-4 text-blue-500"
+                             aria-hidden="true">
+
+                            <rect x="3" y="5" width="18" height="14" rx="2"/>
+
+                            <circle cx="8" cy="12" r="2"/>
+
+                            <path stroke-linecap="round"
+                                  d="M13 10h5M13 14h4"/>
+
+                        </svg>
+
+                        <span>Nombor Kad Pengenalan</span>
+
+                        <span class="text-red-500">*</span>
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="inputIC"
+                        required
+                        placeholder="000000-00-0000"
+                        maxlength="14"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm"
+                        oninput="formatIC(this)"
+                    >
+
+                    <!-- IC ERROR -->
+                    <p id="icError"
+                       class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
+
+                        <!-- Warning SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             class="w-4 h-4 flex-shrink-0 mt-0.5"
+                             aria-hidden="true">
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M12 9v4"/>
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M12 17h.01"/>
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M10.3 4.5 2.7 18a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 4.5a2 2 0 0 0-3.4 0Z"/>
+
+                        </svg>
+
+                        <span>
+                            Nombor kad pengenalan mesti mengikut format 000000-00-0000.
+                        </span>
+
+                    </p>
+
+                </div>
+
+
+                <!-- ===================================== -->
+                <!-- ID LOAN -->
+                <!-- ===================================== -->
+                <div>
+
+                    <label class="flex items-center gap-2 text-xs font-bold text-slate-800 mb-1.5">
+
+                        <!-- Document / Loan SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             class="w-4 h-4 text-blue-500"
+                             aria-hidden="true">
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M6 3.75h8.25L18 7.5v12.75H6z"/>
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M14.25 3.75V7.5H18"/>
+
+                            <path stroke-linecap="round"
+                                  d="M9 11h6M9 14.5h6"/>
+
+                        </svg>
+
+                        <span>ID Loan DJ / CUST</span>
+
+                        <span class="text-red-500">*</span>
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="inputLoanID"
+                        required
+                        placeholder="DJ30001234 atau CUST20260000"
+                        autocomplete="off"
+                        class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm"
+                        oninput="validateDJCust(this)"
+                    >
+
+                    <!-- LOAN ID ERROR -->
+                    <p id="djcustError"
+                       class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
+
+                        <!-- Warning SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             class="w-4 h-4 flex-shrink-0 mt-0.5"
+                             aria-hidden="true">
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M12 9v4"/>
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M12 17h.01"/>
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M10.3 4.5 2.7 18a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 4.5a2 2 0 0 0-3.4 0Z"/>
+
+                        </svg>
+
+                        <span>
+                            Masukkan ID Loan "DJ" atau "CUST" yang sah.
+                        </span>
+
+                    </p>
+
+
+                    <!-- INFO -->
+                    <p class="text-blue-500 text-xs mt-1.5 flex items-start gap-1">
+
+                        <!-- Info SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             class="w-4 h-4 flex-shrink-0 mt-0.5"
+                             aria-hidden="true">
+
+                            <circle cx="12" cy="12" r="9"/>
+
+                            <path stroke-linecap="round"
+                                  d="M12 11v5"/>
+
+                            <circle cx="12" cy="8" r=".6"
+                                    fill="currentColor"/>
+
+                        </svg>
+
+                        <span>
+                            Layari laman web www.duitjom.com untuk dapatkan ID Loan "DJ" "CUST".
+                        </span>
+
+                    </p>
+
+                </div>
+
+
+                <!-- ===================================== -->
+                <!-- NOMBOR TELEFON -->
+                <!-- ===================================== -->
+                <div>
+
+                    <label class="flex items-center gap-2 text-xs font-bold text-slate-800 mb-1.5">
+
+                        <!-- Phone SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             class="w-4 h-4 text-blue-500"
+                             aria-hidden="true">
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M6.5 3.75h3l1.5 4-2 1.5a14 14 0 0 0 5.75 5.75l1.5-2 4 1.5v3c0 1.1-.9 2-2 2C11.04 19.5 4.5 12.96 4.5 4.75c0-1.1.9-1 2-1Z"/>
+
+                        </svg>
+
+                        <span>Nombor Telefon</span>
+
+                        <span class="text-red-500">*</span>
+
+                    </label>
+
+
+                    <!-- PHONE INPUT + MALAYSIA PREFIX -->
+                    <div class="flex w-full rounded-xl border border-gray-300 overflow-hidden focus-within:ring-2 focus-within:ring-blue-400 focus-within:border-blue-400">
+
+                        <!-- COUNTRY PREFIX -->
+                        <div class="flex items-center gap-1.5 px-3 bg-gray-50 border-r border-gray-300 text-sm font-semibold text-slate-700 select-none">
+
+                            <span class="text-base">🇲🇾</span>
+
+                            <span>+60</span>
+
+                        </div>
+
+
+                        <!-- PHONE NUMBER -->
+                        <input
+                            type="tel"
+                            id="inputPhone"
+                            required
+                            placeholder="123456789"
+                            maxlength="10"
+                            inputmode="numeric"
+                            autocomplete="tel"
+                            class="flex-1 min-w-0 px-4 py-2.5 border-0 focus:ring-0 focus:outline-none text-sm"
+                            oninput="validatePhone(this)"
+                        >
+
                     </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-800 mb-1.5">Nombor Kad Pengenalan *</label>
-                        <input type="text" id="inputIC" required placeholder="000000-00-0000" maxlength="14" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm" oninput="formatIC(this)">
-                        <p id="icError" class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
-                            <i class="fas fa-exclamation-circle flex-shrink-0 mt-0.5"></i>
-                            <span>Nombor kad pengenalan format e.g 000000-00-0000.</span>
-                        </p>
+
+
+                    <!-- PHONE ERROR -->
+                    <p id="phoneError"
+                       class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
+
+                        <!-- Warning SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             class="w-4 h-4 flex-shrink-0 mt-0.5"
+                             aria-hidden="true">
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M12 9v4"/>
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M12 17h.01"/>
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M10.3 4.5 2.7 18a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7 3L13.7 4.5a2 2 0 0 0-3.4 0Z"/>
+
+                        </svg>
+
+                        <span>
+                            Nombor telefon tidak sah
+                        </span>
+
+                    </p>
+
+                </div>
+
+
+                <!-- ===================================== -->
+                <!-- JUMLAH BAYARAN -->
+                <!-- ===================================== -->
+                <div>
+
+                    <label class="flex items-center gap-2 text-xs font-bold text-slate-800 mb-1.5">
+
+                        <!-- Money SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             class="w-4 h-4 text-blue-500"
+                             aria-hidden="true">
+
+                            <rect x="3" y="6" width="18" height="12" rx="2"/>
+
+                            <circle cx="12" cy="12" r="2.5"/>
+
+                            <path stroke-linecap="round"
+                                  d="M7 9h.01M17 15h.01"/>
+
+                        </svg>
+
+                        <span>Jumlah Bayaran</span>
+
+                        <span class="text-red-500">*</span>
+
+                    </label>
+
+                    <div class="relative">
+
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500 pointer-events-none">
+                            RM
+                        </span>
+
+                        <input
+                            type="number"
+                            step="0.01"
+                            min="0.01"
+                            id="inputAmaun"
+                            required
+                            placeholder="0.00"
+                            inputmode="decimal"
+                            class="w-full pl-12 pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm"
+                        >
+
                     </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-800 mb-1.5">ID Loan DJ,CUST00000000 *</label>
-                        <input type="text" id="inputLoanID" required placeholder="e.g DJ30001234 atau CUST20260000" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm" oninput="validateDJCust(this)">
-                        <p id="djcustError" class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
-                            <i class="fas fa-exclamation-circle flex-shrink-0 mt-0.5"></i>
-                            <span>Sila masukan salah satu ID Loan DJ/Cust dengan betul</span>
-                        </p>
-                        <p class="text-blue-500 text-xs mt-1.5 flex items-start gap-1">
-                            <i class="fas fa-info-circle flex-shrink-0 mt-0.5"></i>
-                            <span>Log Masuk ke halaman www.duitjom.com untuk dapatkan ID DJ/CUST NUMBER(.e.g : DJ30001234)</span>
-                        </p>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-800 mb-1.5">Nombor Telefon *</label>
-                        <input type="text" id="inputPhone" required placeholder="e.g.0123456789" maxlength="11" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm" oninput="validatePhone(this)">
-                        <p id="phoneError" class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
-                            <i class="fas fa-exclamation-circle flex-shrink-0 mt-0.5"></i>
-                            <span>Sila masukkan nombor telefon yang sah❗️</span>
-                        </p>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-800 mb-1.5">Jumlah Bayaran *</label>
-                        <input type="number" step="0.01" id="inputAmaun" required placeholder="0.00" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm">
-                    </div>
-                    <div class="pt-4">
-                        <button type="submit" class="w-full bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold text-sm py-3 px-6 rounded-xl shadow-lg flex items-center justify-center gap-2 transition duration-200 hover:from-blue-500 hover:to-blue-700">
-                            Seterusnya <i class="fas fa-arrow-right text-xs"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </main>
-    </div>
+
+                </div>
+
+
+                <!-- ===================================== -->
+                <!-- NEXT BUTTON -->
+                <!-- ===================================== -->
+                <div class="pt-4">
+
+                    <button
+                        type="submit"
+                        class="w-full bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold text-sm py-3 px-6 rounded-xl shadow-lg flex items-center justify-center gap-2 transition duration-200 hover:from-blue-500 hover:to-blue-700"
+                    >
+
+                        Seterusnya
+
+                        <!-- Arrow SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.8"
+                             class="w-4 h-4"
+                             aria-hidden="true">
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M5 12h14M13 6l6 6-6 6"/>
+
+                        </svg>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</div>
 
     <!-- NEXT STEP PAGE -->
     <div id="nextStepPage" class="hidden flex-col min-h-screen bg-white -mt-[72px] pt-[72px]">
