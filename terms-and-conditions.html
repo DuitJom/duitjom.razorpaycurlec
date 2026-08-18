@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Terma & Syarat (FAQ) - DuitJom</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    color: #1f2937;
+    line-height: 1.7;
+
+    background:
+        radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.45), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(99, 102, 241, 0.35), transparent 30%),
+        radial-gradient(circle at 20% 90%, rgba(16, 185, 129, 0.30), transparent 30%),
+        linear-gradient(135deg, #dff6ff, #eef4ff 45%, #e8fff7);
+
+    background-attachment: fixed;
+    padding: 20px;
+}
+
+/* ==============================
+   MAIN CONTAINER
+============================== */
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ==============================
+   HEADER
+============================== */
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo {
+    width: 150px;
+    max-width: 60%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+
+.header h1 {
+    color: #075985;
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.header p {
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ==============================
+   GLASS MAIN CARD
+============================== */
+
+.glass-card {
+    position: relative;
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.62);
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-radius: 24px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* ==============================
+   DECORATIVE GLASS CIRCLES
+============================== */
+
+.glass-card::before {
+    content: "";
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -90px;
+    right: -70px;
+
+    background: rgba(56, 189, 248, 0.20);
+
+    border-radius: 50%;
+
+    filter: blur(5px);
+
+    pointer-events: none;
+}
+
+.glass-card::after {
+    content: "";
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    bottom: -70px;
+    left: -60px;
+
+    background: rgba(16, 185, 129, 0.16);
+
+    border-radius: 50%;
+
+    filter: blur(5px);
+
+    pointer-events: none;
+}
+
+/* ==============================
+   INTRO BOX
+============================== */
+
+.intro-box {
+    position: relative;
+    z-index: 2;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(224, 242, 254, 0.85),
+            rgba(236, 253, 245, 0.75)
+        );
+
+    border: 1px solid rgba(125, 211, 252, 0.45);
+
+    margin-bottom: 25px;
+}
+
+.intro-box strong {
+    color: #0369a1;
+}
+
+/* ==============================
+   SECTION
+============================== */
+
+.section {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 22px;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.48);
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.section:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* ==============================
+   SECTION TITLE
+============================== */
+
+.section h2 {
+    color: #075985;
+
+    font-size: 19px;
+
+    margin-bottom: 10px;
+
+    font-weight: 800;
+}
+
+.section h2 span {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+
+    margin-right: 8px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        #38bdf8,
+        #6366f1
+    );
+
+    color: white;
+
+    font-size: 13px;
+
+    vertical-align: middle;
+}
+
+.section p {
+    font-size: 14px;
+
+    color: #475569;
+
+    margin-bottom: 10px;
+}
+
+.section ul {
+    margin-left: 20px;
+
+    color: #475569;
+
+    font-size: 14px;
+}
+
+.section li {
+    margin-bottom: 7px;
+}
+
+/* ==============================
+   HIGHLIGHT BOX
+============================== */
+
+.highlight {
+    margin-top: 15px;
+
+    padding: 15px 17px;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(239, 246, 255, 0.9),
+        rgba(224, 242, 254, 0.75)
+    );
+
+    border-left: 4px solid #0ea5e9;
+
+    font-size: 13px;
+
+    color: #334155;
+}
+
+/* ==============================
+   WARNING BOX
+============================== */
+
+.warning {
+    margin-top: 15px;
+
+    padding: 15px 17px;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255, 247, 237, 0.90),
+        rgba(254, 242, 242, 0.75)
+    );
+
+    border-left: 4px solid #f97316;
+
+    font-size: 13px;
+
+    color: #475569;
+}
+
+/* ==============================
+   FAQ
+============================== */
+
+.faq {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 25px;
+}
+
+.faq-title {
+    text-align: center;
+
+    color: #075985;
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    margin-bottom: 15px;
+}
+
+.faq-item {
+    padding: 16px 18px;
+
+    margin-bottom: 10px;
+
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.60);
+
+    border: 1px solid rgba(255, 255, 255, 0.80);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.faq-item h3 {
+    color: #334155;
+
+    font-size: 14px;
+
+    margin-bottom: 5px;
+
+    font-weight: 800;
+}
+
+.faq-item p {
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+/* ==============================
+   CONTACT
+============================== */
+
+.contact-box {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 25px;
+
+    padding: 22px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(14, 165, 233, 0.16),
+            rgba(99, 102, 241, 0.12),
+            rgba(16, 185, 129, 0.12)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.80);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.contact-box h2 {
+    color: #075985;
+
+    font-size: 19px;
+
+    margin-bottom: 8px;
+}
+
+.contact-box p {
+    font-size: 13px;
+
+    color: #475569;
+}
+
+.email {
+    display: inline-block;
+
+    margin-top: 8px;
+
+    padding: 8px 14px;
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.70);
+
+    color: #0369a1;
+
+    font-weight: 800;
+
+    word-break: break-all;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+
+.footer {
+    text-align: center;
+
+    margin-top: 25px;
+
+    padding: 18px;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+.footer strong {
+    color: #0369a1;
+}
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .glass-card {
+        padding: 18px;
+
+        border-radius: 20px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+    }
+
+    .header p {
+        font-size: 12px;
+    }
+
+    .section {
+        padding: 16px;
+    }
+
+    .section h2 {
+        font-size: 17px;
+    }
+
+    .section p,
+    .section ul {
+        font-size: 13px;
+    }
+
+    .faq-title {
+        font-size: 20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ==============================
+         HEADER
+    =============================== -->
+
+    <div class="header">
+
+        <img
+            src="../IMG_6715.png"
+            alt="DuitJom Logo"
+            class="logo"
+        >
+
+        <h1>Terma & Syarat (FAQ)</h1>
+
+        <p>
+            Sila baca dan fahami terma serta syarat penggunaan DuitJom.
+        </p>
+
+    </div>
+
+
+    <!-- ==============================
+         MAIN GLASS CARD
+    =============================== -->
+
+    <div class="glass-card">
+
+        <!-- INTRO -->
+
+        <div class="intro-box">
+
+            <p>
+                Selamat datang ke <strong>DuitJom</strong>.
+                Halaman ini menerangkan terma dan syarat yang
+                terpakai apabila anda menggunakan laman web,
+                perkhidmatan dan kemudahan yang disediakan oleh DuitJom.
+            </p>
+
+        </div>
+
+
+        <!-- SECTION 1 -->
+
+        <div class="section">
+
+            <h2>
+                <span>01</span>
+                Pengenalan
+            </h2>
+
+            <p>
+                Dengan mengakses atau menggunakan laman web DuitJom,
+                anda dianggap telah membaca, memahami dan bersetuju
+                untuk mematuhi terma dan syarat yang dinyatakan
+                di halaman ini.
+            </p>
+
+            <p>
+                Jika anda tidak bersetuju dengan mana-mana bahagian
+                terma ini, sila hentikan penggunaan laman web kami.
+            </p>
+
+        </div>
+
+
+        <!-- SECTION 2 -->
+
+        <div class="section">
+
+            <h2>
+                <span>02</span>
+                Penggunaan Laman Web
+            </h2>
+
+            <p>
+                Pengguna hendaklah menggunakan laman web DuitJom
+                secara sah dan bertanggungjawab.
+            </p>
+
+            <ul>
+
+                <li>
+                    Memberikan maklumat yang benar dan tepat.
+                </li>
+
+                <li>
+                    Tidak menyalahgunakan sistem atau kemudahan laman web.
+                </li>
+
+                <li>
+                    Tidak cuba mendapatkan akses tanpa kebenaran.
+                </li>
+
+                <li>
+                    Tidak menggunakan laman web untuk aktiviti yang
+                    melanggar undang-undang.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- SECTION 3 -->
+
+        <div class="section">
+
+            <h2>
+                <span>03</span>
+                Maklumat Pengguna
+            </h2>
+
+            <p>
+                Pengguna bertanggungjawab memastikan semua maklumat
+                yang diberikan kepada DuitJom adalah lengkap, benar
+                dan terkini.
+            </p>
+
+            <div class="highlight">
+
+                <strong>Perhatian:</strong>
+
+                Jangan berkongsi kata laluan, OTP, TAC atau maklumat
+                keselamatan akaun dengan mana-mana pihak yang tidak
+                diberi kuasa.
+
+            </div>
+
+        </div>
+
+
+        <!-- SECTION 4 -->
+
+        <div class="section">
+
+            <h2>
+                <span>04</span>
+                Permohonan & Perkhidmatan
+            </h2>
+
+            <p>
+                Sebarang permohonan atau perkhidmatan yang tersedia
+                melalui DuitJom adalah tertakluk kepada proses
+                pengesahan, syarat kelayakan dan keputusan yang
+                berkaitan.
+            </p>
+
+            <p>
+                Penghantaran sesuatu permohonan tidak semestinya
+                bermaksud permohonan tersebut akan diluluskan.
+            </p>
+
+        </div>
+
+
+        <!-- SECTION 5 -->
+
+        <div class="section">
+
+            <h2>
+                <span>05</span>
+                Bayaran & Tanggungjawab
+            </h2>
+
+            <p>
+                Pengguna bertanggungjawab memastikan sebarang
+                pembayaran atau komitmen yang berkaitan dengan
+                perkhidmatan dibuat mengikut arahan dan tempoh
+                yang telah ditetapkan.
+            </p>
+
+            <div class="warning">
+
+                Pastikan anda menyemak jumlah, tarikh pembayaran
+                dan maklumat transaksi sebelum membuat sebarang
+                pembayaran.
+
+            </div>
+
+        </div>
+
+
+        <!-- SECTION 6 -->
+
+        <div class="section">
+
+            <h2>
+                <span>06</span>
+                Keselamatan & Pencegahan Penipuan
+            </h2>
+
+            <p>
+                DuitJom mengambil serius aspek keselamatan pengguna.
+                Pengguna dinasihatkan supaya tidak memberikan
+                maklumat sensitif kepada individu yang mendakwa
+                mewakili pihak tertentu tanpa pengesahan.
+            </p>
+
+            <ul>
+
+                <li>
+                    Jangan berkongsi OTP atau TAC.
+                </li>
+
+                <li>
+                    Jangan berkongsi PIN atau kata laluan.
+                </li>
+
+                <li>
+                    Semak alamat laman web sebelum memasukkan maklumat.
+                </li>
+
+                <li>
+                    Hubungi saluran rasmi sekiranya mengesyaki
+                    aktiviti mencurigakan.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- SECTION 7 -->
+
+        <div class="section">
+
+            <h2>
+                <span>07</span>
+                Hak Harta Intelek
+            </h2>
+
+            <p>
+                Kandungan, reka bentuk, logo, grafik, teks dan elemen
+                lain yang terdapat di laman web DuitJom adalah
+                dilindungi oleh hak harta intelek yang berkenaan.
+            </p>
+
+            <p>
+                Pengguna tidak dibenarkan menyalin, mengubah,
+                mengedar atau menggunakan kandungan tersebut
+                tanpa kebenaran yang sewajarnya.
+            </p>
+
+        </div>
+
+
+        <!-- SECTION 8 -->
+
+        <div class="section">
+
+            <h2>
+                <span>08</span>
+                Perubahan Terma
+            </h2>
+
+            <p>
+                DuitJom berhak mengemaskini atau mengubah terma
+                dan syarat ini dari semasa ke semasa bagi
+                mencerminkan perubahan pada perkhidmatan,
+                operasi atau keperluan undang-undang.
+            </p>
+
+            <p>
+                Pengguna digalakkan menyemak halaman ini secara
+                berkala untuk mendapatkan maklumat terkini.
+            </p>
+
+        </div>
+
+
+        <!-- ==============================
+             FAQ
+        =============================== -->
+
+        <div class="faq">
+
+            <div class="faq-title">
+                Soalan Lazim (FAQ)
+            </div>
+
+
+            <div class="faq-item">
+
+                <h3>
+                    Apakah DuitJom?
+                </h3>
+
+                <p>
+                    DuitJom ialah platform dalam talian yang
+                    menyediakan maklumat dan kemudahan berkaitan
+                    perkhidmatan yang ditawarkan melalui laman web kami.
+                </p>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <h3>
+                    Adakah menghantar permohonan menjamin kelulusan?
+                </h3>
+
+                <p>
+                    Tidak. Setiap permohonan tertakluk kepada
+                    proses pengesahan dan syarat kelayakan yang
+                    berkaitan.
+                </p>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <h3>
+                    Bagaimana saya boleh mendapatkan bantuan?
+                </h3>
+
+                <p>
+                    Anda boleh menghubungi pasukan sokongan melalui
+                    saluran komunikasi rasmi yang disediakan oleh
+                    DuitJom.
+                </p>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <h3>
+                    Adakah terma ini boleh berubah?
+                </h3>
+
+                <p>
+                    Ya. DuitJom boleh mengemaskini terma dan syarat
+                    dari semasa ke semasa. Versi terkini akan
+                    dipaparkan di halaman ini.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==============================
+             CONTACT
+        =============================== -->
+
+        <div class="contact-box">
+
+            <h2>
+                Perlukan Bantuan?
+            </h2>
+
+            <p>
+                Jika anda mempunyai pertanyaan mengenai
+                Terma & Syarat atau FAQ, sila hubungi kami
+                melalui saluran rasmi.
+            </p>
+
+            <div class="email">
+                help.duitjomhq@hotmail.com
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================
+         FOOTER
+    =============================== -->
+
+    <div class="footer">
+
+        &copy; 2026
+        <strong>DuitJom</strong>.
+        Hak cipta terpelihara.
+
+    </div>
+
+</div>
+
+</body>
+</html>
