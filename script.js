@@ -43,41 +43,25 @@ function formatIC(input) {
     }
 }
 
-// Validate DJ/CUST NUMBER
-function validateDJCust(input) {
-    const value = input.value.toUpperCase();
-    const djcustError = document.getElementById('djcustError');
-    
-    const allowedChars = /^[DJCUST0-9/]*$/;
-    
-    if (!allowedChars.test(value)) {
-        input.value = value.replace(/[^DJCUST0-9/]/g, '');
-        djcustError.classList.remove('hidden');
-    } else {
-        input.value = value;
-        djcustError.classList.add('hidden');
-    }
-}
-
-/// Validate Malaysia Phone Number (+60)
+/// Validate Malaysia Phone Number (+60) - 9 atau 10 digit sahaja
 function validatePhone(input) {
     const phoneError = document.getElementById('phoneError');
-
-    // Ambil nombor sahaja
+    
+    // Ambil nombor sahaja (buang aksara selain angka)
     let value = input.value.replace(/\D/g, '');
 
-    // Jika pengguna masukkan 0 di hadapan, buang 0
+    // Jika pengguna masukkan '0' di hadapan, buang '0' tersebut
     if (value.startsWith('0')) {
         value = value.substring(1);
     }
 
-    // Maksimum 10 digit selepas +60
+    // Hadkan input kepada maksimum 10 digit (selepas +60)
     value = value.substring(0, 10);
 
-    // Paparkan semula nombor yang telah dibersihkan
+    // Paparkan semula nombor yang telah dibersihkan ke dalam kotak
     input.value = value;
 
-    // Kosong = belum lengkap
+    // Jika kosong, sembunyikan ralat
     if (value.length === 0) {
         phoneError.classList.add('hidden');
         input.classList.remove('border-red-500');
@@ -85,16 +69,11 @@ function validatePhone(input) {
     }
 
     /*
-     * Format selepas +60:
-     *
-     * 12xxxxxxx  = 9 digit
-     * 11xxxxxxxx = 10 digit
-     *
-     * Contoh:
-     * 0123456789  -> 123456789
-     * 01123456789 -> 1123456789
+     * Peraturan baharu:
+     * - Mesti bermula dengan angka 1
+     - - Boleh jadi 9 digit (cth: 123456789)
+     * - ATAU 10 digit (cth: 1234567890)
      */
-
     const isValid = /^[1][0-9]{8,9}$/.test(value);
 
     if (!isValid) {
@@ -106,10 +85,8 @@ function validatePhone(input) {
     // Nombor sah
     phoneError.classList.add('hidden');
     input.classList.remove('border-red-500');
-
     return true;
 }
-
 // ---- KAWALAN HALAMAN PEMBAYARAN PINJAMAN (DENGAN 7 SAAT SPINNER) ----
 function goToPaymentPage() {
     // Tunjukkan spinner transisi 7 saat
@@ -157,9 +134,10 @@ function goToNextStepPage(event) {
         return;
     }
 
-    if (phone.length < 10 || phone.length > 11) {
-        alert('Sila masukkan nombor telefon yang sah (10-11 digit)');
-        return;
+    // Semak nombor telefon menggunakan fungsi validatePhone yang sudah dikemaskini
+    if (!validatePhone(document.getElementById('inputPhone'))) {
+        document.getElementById('phoneError').classList.remove('hidden'); // Papar mesej ralat merah
+        return; // Hentikan proses tanpa popup mengganggu
     }
 
     const djcustRegex = /^[DJCUST0-9/]*$/;
