@@ -810,124 +810,483 @@
         </footer>
     </div>
 
-    <!-- TUTORIAL POPUP -->
-    <div id="tutorialModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 hidden z-50">
-        <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl overflow-hidden flex flex-col border border-gray-200">
-            <div class="bg-gradient-to-r from-blue-400 to-blue-600 text-white text-center py-5 font-extrabold text-sm uppercase tracking-wider flex items-center justify-center gap-2">
-                <i class="fas fa-book-open text-lg"></i>
-                Langkah Awal Penggunaan Sistem Duitjom X GitHub Razorpay.
+    <!-- =========================================================
+     DUITJOM PREMIUM TUTORIAL POPUP
+     ========================================================= -->
+<div id="tutorialModal" class="fixed inset-0 bg-slate-950/65 backdrop-blur-md flex items-center justify-center p-4 hidden z-50">
+
+    <div class="bg-white rounded-[28px] max-w-md w-full shadow-2xl overflow-hidden flex flex-col border border-white/80 max-h-[90vh]">
+
+        <!-- HEADER -->
+        <div class="relative overflow-hidden bg-gradient-to-br from-blue-500 via-blue-600 to-cyan-500 text-white px-6 py-6">
+
+            <!-- Decorative Glow -->
+            <div class="absolute -top-16 -right-16 w-40 h-40 bg-white/15 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute -bottom-20 -left-16 w-40 h-40 bg-cyan-300/20 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="relative z-10 flex items-center gap-4">
+
+                <!-- DUITJOM LOGO -->
+                <div class="w-14 h-14 flex-shrink-0 rounded-2xl bg-white/95 shadow-lg flex items-center justify-center p-2.5">
+
+                    <img
+                        src="IMG_6715.png"
+                        alt="Logo DuitJom"
+                        class="w-full h-full object-contain"
+                    >
+
+                </div>
+
+                <!-- HEADER TEXT -->
+                <div class="flex-1 text-left">
+
+                    <div class="flex items-center gap-2 mb-1">
+
+                        <!-- Book SVG -->
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-4 h-4 text-blue-100"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                            />
+                        </svg>
+
+                        <span class="text-[9px] font-extrabold tracking-[1.5px] uppercase text-blue-100">
+                            Panduan Sistem
+                        </span>
+
+                    </div>
+
+                    <h2 class="text-lg font-extrabold tracking-tight leading-tight">
+                        Cara Membuat Pembayaran
+                    </h2>
+
+                    <p class="text-[10px] text-blue-100 mt-1">
+                        Sila ikuti panduan berikut sebelum meneruskan.
+                    </p>
+
+                </div>
+
             </div>
-            <div class="p-6 space-y-4 max-h-[65vh] overflow-y-auto no-scrollbar text-sm">
-                <div class="bg-blue-50 rounded-2xl p-4 border-l-4 border-blue-400 shadow-xs">
-                    <div class="flex items-start gap-3">
-                        <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">1</div>
-                        <div>
-                            <p class="font-extrabold text-slate-900 mb-1">Isi Maklumat Peribadi</p>
-                            <p class="text-gray-600 text-xs leading-relaxed">Masukkan Nama Penuh(IC), Nombor Kad Pengenalan(MyKad), DJ/CUST e.g DJ30002300, Nombor Telefom, dan Jumlah Bayaran.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-blue-50 rounded-2xl p-4 border-l-4 border-blue-400 shadow-xs">
-                    <div class="flex items-start gap-3">
-                        <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">2</div>
-                        <div>
-                            <p class="font-extrabold text-slate-900 mb-1">Sahkan Butiran Maklumat Anda</p>
-                            <p class="text-gray-600 text-xs leading-relaxed">Pastikan semua maklumat yang anda isi adalah benar. Jika berlaku kesalahan, klik sahaja butang "Sebelum" untuk kembali ke halaman sebelum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-blue-50 rounded-2xl p-4 border-l-4 border-blue-400 shadow-xs">
-                    <div class="flex items-start gap-3">
-                        <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">3</div>
-                        <div>
-                            <p class="font-extrabold text-slate-900 mb-1">Pilihan Kaedah Bayaran</p>
-                            <p class="text-gray-600 text-xs leading-relaxed">Pilih kaedah pembayaran yang anda inginkan dan pilih bank atau e-wallet anda. Saat ini hanya DuitNow yang tersedia.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-blue-50 rounded-2xl p-4 border-l-4 border-blue-400 shadow-xs">
-                    <div class="flex items-start gap-3">
-                        <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">4</div>
-                        <div>
-                            <p class="font-extrabold text-slate-900 mb-1">Scan Kod QR</p>
-                            <p class="text-gray-600 text-xs leading-relaxed">Buka apl banking atau e-wallet anda dan scan kod QR yang dipaparkan. Ikuti arahan di apl anda untuk menyelesaikan transaksi.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-blue-50 rounded-2xl p-4 border-l-4 border-blue-400 shadow-xs">
-                    <div class="flex items-start gap-3">
-                        <div class="flex-shrink-0 w-8 h-8 bg-blue-400 text-white rounded-full flex items-center justify-center font-bold text-xs">5</div>
-                        <div>
-                            <p class="font-extrabold text-slate-900 mb-1">Muat-Naik Resit</p>
-                            <p class="text-gray-600 text-xs leading-relaxed">Muat-Naik bukti pembayaran anda disini untuk pengesahan.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-yellow-50 rounded-2xl p-4 border-l-4 border-yellow-400 shadow-xs">
-                    <div class="flex items-start gap-2">
-                        <i class="fas fa-lightbulb text-yellow-500 text-lg flex-shrink-0 mt-0.5"></i>
-                        <div>
-                            <p class="font-extrabold text-yellow-800 text-xs mb-1 uppercase">Makluman</p>
-                            <p class="text-gray-700 text-xs leading-relaxed">Pembayaran hanya di website "Duitjom x Github Razorpay" sahaja. Pihak Duitjom tidak akan bertanggungjawab jika berlaku penipuan semasa membuat bayaran bersama pihak ketiga.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-4 bg-white border-t border-gray-100 flex justify-center">
-                <button onclick="closeTutorialModal()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-xl text-xs shadow-md flex items-center justify-center gap-2 transition duration-200">
-                    <i class="fas fa-check-circle"></i> Faham!, Teruskan
-                </button>
-            </div>
+
         </div>
+
+
+        <!-- CONTENT -->
+        <div class="p-5 space-y-3 max-h-[58vh] overflow-y-auto no-scrollbar text-sm">
+
+            <!-- STEP 1 -->
+            <div class="bg-blue-50/80 rounded-2xl p-4 border border-blue-100 shadow-sm">
+
+                <div class="flex items-start gap-3">
+
+                    <div class="flex-shrink-0 w-9 h-9 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl flex items-center justify-center font-extrabold text-xs shadow-sm">
+                        01
+                    </div>
+
+                    <div class="flex-1">
+
+                        <div class="flex items-center gap-2 mb-1">
+
+                            <!-- User SVG -->
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-4 h-4 text-blue-500"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75a17.933 17.933 0 0 1-7.499-1.632Z"
+                                />
+                            </svg>
+
+                            <p class="font-extrabold text-slate-900 text-sm">
+                                Isi Maklumat Pembayaran
+                            </p>
+
+                        </div>
+
+                        <p class="text-slate-500 text-[11px] leading-relaxed">
+                            Masukkan nama penuh, nombor kad pengenalan (MyKad), nombor telefon, nombor DJ/CUST dan jumlah bayaran dengan tepat.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 2 -->
+            <div class="bg-blue-50/80 rounded-2xl p-4 border border-blue-100 shadow-sm">
+
+                <div class="flex items-start gap-3">
+
+                    <div class="flex-shrink-0 w-9 h-9 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl flex items-center justify-center font-extrabold text-xs shadow-sm">
+                        02
+                    </div>
+
+                    <div class="flex-1">
+
+                        <div class="flex items-center gap-2 mb-1">
+
+                            <!-- Shield Check SVG -->
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-4 h-4 text-blue-500"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M9 12.75 11.25 15 15 9.75M21 12c0 5.25-3.438 9.75-9 11.25C6.438 21.75 3 17.25 3 12V5.742A2.25 2.25 0 0 1 4.659 3.57l6.75-2.25a1.5 1.5 0 0 1 .982 0l6.75 2.25A2.25 2.25 0 0 1 21 5.742V12Z"
+                                />
+                            </svg>
+
+                            <p class="font-extrabold text-slate-900 text-sm">
+                                Sahkan Maklumat
+                            </p>
+
+                        </div>
+
+                        <p class="text-slate-500 text-[11px] leading-relaxed">
+                            Pastikan semua maklumat yang diberikan adalah tepat sebelum meneruskan. Jika terdapat kesilapan, gunakan butang <strong class="text-slate-700">Kembali</strong> untuk membuat pembetulan.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 3 -->
+            <div class="bg-blue-50/80 rounded-2xl p-4 border border-blue-100 shadow-sm">
+
+                <div class="flex items-start gap-3">
+
+                    <div class="flex-shrink-0 w-9 h-9 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl flex items-center justify-center font-extrabold text-xs shadow-sm">
+                        03
+                    </div>
+
+                    <div class="flex-1">
+
+                        <div class="flex items-center gap-2 mb-1">
+
+                            <!-- Bank SVG -->
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-4 h-4 text-blue-500"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M3 21h18M3 10h18M5 10V21M9 10V21M15 10V21M19 10V21M12 3l9 5H3l9-5Z"
+                                />
+                            </svg>
+
+                            <p class="font-extrabold text-slate-900 text-sm">
+                                Pilih Kaedah Pembayaran
+                            </p>
+
+                        </div>
+
+                        <p class="text-slate-500 text-[11px] leading-relaxed">
+                            Pilih kaedah pembayaran yang tersedia dan pilih bank atau e-dompet yang ingin digunakan. Pada masa ini, pembayaran melalui <strong class="text-slate-700">DuitNow</strong> tersedia untuk transaksi.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 4 -->
+            <div class="bg-blue-50/80 rounded-2xl p-4 border border-blue-100 shadow-sm">
+
+                <div class="flex items-start gap-3">
+
+                    <div class="flex-shrink-0 w-9 h-9 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl flex items-center justify-center font-extrabold text-xs shadow-sm">
+                        04
+                    </div>
+
+                    <div class="flex-1">
+
+                        <div class="flex items-center gap-2 mb-1">
+
+                            <!-- QR SVG -->
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-4 h-4 text-blue-500"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M4 4h6v6H4V4Zm10 0h6v6h-6V4ZM4 14h6v6H4v-6Zm10 0h2m2 0h2m-6 3h2m2 0h2m-6 3h6"
+                                />
+                            </svg>
+
+                            <p class="font-extrabold text-slate-900 text-sm">
+                                Imbas Kod QR
+                            </p>
+
+                        </div>
+
+                        <p class="text-slate-500 text-[11px] leading-relaxed">
+                            Buka aplikasi perbankan atau e-dompet anda dan imbas kod QR yang dipaparkan. Ikuti arahan pada aplikasi tersebut untuk melengkapkan transaksi.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 5 -->
+            <div class="bg-blue-50/80 rounded-2xl p-4 border border-blue-100 shadow-sm">
+
+                <div class="flex items-start gap-3">
+
+                    <div class="flex-shrink-0 w-9 h-9 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl flex items-center justify-center font-extrabold text-xs shadow-sm">
+                        05
+                    </div>
+
+                    <div class="flex-1">
+
+                        <div class="flex items-center gap-2 mb-1">
+
+                            <!-- Upload SVG -->
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-4 h-4 text-blue-500"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M3 16.5V19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2.5M12 15V3m0 0L8 7m4-4 4 4"
+                                />
+                            </svg>
+
+                            <p class="font-extrabold text-slate-900 text-sm">
+                                Muat Naik Bukti Pembayaran
+                            </p>
+
+                        </div>
+
+                        <p class="text-slate-500 text-[11px] leading-relaxed">
+                            Selepas pembayaran berjaya, muat naik bukti pembayaran atau resit transaksi untuk tujuan pengesahan.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SECURITY NOTICE -->
+            <div class="bg-amber-50 rounded-2xl p-4 border border-amber-200 shadow-sm">
+
+                <div class="flex items-start gap-3">
+
+                    <!-- Warning SVG -->
+                    <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-amber-100 flex items-center justify-center">
+
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-5 h-5 text-amber-600"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M12 9v3.75m0 3.75h.007M10.29 3.86 2.82 17.25A2 2 0 0 0 4.56 20.25h14.88a2 2 0 0 0 1.74-3L13.71 3.86a2 2 0 0 0-3.42 0Z"
+                            />
+                        </svg>
+
+                    </div>
+
+                    <div class="flex-1">
+
+                        <p class="font-extrabold text-amber-800 text-xs uppercase tracking-wide mb-1">
+                            Makluman Keselamatan
+                        </p>
+
+                        <p class="text-amber-900/80 text-[11px] leading-relaxed">
+                            Pastikan semua pembayaran dibuat hanya melalui laman web rasmi DuitJom. Jangan berkongsi maklumat peribadi, butiran perbankan atau kod pengesahan dengan mana-mana pihak yang tidak diberi kuasa.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER -->
+        <div class="p-4 bg-white border-t border-slate-100">
+
+            <button
+                onclick="closeTutorialModal()"
+                class="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-extrabold py-3.5 rounded-xl text-xs shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2 transition-all duration-200 active:scale-[0.98]"
+            >
+
+                <!-- Check SVG -->
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="m5 12 4 4L19 6"
+                    />
+                </svg>
+
+                <span>Saya Faham, Teruskan</span>
+
+            </button>
+
+        </div>
+
     </div>
 
-    <!-- LOADING PAGE (BORANG) -->
-    <div id="loadingPage" class="hidden flex-col min-h-screen bg-white justify-center items-center -mt-[72px]">
-        <div class="flex flex-col items-center gap-6">
-            <img src="IMG_6715.png" alt="Logo" class="w-16 h-16 object-contain">
-            <div class="spinner"></div>
-            <p class="text-center text-gray-600 font-semibold text-sm max-w-xs">
-                Sila tunggu, sedang memuatkan maklumat
-            </p>
-        </div>
-    </div>
+</div>
 
     <!-- PAYMENT PAGE (Borang Maklumat Diri) -->
-    <div id="paymentPage" class="hidden flex-col min-h-screen bg-white -mt-[72px] pt-[72px]">
-        <main class="max-w-md w-full mx-auto px-4 py-6 flex-grow flex flex-col items-center">
-            <!-- LOGO -->
-            <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs mb-4 flex items-center justify-center">
-                <img src="IMG_6715.png"
-                     alt="Logo DuitJom"
-                     class="w-full h-full object-contain">
+<div id="paymentPage" class="hidden flex-col min-h-screen bg-white -mt-[72px] pt-[72px]">
+
+    <main class="max-w-md w-full mx-auto px-4 py-6 flex-grow flex flex-col items-center">
+
+        <!-- =====================================================
+             PREMIUM PAYMENT HEADER
+             ===================================================== -->
+
+        <div class="w-full flex flex-col items-center text-center mb-6">
+
+            <!-- LOGO DUITJOM + GLASS BLUR BACKGROUND -->
+            <div class="relative w-28 h-28 mb-4 flex items-center justify-center">
+
+                <!-- Ambient Blur -->
+                <div class="absolute inset-0 rounded-[32px]
+                            bg-gradient-to-br from-blue-100 via-sky-50 to-cyan-100
+                            blur-xl opacity-80">
+                </div>
+
+                <!-- Glass Container -->
+                <div class="relative w-24 h-24 rounded-[28px]
+                            bg-white/70
+                            backdrop-blur-xl
+                            border border-white/90
+                            shadow-[0_15px_40px_rgba(37,99,235,0.12)]
+                            flex items-center justify-center
+                            overflow-hidden">
+
+                    <img src="IMG_6715.png"
+                         alt="Logo DuitJom"
+                         class="w-[82px] h-[82px] object-contain">
+                </div>
+
             </div>
 
-            <!-- PAGE DESCRIPTION -->
-            <h2 class="text-gray-500 font-semibold text-center text-xs max-w-xs mb-6 leading-relaxed">
-                Halaman Pembayaran DuitJom
-            </h2>
 
-            <div class="w-full bg-white rounded-2xl p-1">
-                <!-- SECTION TITLE -->
-                <div class="text-lg font-bold text-slate-900 flex items-center gap-3 mb-6 px-1">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.8"
-                         class="w-6 h-6 text-blue-500 flex-shrink-0"
-                         aria-hidden="true">
-                        <path stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M15.75 6.75a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
-                        <path stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M4.5 20.25a7.5 7.5 0 0 1 15 0"/>
-                    </svg>
-                    <h3>
-                        Pertama: Masukkan Butiran Maklumat Diri
-                    </h3>
-                </div>
+            <!-- PAGE DESCRIPTION -->
+            <p class="text-slate-500 font-medium text-xs max-w-xs leading-relaxed">
+                Lengkapkan maklumat anda untuk meneruskan ke proses seterusnya dengan selamat.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+             INFORMATION INTRO
+             ===================================================== -->
+
+        <div class="w-full flex items-center gap-4 py-5 border-t border-b border-slate-100">
+
+            <!-- LARGE SVG ICON -->
+            <div class="flex-shrink-0 w-12 h-12 rounded-2xl
+                        bg-blue-50
+                        border border-blue-100
+                        flex items-center justify-center
+                        shadow-sm">
+
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.7"
+                     class="w-7 h-7 text-blue-500"
+                     aria-hidden="true">
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M15.75 6.75a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M4.5 20.25a7.5 7.5 0 0 1 15 0"/>
+
+                </svg>
+
+            </div>
+
+
+            <!-- CUSTOMER INSTRUCTION -->
+            <div class="flex-1 text-left">
+
+                <p class="text-[9px] font-bold text-blue-500 uppercase tracking-widest mb-1">
+                    Maklumat Diperlukan
+                </p>
+
+                <h3 class="text-sm font-extrabold text-slate-900 leading-snug">
+                    Sila isi maklumat anda
+                </h3>
+
+                <p class="text-[10px] text-slate-500 mt-1 leading-relaxed">
+                    Pastikan semua maklumat yang diberikan adalah tepat sebelum meneruskan.
+                </p>
+
+            </div>
+
+        </div>
 
                 <form onsubmit="goToNextStepPage(event)" class="space-y-5">
                     <!-- ===================================== -->
@@ -1014,7 +1373,7 @@
                                       d="M10.3 4.5 2.7 18a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 4.5a2 2 0 0 0-3.4 0Z"/>
                             </svg>
                             <span>
-                                Nombor kad pengenalan mesti mengikut format 000000-00-0000.
+                                Nombor kad pengenalan (eg. 000000-00-0000).
                             </span>
                         </p>
                     </div>
