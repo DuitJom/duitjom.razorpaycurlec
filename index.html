@@ -60,55 +60,514 @@
     </header>
 
     <!-- SIDEBAR MENU -->
-    <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300 opacity-0" onclick="closeSidebar()"></div>
-    <div id="sidebarMenu" class="fixed top-0 right-0 w-[280px] h-full bg-white shadow-2xl z-[60] transform translate-x-full transition-transform duration-300 flex flex-col border-l border-gray-100">
-        
-        <!-- Header Sidebar -->
-        <div class="flex justify-between items-center px-4 py-4 border-b border-gray-100 bg-gray-50/50">
-            <div class="flex items-center gap-3">
-                <button onclick="closeSidebar()" class="text-xs font-bold text-gray-500 hover:text-blue-500 flex items-center gap-1 transition">
-                    <i class="fas fa-arrow-left"></i> Back
-                </button>
-                <div class="h-4 w-[1px] bg-gray-300"></div>
-                <img src="IMG_6715.png" alt="Logo DuitJom" class="h-6 object-contain">
-            </div>
-            <button onclick="closeSidebar()" class="text-red-500 hover:text-red-700 text-lg transition">
-                <i class="fas fa-times"></i>
+
+<div id="sidebarOverlay"
+
+     class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300 opacity-0"
+
+     onclick="closeSidebar()">
+
+</div>
+
+<div id="sidebarMenu"
+
+     class="fixed top-0 right-0 w-[280px] h-full bg-white shadow-2xl z-[60] transform translate-x-full transition-transform duration-300 flex flex-col border-l border-gray-100 overflow-y-auto">
+
+    <!-- Header Sidebar -->
+
+    <div class="flex justify-between items-center px-4 py-4 border-b border-gray-100 bg-gray-50/50 shrink-0">
+
+        <div class="flex items-center gap-3">
+
+            <button onclick="closeSidebar()"
+
+                    class="text-xs font-bold text-gray-500 hover:text-blue-500 flex items-center gap-1 transition">
+
+                <i class="fas fa-arrow-left"></i>
+
+                Back
+
             </button>
+
+            <div class="h-4 w-[1px] bg-gray-300"></div>
+
+            <img src="IMG_6715.png"
+
+                 alt="Logo DuitJom"
+
+                 class="h-6 object-contain">
+
         </div>
 
-        <!-- Kandungan Sidebar -->
-        <div class="p-5 flex flex-col flex-grow">
-            <p class="text-xs font-bold text-gray-500 mb-3 text-center">Log Masuk Sekarang</p>
-            
-            <!-- GOOGLE OAUTH LOGIN (Di dalam Sidebar) -->
-            <div class="flex justify-center w-full mb-6">
-                <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"></div>
-            </div>
+        <button onclick="closeSidebar()"
 
-            <hr class="border-red-400 mb-4">
+                class="text-red-500 hover:text-red-700 text-lg transition"
 
-            <!-- Pautan Polisi (Paparan Sahaja) -->
-            <div class="space-y-1">
-                <a href="javascript:void(0)" class="flex items-center gap-3 text-sm font-semibold text-gray-600 hover:bg-gray-50 px-3 py-3 rounded-xl transition">
-                    <div class="w-6 h-6 rounded-full bg-green-50 flex items-center justify-center text-green-500">
-                        <i class="fas fa-shield-alt text-base"></i>
-                    </div>
-                    Privasi
-                </a>
-                <a href="javascript:void(0)" class="flex items-center gap-3 text-sm font-bold text-gray-600 hover:bg-gray-50 px-3 py-3 rounded-xl transition">
-                    <div class="w-6 h-6 rounded-full bg-green-50 flex items-center justify-center text-green-500">
-                        <i class="fas fa-file-contract text-base"></i>
-                    </div>
-                    Terma & Syarat
-                </a>
-            </div>
-        </div>
-        
-        <div class="p-4 text-center border-t border-red-600 text-[11px] text-gray-600 font-semibold bg-black-50">
-            &copy; 2026 DuitJom. Hak cipta terpelihara.
-        </div>
+                aria-label="Close Sidebar">
+
+            <i class="fas fa-times"></i>
+
+        </button>
+
     </div>
+
+    <!-- KANDUNGAN SIDEBAR -->
+
+    <div class="p-5 flex flex-col flex-grow">
+
+        <!-- ========================================= -->
+
+        <!-- GOOGLE SIGN IN GLASS OVERLAY BOX -->
+
+        <!-- ========================================= -->
+
+        <div class="w-full mb-6">
+
+            <div class="relative overflow-hidden rounded-2xl border border-sky-200/70 bg-sky-100/50 backdrop-blur-xl shadow-lg p-4">
+
+                <!-- Glass Decorative Background -->
+
+                <div class="absolute -top-10 -right-10 w-24 h-24 bg-sky-300/30 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div class="absolute -bottom-10 -left-10 w-24 h-24 bg-blue-300/20 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div class="relative z-10">
+
+                    <!-- Sign In Title -->
+
+                    <div class="flex items-center justify-center gap-2 mb-3">
+
+                        <div class="w-7 h-7 rounded-full bg-white/80 shadow-sm flex items-center justify-center text-sky-600">
+
+                            <i class="fas fa-user-circle text-sm"></i>
+
+                        </div>
+
+                        <p class="text-xs font-extrabold text-gray-700 tracking-wide">
+
+                            Sign in as?
+
+                        </p>
+
+                    </div>
+
+                    <!-- GOOGLE OAUTH LOGIN -->
+
+                    <div class="flex justify-center w-full">
+
+                        <div class="g_id_signin"
+
+                             data-type="standard"
+
+                             data-size="large"
+
+                             data-theme="outline">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================================= -->
+
+        <!-- SIDEBAR NAVIGATION MENU -->
+
+        <!-- ========================================= -->
+
+        <div class="space-y-1">
+
+            <!-- HOME -->
+
+            <a href="javascript:void(0)"
+
+               onclick="sidebarHomeAction()"
+
+               class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
+
+                <div class="w-8 h-8 rounded-xl bg-sky-50 flex items-center justify-center text-sky-500">
+
+                    <i class="fas fa-home text-sm"></i>
+
+                </div>
+
+                <span>HOME</span>
+
+                <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
+
+            </a>
+
+            <!-- PRIVACY -->
+
+            <a href="javascript:void(0)"
+
+               onclick="privacyAction()"
+
+               class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
+
+                <div class="w-8 h-8 rounded-xl bg-green-50 flex items-center justify-center text-green-500">
+
+                    <i class="fas fa-shield-alt text-sm"></i>
+
+                </div>
+
+                <span>PRIVACY</span>
+
+                <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
+
+            </a>
+
+            <!-- TERM FAQ -->
+
+            <a href="javascript:void(0)"
+
+               onclick="termFaqAction()"
+
+               class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
+
+                <div class="w-8 h-8 rounded-xl bg-purple-50 flex items-center justify-center text-purple-500">
+
+                    <i class="fas fa-file-contract text-sm"></i>
+
+                </div>
+
+                <span>TERM (FAQ)</span>
+
+                <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
+
+            </a>
+
+            <!-- ABOUT US -->
+
+            <a href="javascript:void(0)"
+
+               onclick="aboutUsAction()"
+
+               class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
+
+                <div class="w-8 h-8 rounded-xl bg-orange-50 flex items-center justify-center text-orange-500">
+
+                    <i class="fas fa-users text-sm"></i>
+
+                </div>
+
+                <span>ABOUT US</span>
+
+                <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
+
+            </a>
+
+            <!-- BLOG -->
+
+            <a href="javascript:void(0)"
+
+               onclick="blogAction()"
+
+               class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
+
+                <div class="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500">
+
+                    <i class="fas fa-newspaper text-sm"></i>
+
+                </div>
+
+                <span>BLOG</span>
+
+                <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
+
+            </a>
+
+            <!-- EMAIL -->
+
+            <a href="javascript:void(0)"
+
+               onclick="openEmailPopup()"
+
+               class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
+
+                <div class="w-8 h-8 rounded-xl bg-red-50 flex items-center justify-center text-red-500">
+
+                    <i class="fas fa-envelope text-sm"></i>
+
+                </div>
+
+                <span>EMAIL</span>
+
+                <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
+
+            </a>
+
+        </div>
+
+        <!-- ========================================= -->
+
+        <!-- DIVIDER -->
+
+        <!-- ========================================= -->
+
+        <div class="my-5 border-t border-gray-200"></div>
+
+        <!-- ========================================= -->
+
+        <!-- APPLY LOAN SECTION -->
+
+        <!-- ========================================= -->
+
+        <div class="rounded-2xl bg-gray-50 border border-gray-100 p-4 shadow-sm">
+
+            <p class="text-[11px] leading-relaxed text-gray-600 font-medium">
+
+                For Apply the Duitjom Loan, Please Visit Our Official Website at
+
+                <span class="font-bold text-sky-600">
+
+                    “www.duitjom.com”
+
+                </span>
+
+                or :
+
+            </p>
+
+            <p class="text-[10px] text-gray-500 font-semibold mt-3 mb-3 text-center">
+
+                Click Button Bellow
+
+            </p>
+
+            <!-- APPLY NOW BUTTON -->
+
+            <button type="button"
+
+                    onclick="applyNowAction()"
+
+                    class="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-sky-500 hover:bg-sky-600 active:scale-[0.98] text-white text-sm font-bold shadow-md shadow-sky-200 transition-all duration-200">
+
+                <i class="fas fa-external-link-alt text-xs"></i>
+
+                Apply Now
+
+            </button>
+
+            <!-- PACKAGE -->
+
+            <button type="button"
+
+                    onclick="packageAction()"
+
+                    class="w-full mt-2 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-white border border-gray-200 hover:bg-gray-50 active:scale-[0.98] text-gray-700 text-sm font-bold transition-all duration-200">
+
+                <i class="fas fa-box-open text-sm text-sky-500"></i>
+
+                PACKAGE
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ========================================= -->
+
+    <!-- FOOTER SIDEBAR -->
+
+    <!-- ========================================= -->
+
+    <div class="p-4 text-center border-t border-red-600 text-[11px] text-gray-600 font-semibold bg-black-50 shrink-0">
+
+        &copy; 2026 DuitJom. Hak cipta terpelihara.
+
+    </div>
+
+</div>
+
+<!-- ====================================================== -->
+
+<!-- EMAIL POPUP OVERLAY -->
+
+<!-- ====================================================== -->
+
+<div id="emailPopupOverlay"
+
+     class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] hidden opacity-0 transition-opacity duration-300"
+
+     onclick="closeEmailPopup()">
+
+</div>
+
+<!-- EMAIL POPUP -->
+
+<div id="emailPopup"
+
+     class="fixed inset-0 z-[110] hidden items-center justify-center px-5">
+
+    <div id="emailPopupBox"
+
+         class="w-full max-w-[350px] bg-white rounded-2xl shadow-2xl border border-gray-100 transform scale-95 opacity-0 transition-all duration-300 overflow-hidden"
+
+         onclick="event.stopPropagation()">
+
+        <!-- POPUP HEADER -->
+
+        <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50/70">
+
+            <div class="flex items-center gap-2">
+
+                <div class="w-8 h-8 rounded-xl bg-sky-50 flex items-center justify-center text-sky-500">
+
+                    <i class="fas fa-envelope text-sm"></i>
+
+                </div>
+
+                <h3 class="text-sm font-extrabold text-gray-700">
+
+                    EMAIL US :
+
+                </h3>
+
+            </div>
+
+            <button type="button"
+
+                    onclick="closeEmailPopup()"
+
+                    class="w-7 h-7 rounded-full bg-gray-100 hover:bg-red-50 text-gray-500 hover:text-red-500 flex items-center justify-center transition">
+
+                <i class="fas fa-times text-xs"></i>
+
+            </button>
+
+        </div>
+
+        <!-- POPUP CONTENT -->
+
+        <div class="p-5">
+
+            <!-- EMAIL BOX -->
+
+            <div class="flex items-center gap-3 p-3 rounded-xl bg-sky-50 border border-sky-100">
+
+                <div class="flex-1 min-w-0">
+
+                    <p id="duitjomEmail"
+
+                       class="text-xs sm:text-sm font-bold text-gray-700 break-all">
+
+                        help.duitjomhq@hotmail.com
+
+                    </p>
+
+                </div>
+
+                <!-- COPY SVG BUTTON -->
+
+                <button id="copyEmailButton"
+
+                        type="button"
+
+                        onclick="copyDuitjomEmail()"
+
+                        class="shrink-0 w-9 h-9 rounded-xl bg-white border border-sky-100 hover:bg-sky-100 text-sky-500 flex items-center justify-center transition-all duration-200"
+
+                        aria-label="Copy Email">
+
+                    <!-- Copy SVG -->
+
+                    <svg id="copyIcon"
+
+                         xmlns="http://www.w3.org/2000/svg"
+
+                         width="17"
+
+                         height="17"
+
+                         viewBox="0 0 24 24"
+
+                         fill="none"
+
+                         stroke="currentColor"
+
+                         stroke-width="2"
+
+                         stroke-linecap="round"
+
+                         stroke-linejoin="round">
+
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+
+                    </svg>
+
+                    <!-- Success SVG -->
+
+                    <svg id="copiedIcon"
+
+                         class="hidden"
+
+                         xmlns="http://www.w3.org/2000/svg"
+
+                         width="17"
+
+                         height="17"
+
+                         viewBox="0 0 24 24"
+
+                         fill="none"
+
+                         stroke="currentColor"
+
+                         stroke-width="2.5"
+
+                         stroke-linecap="round"
+
+                         stroke-linejoin="round">
+
+                        <polyline points="20 6 9 17 4 12"></polyline>
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+            <!-- COPIED STATUS -->
+
+            <div id="copiedStatus"
+
+                 class="hidden text-center mt-3">
+
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-green-500">
+
+                    <i class="fas fa-check-circle"></i>
+
+                    Copied
+
+                </span>
+
+            </div>
+
+            <!-- CLOSE BUTTON -->
+
+            <button type="button"
+
+                    onclick="closeEmailPopup()"
+
+                    class="w-full mt-5 py-3 rounded-xl bg-gray-800 hover:bg-gray-900 active:scale-[0.98] text-white text-sm font-bold transition-all duration-200">
+
+                Close
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
     <!-- END SIDEBAR MENU -->
 
     <!-- LOADING SPINNER (SELEPAS GOOGLE SIGN IN - 5 SAAT) -->
