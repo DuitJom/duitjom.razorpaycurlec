@@ -89,26 +89,268 @@ function validatePhone(input) {
 }
 // ---- KAWALAN HALAMAN PEMBAYARAN PINJAMAN (DENGAN 7 SAAT SPINNER) ----
 function goToPaymentPage() {
+
+    // =====================================================
+    // DUITJOM PREMIUM PAGE LOADING
+    // TEMPOH: 7 SAAT
+    // =====================================================
+
     // Tunjukkan spinner transisi 7 saat
-    const transitionSpinner = document.getElementById('pageTransitionSpinner');
+    const transitionSpinner =
+        document.getElementById('pageTransitionSpinner');
+
+    // Progress bar
+    const progressBar =
+        document.getElementById('pageLoadingProgress');
+
+    // Percentage
+    const progressPercentage =
+        document.getElementById('pageLoadingPercentage');
+
+    // Status loading
+    const progressStatus =
+        document.getElementById('pageLoadingStatus');
+
+
+    // =====================================================
+    // PAPARKAN SPINNER
+    // =====================================================
+
     transitionSpinner.classList.remove('hidden');
     transitionSpinner.classList.add('flex');
 
-    // Set masa 7 saat (7000 ms) sebelum pindah halaman
-    setTimeout(() => {
-        // Sembunyikan spinner
-        transitionSpinner.classList.add('hidden');
-        transitionSpinner.classList.remove('flex');
 
-        // Pindah ke Halaman Pembayaran (Langkah 1)
-        document.getElementById('mainPage').classList.add('hidden');
-        document.getElementById('paymentPage').classList.remove('hidden');
-        
-        // Munculkan Modal Tutorial
-        setTimeout(() => { 
-            document.getElementById('tutorialModal').classList.remove('hidden'); 
-        }, 200);
+    // =====================================================
+    // RESET PROGRESS
+    // =====================================================
+
+    let progress = 0;
+
+    if (progressBar) {
+        progressBar.style.width = '0%';
+    }
+
+    if (progressPercentage) {
+        progressPercentage.innerText = '0%';
+    }
+
+    if (progressStatus) {
+        progressStatus.innerText = 'Memulakan...';
+    }
+
+
+    // =====================================================
+    // STATUS LOADING
+    // =====================================================
+
+    const loadingMessages = [
+        {
+            progress: 0,
+            message: 'Memulakan...'
+        },
+        {
+            progress: 15,
+            message: 'Menyediakan halaman...'
+        },
+        {
+            progress: 35,
+            message: 'Memuatkan maklumat...'
+        },
+        {
+            progress: 55,
+            message: 'Menyediakan pembayaran...'
+        },
+        {
+            progress: 75,
+            message: 'Mengemas kini sistem...'
+        },
+        {
+            progress: 90,
+            message: 'Hampir selesai...'
+        },
+        {
+            progress: 100,
+            message: 'Halaman sedia.'
+        }
+    ];
+
+
+    // =====================================================
+    // PROGRESS ANIMATION
+    // =====================================================
+
+    const startTime = Date.now();
+    const loadingDuration = 7000;
+
+    let progressTimer = null;
+
+
+    function updateLoadingProgress() {
+
+        const elapsed =
+            Date.now() - startTime;
+
+        const percentage =
+            Math.min(
+                Math.floor(
+                    (elapsed / loadingDuration) * 100
+                ),
+                99
+            );
+
+
+        // Progress bar
+        if (progressBar) {
+            progressBar.style.width =
+                percentage + '%';
+        }
+
+
+        // Percentage
+        if (progressPercentage) {
+            progressPercentage.innerText =
+                percentage + '%';
+        }
+
+
+        // Cari status yang sesuai
+        let currentMessage =
+            loadingMessages[0].message;
+
+        for (
+            let i = 0;
+            i < loadingMessages.length;
+            i++
+        ) {
+
+            if (
+                percentage >=
+                loadingMessages[i].progress
+            ) {
+
+                currentMessage =
+                    loadingMessages[i].message;
+
+            }
+
+        }
+
+
+        // Update status
+        if (progressStatus) {
+
+            progressStatus.innerText =
+                currentMessage;
+
+        }
+
+
+        // Teruskan sehingga 7 saat
+        if (elapsed < loadingDuration) {
+
+            progressTimer =
+                requestAnimationFrame(
+                    updateLoadingProgress
+                );
+
+        }
+
+    }
+
+
+    // Mulakan progress
+    progressTimer =
+        requestAnimationFrame(
+            updateLoadingProgress
+        );
+
+
+    // =====================================================
+    // SELEPAS 7 SAAT
+    // =====================================================
+
+    setTimeout(() => {
+
+        // Hentikan animation frame
+        if (progressTimer) {
+
+            cancelAnimationFrame(
+                progressTimer
+            );
+
+        }
+
+
+        // Jadikan 100%
+        if (progressBar) {
+
+            progressBar.style.width =
+                '100%';
+
+        }
+
+
+        if (progressPercentage) {
+
+            progressPercentage.innerText =
+                '100%';
+
+        }
+
+
+        if (progressStatus) {
+
+            progressStatus.innerText =
+                'Halaman sedia.';
+
+        }
+
+
+        // =================================================
+        // TUNGGU SEKEJAP SUPAYA 100% BOLEH DILIHAT
+        // =================================================
+
+        setTimeout(() => {
+
+            // Sembunyikan spinner
+            transitionSpinner.classList.add(
+                'hidden'
+            );
+
+            transitionSpinner.classList.remove(
+                'flex'
+            );
+
+
+            // =================================================
+            // PINDAH KE HALAMAN PEMBAYARAN
+            // =================================================
+
+            document
+                .getElementById('mainPage')
+                .classList.add('hidden');
+
+            document
+                .getElementById('paymentPage')
+                .classList.remove('hidden');
+
+
+            // =================================================
+            // MUNCULKAN MODAL TUTORIAL
+            // =================================================
+
+            setTimeout(() => {
+
+                document
+                    .getElementById('tutorialModal')
+                    .classList.remove('hidden');
+
+            }, 200);
+
+        }, 250);
+
     }, 7000);
+
 }
 
 function closeTutorialModal() {
