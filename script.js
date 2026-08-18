@@ -489,3 +489,326 @@ document.addEventListener("DOMContentLoaded", function () {
     startNewsAutoSlider();
 
 });
+// =========================================================
+// SIDEBAR MENU - NEW FUNCTIONS
+// =========================================================
+
+// HOME
+function sidebarHomeAction() {
+    closeSidebar();
+}
+
+
+// PRIVACY
+function privacyAction() {
+    closeSidebar();
+}
+
+
+// TERM / FAQ
+function termFaqAction() {
+    closeSidebar();
+}
+
+
+// ABOUT US
+function aboutUsAction() {
+    closeSidebar();
+}
+
+
+// BLOG
+function blogAction() {
+    closeSidebar();
+}
+
+
+// APPLY NOW
+function applyNowAction() {
+    window.open('https://www.duitjom.com', '_blank');
+}
+
+
+// PACKAGE
+function packageAction() {
+    closeSidebar();
+}
+
+
+// =========================================================
+// EMAIL POPUP
+// =========================================================
+
+function openEmailPopup() {
+
+    const overlay = document.getElementById('emailPopupOverlay');
+    const popup = document.getElementById('emailPopup');
+    const popupBox = document.getElementById('emailPopupBox');
+
+    const copiedStatus = document.getElementById('copiedStatus');
+    const copyIcon = document.getElementById('copyIcon');
+    const copiedIcon = document.getElementById('copiedIcon');
+
+    if (!overlay || !popup || !popupBox) {
+        return;
+    }
+
+    // Reset copy status setiap kali popup dibuka
+    if (copiedStatus) {
+        copiedStatus.classList.add('hidden');
+    }
+
+    if (copyIcon) {
+        copyIcon.classList.remove('hidden');
+    }
+
+    if (copiedIcon) {
+        copiedIcon.classList.add('hidden');
+    }
+
+    // Paparkan popup
+    overlay.classList.remove('hidden');
+
+    popup.classList.remove('hidden');
+    popup.classList.add('flex');
+
+    // Animasi popup
+    requestAnimationFrame(function () {
+
+        overlay.classList.remove('opacity-0');
+        overlay.classList.add('opacity-100');
+
+        popupBox.classList.remove(
+            'scale-95',
+            'opacity-0'
+        );
+
+        popupBox.classList.add(
+            'scale-100',
+            'opacity-100'
+        );
+
+    });
+
+}
+
+
+// =========================================================
+// CLOSE EMAIL POPUP
+// =========================================================
+
+function closeEmailPopup() {
+
+    const overlay = document.getElementById('emailPopupOverlay');
+    const popup = document.getElementById('emailPopup');
+    const popupBox = document.getElementById('emailPopupBox');
+
+    if (!overlay || !popup || !popupBox) {
+        return;
+    }
+
+    // Animasi keluar
+    overlay.classList.remove('opacity-100');
+    overlay.classList.add('opacity-0');
+
+    popupBox.classList.remove(
+        'scale-100',
+        'opacity-100'
+    );
+
+    popupBox.classList.add(
+        'scale-95',
+        'opacity-0'
+    );
+
+    // Sembunyikan selepas animasi selesai
+    setTimeout(function () {
+
+        overlay.classList.add('hidden');
+
+        popup.classList.add('hidden');
+        popup.classList.remove('flex');
+
+    }, 300);
+
+}
+
+
+// =========================================================
+// COPY DUITJOM EMAIL
+// =========================================================
+
+async function copyDuitjomEmail() {
+
+    const emailElement =
+        document.getElementById('duitjomEmail');
+
+    const copyIcon =
+        document.getElementById('copyIcon');
+
+    const copiedIcon =
+        document.getElementById('copiedIcon');
+
+    const copiedStatus =
+        document.getElementById('copiedStatus');
+
+    const copyButton =
+        document.getElementById('copyEmailButton');
+
+
+    if (
+        !emailElement ||
+        !copyIcon ||
+        !copiedIcon ||
+        !copiedStatus ||
+        !copyButton
+    ) {
+        return;
+    }
+
+
+    const email =
+        emailElement.textContent.trim();
+
+
+    try {
+
+        // Cuba gunakan Clipboard API
+        await navigator.clipboard.writeText(email);
+
+        showEmailCopiedState();
+
+    } catch (error) {
+
+        // Fallback untuk browser yang tidak menyokong Clipboard API
+        const temporaryInput =
+            document.createElement('textarea');
+
+        temporaryInput.value = email;
+
+        temporaryInput.style.position = 'fixed';
+        temporaryInput.style.opacity = '0';
+
+        document.body.appendChild(
+            temporaryInput
+        );
+
+        temporaryInput.focus();
+        temporaryInput.select();
+
+        try {
+
+            document.execCommand('copy');
+
+            showEmailCopiedState();
+
+        } catch (fallbackError) {
+
+            console.error(
+                'Copy email gagal:',
+                fallbackError
+            );
+
+        }
+
+        document.body.removeChild(
+            temporaryInput
+        );
+
+    }
+
+}
+
+
+// =========================================================
+// EMAIL COPIED VISUAL STATE
+// =========================================================
+
+function showEmailCopiedState() {
+
+    const copyIcon =
+        document.getElementById('copyIcon');
+
+    const copiedIcon =
+        document.getElementById('copiedIcon');
+
+    const copiedStatus =
+        document.getElementById('copiedStatus');
+
+    const copyButton =
+        document.getElementById('copyEmailButton');
+
+
+    if (
+        !copyIcon ||
+        !copiedIcon ||
+        !copiedStatus ||
+        !copyButton
+    ) {
+        return;
+    }
+
+
+    // Tukar icon Copy → Check
+    copyIcon.classList.add('hidden');
+
+    copiedIcon.classList.remove('hidden');
+
+
+    // Paparkan "Copied"
+    copiedStatus.classList.remove('hidden');
+
+
+    // Tukar visual button
+    copyButton.classList.remove(
+        'bg-white'
+    );
+
+    copyButton.classList.add(
+        'bg-green-50',
+        'text-green-500',
+        'border-green-200'
+    );
+
+
+    // Kembalikan keadaan asal selepas 2 saat
+    setTimeout(function () {
+
+        copyIcon.classList.remove('hidden');
+
+        copiedIcon.classList.add('hidden');
+
+        copiedStatus.classList.add('hidden');
+
+
+        copyButton.classList.remove(
+            'bg-green-50',
+            'text-green-500',
+            'border-green-200'
+        );
+
+        copyButton.classList.add(
+            'bg-white'
+        );
+
+    }, 2000);
+
+}
+
+
+// =========================================================
+// ESC KEY - CLOSE EMAIL POPUP
+// =========================================================
+
+document.addEventListener(
+    'keydown',
+    function (event) {
+
+        if (event.key === 'Escape') {
+
+            closeEmailPopup();
+
+        }
+
+    }
+);
