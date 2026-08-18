@@ -340,15 +340,60 @@
     </div>
 
     <!-- LOADING SPINNER (TRANSISI HALAMAN PINJAMAN - 7 SAAT) -->
-    <div id="pageTransitionSpinner" class="fixed inset-0 bg-white/95 backdrop-blur-sm z-[100] hidden flex-col justify-center items-center">
-        <div class="flex flex-col items-center gap-6">
-            <img src="IMG_6715.png" alt="Logo DuitJom" class="w-24 h-24 object-contain animate-bounce">
-            <div class="spinner"></div>
-            <p class="text-center text-slate-800 font-bold text-sm tracking-wide max-w-xs leading-relaxed">
-                Sila tunggu - memuat halaman baharu.
+<div id="pageTransitionSpinner" class="fixed inset-0 bg-white/95 backdrop-blur-sm z-[100] hidden flex-col justify-center items-center">
+
+    <div class="flex flex-col items-center gap-5 w-full max-w-xs px-6">
+
+        <!-- LOGO DUITJOM -->
+        <img 
+            src="IMG_6715.png" 
+            alt="Logo DuitJom" 
+            class="w-24 h-24 object-contain animate-bounce"
+        >
+
+        <!-- LOADING TEXT -->
+        <div class="text-center">
+
+            <p class="text-slate-800 font-bold text-sm tracking-wide">
+                Sedang memuat halaman
             </p>
+
+            <p class="text-slate-400 text-[10px] mt-1">
+                Sila tunggu sebentar...
+            </p>
+
         </div>
+
+        <!-- PROGRESS BAR -->
+        <div class="w-full">
+
+            <div class="w-full h-2.5 bg-slate-200/80 rounded-full overflow-hidden shadow-inner">
+
+                <div 
+                    id="pageLoadingProgress"
+                    class="h-full rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-600 transition-all duration-300 ease-out"
+                    style="width: 0%;"
+                ></div>
+
+            </div>
+
+            <!-- PERCENTAGE -->
+            <div class="flex justify-end mt-2">
+
+                <span 
+                    id="pageLoadingPercentage"
+                    class="text-blue-600 font-extrabold text-xs"
+                >
+                    0%
+                </span>
+
+            </div>
+
+        </div>
+
     </div>
+
+</div>
 
     <!-- MAIN CONFIG GOOGLE CLIENT ID -->
     <div id="g_id_onload"
