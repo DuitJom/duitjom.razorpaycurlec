@@ -840,3 +840,138 @@
         opacity .2s ease,
         transform .2s ease;
 }
+
+/* =========================================================
+   DUITJOM PREMIUM STATUS BADGE
+   ========================================================= */
+
+.duitjom-status-badge {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 8px 12px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.88),
+            rgba(239,246,255,.72)
+        );
+
+    border: 1px solid rgba(255,255,255,.95);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    box-shadow:
+        0 8px 24px rgba(37,99,235,.10),
+        inset 0 1px 0 rgba(255,255,255,.95);
+
+    color: #475569;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: .7px;
+
+    text-transform: uppercase;
+
+    overflow: hidden;
+}
+
+/* LIVE indicator */
+
+.duitjom-status-dot {
+    width: 7px;
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #10b981;
+
+    box-shadow:
+        0 0 0 3px rgba(16,185,129,.12),
+        0 0 10px rgba(16,185,129,.65);
+
+    animation: duitjomStatusPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes duitjomStatusPulse {
+
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(.72);
+        opacity: .55;
+    }
+
+}
+
+/* LIVE pill */
+
+.duitjom-status-live {
+    padding: 3px 6px;
+
+    border-radius: 999px;
+
+    color: #047857;
+
+    background: rgba(236,253,245,.85);
+
+    border: 1px solid rgba(167,243,208,.75);
+
+    font-size: 7px;
+    font-weight: 900;
+
+    letter-spacing: .8px;
+}
+
+/* Subtle shine */
+
+.duitjom-status-badge::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -80%;
+
+    width: 50%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.65),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    animation: duitjomBadgeShine 4.5s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+@keyframes duitjomBadgeShine {
+
+    0%, 65% {
+        left: -80%;
+    }
+
+    100% {
+        left: 140%;
+    }
+
+}
