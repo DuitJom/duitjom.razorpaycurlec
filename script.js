@@ -59,28 +59,55 @@ function validateDJCust(input) {
     }
 }
 
-// Validate Malaysia Phone Number (+60)
+/// Validate Malaysia Phone Number (+60)
 function validatePhone(input) {
-    let value = input.value.replace(/\D/g, '');
-
     const phoneError = document.getElementById('phoneError');
 
-    // Jika pengguna masukkan 0 di hadapan, buang 0 tersebut
+    // Ambil nombor sahaja
+    let value = input.value.replace(/\D/g, '');
+
+    // Jika pengguna masukkan 0 di hadapan, buang 0
     if (value.startsWith('0')) {
-        value = value.slice(1);
+        value = value.substring(1);
     }
 
     // Maksimum 10 digit selepas +60
-    value = value.slice(0, 10);
+    value = value.substring(0, 10);
 
+    // Paparkan semula nombor yang telah dibersihkan
     input.value = value;
 
-    // Nombor Malaysia mesti 9 atau 10 digit selepas +60
-    if (value.length > 0 && (value.length < 9 || value.length > 10)) {
-        phoneError.classList.remove('hidden');
-    } else {
+    // Kosong = belum lengkap
+    if (value.length === 0) {
         phoneError.classList.add('hidden');
+        input.classList.remove('border-red-500');
+        return false;
     }
+
+    /*
+     * Format selepas +60:
+     *
+     * 12xxxxxxx  = 9 digit
+     * 11xxxxxxxx = 10 digit
+     *
+     * Contoh:
+     * 0123456789  -> 123456789
+     * 01123456789 -> 1123456789
+     */
+
+    const isValid = /^[1][0-9]{8,9}$/.test(value);
+
+    if (!isValid) {
+        phoneError.classList.remove('hidden');
+        input.classList.add('border-red-500');
+        return false;
+    }
+
+    // Nombor sah
+    phoneError.classList.add('hidden');
+    input.classList.remove('border-red-500');
+
+    return true;
 }
 
 // ---- KAWALAN HALAMAN PEMBAYARAN PINJAMAN (DENGAN 7 SAAT SPINNER) ----
