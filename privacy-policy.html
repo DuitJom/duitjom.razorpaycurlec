@@ -27,6 +27,74 @@ h1, h2 {
     color:#006b4f;
 }
 
+/* Overlay Card Styles */
+.overlay-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 107, 79, 0.15);
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #006b4f 0%, #00a86b 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    color: white;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    color: #006b4f;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.card-description {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.card-badge {
+    display: inline-block;
+    background: #006b4f;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
 </style>
 </head>
 
@@ -44,6 +112,44 @@ Tarikh kemas kini terakhir: 31 Julai 2026
 DuitJom menghormati privasi pengguna dan komited untuk melindungi maklumat peribadi yang diberikan semasa menggunakan website dan perkhidmatan kami.
 </p>
 
+<!-- Overlay Cards Section -->
+<div class="overlay-cards">
+    <div class="card">
+        <div class="card-image">🔒</div>
+        <div class="card-content">
+            <h3 class="card-title">Keamanan Data</h3>
+            <p class="card-description">Kami melindungi maklumat anda dengan enkripsi dan protokol keselamatan terkini.</p>
+            <span class="card-badge">Prioriti Utama</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-image">👤</div>
+        <div class="card-content">
+            <h3 class="card-title">Privasi Peribadi</h3>
+            <p class="card-description">Maklumat peribadi anda tidak akan dijual atau dibongkar kepada pihak ketiga tanpa kebenaran.</p>
+            <span class="card-badge">Terlindung</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-image">✅</div>
+        <div class="card-content">
+            <h3 class="card-title">Kawalan Penuh</h3>
+            <p class="card-description">Anda mempunyai kawalan penuh terhadap data anda dan boleh meminta pemadaman bila-bila masa.</p>
+            <span class="card-badge">Hak Anda</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-image">📞</div>
+        <div class="card-content">
+            <h3 class="card-title">Sokongan 24/7</h3>
+            <p class="card-description">Hubungi pasukan sokongan kami jika ada pertanyaan berkaitan privasi dan data anda.</p>
+            <span class="card-badge">Sedia Membantu</span>
+        </div>
+    </div>
+</div>
 
 <h2>1. Maklumat Yang Kami Kumpul</h2>
 
