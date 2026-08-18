@@ -21,7 +21,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- IMPORTANT: Panggil fail CSS luaran -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -33,7 +33,7 @@
             <div class="flex items-center space-x-2">
                 <img src="IMG_6715.png" alt="DuitJom Logo" class="h-8 object-contain" onerror="this.outerHTML='<span class=\'font-semibold text-xl text-slate-800\'>Duit<span class=\'text-blue-400\'>Jom</span></span>'">
             </div>
-            
+
             <div class="flex items-center gap-3">
                 <!-- Dropdown Bahasa -->
                 <div class="relative inline-block text-left group">
@@ -60,498 +60,271 @@
     </header>
 
     <!-- SIDEBAR MENU -->
-
-<div id="sidebarOverlay"
-
-     class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300 opacity-0"
-
-     onclick="closeSidebar()">
-
-</div>
-
-<div id="sidebarMenu"
-
-     class="fixed top-0 right-0 w-[280px] h-full bg-white shadow-2xl z-[60] transform translate-x-full transition-transform duration-300 flex flex-col border-l border-gray-100 overflow-y-auto">
-
-    <!-- Header Sidebar -->
-
-    <div class="flex justify-between items-center px-4 py-4 border-b border-gray-100 bg-gray-50/50 shrink-0">
-
-        <div class="flex items-center gap-3">
-
-            <button onclick="closeSidebar()"
-
-                    class="text-xs font-bold text-gray-500 hover:text-blue-500 flex items-center gap-1 transition">
-
-                <i class="fas fa-arrow-left"></i>
-
-                Back
-
-            </button>
-
-            <div class="h-4 w-[1px] bg-gray-300"></div>
-
-            <img src="IMG_6715.png"
-
-                 alt="Logo DuitJom"
-
-                 class="h-6 object-contain">
-
-        </div>
-
-        <button onclick="closeSidebar()"
-
-                class="text-red-500 hover:text-red-700 text-lg transition"
-
-                aria-label="Close Sidebar">
-
-            <i class="fas fa-times"></i>
-
-        </button>
-
+    <div id="sidebarOverlay"
+         class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300 opacity-0"
+         onclick="closeSidebar()">
     </div>
 
-    <!-- KANDUNGAN SIDEBAR -->
-
-    <div class="p-5 flex flex-col flex-grow">
-
-        <!-- ========================================= -->
-
-        <!-- GOOGLE SIGN IN GLASS OVERLAY BOX -->
-
-        <!-- ========================================= -->
-
-        <div class="w-full mb-6">
-
-            <div class="relative overflow-hidden rounded-2xl border border-sky-200/70 bg-sky-100/50 backdrop-blur-xl shadow-lg p-4">
-
-                <!-- Glass Decorative Background -->
-
-                <div class="absolute -top-10 -right-10 w-24 h-24 bg-sky-300/30 rounded-full blur-2xl pointer-events-none"></div>
-
-                <div class="absolute -bottom-10 -left-10 w-24 h-24 bg-blue-300/20 rounded-full blur-2xl pointer-events-none"></div>
-
-                <div class="relative z-10">
-
-                    <!-- Sign In Title -->
-
-                    <div class="flex items-center justify-center gap-2 mb-3">
-
-                        <div class="w-7 h-7 rounded-full bg-white/80 shadow-sm flex items-center justify-center text-sky-600">
-
-                            <i class="fas fa-user-circle text-sm"></i>
-
-                        </div>
-
-                        <p class="text-xs font-extrabold text-gray-700 tracking-wide">
-
-                            Sign in as?
-
-                        </p>
-
-                    </div>
-
-                    <!-- GOOGLE OAUTH LOGIN -->
-
-                    <div class="flex justify-center w-full">
-
-                        <div class="g_id_signin"
-
-                             data-type="standard"
-
-                             data-size="large"
-
-                             data-theme="outline">
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- ========================================= -->
-
-        <!-- SIDEBAR NAVIGATION MENU -->
-
-        <!-- ========================================= -->
-
-        <div class="space-y-1">
-
-            <!-- HOME -->
-
-            <a href="javascript:void(0)"
-
-               onclick="sidebarHomeAction()"
-
-               class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
-
-                <div class="w-8 h-8 rounded-xl bg-sky-50 flex items-center justify-center text-sky-500">
-
-                    <i class="fas fa-home text-sm"></i>
-
-                </div>
-
-                <span>HOME</span>
-
-                <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
-
-            </a>
-
-            <!-- PRIVACY -->
-
-            <a href="page/privacy-policy.html"
-              class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
-
-               <div class="w-8 h-8 rounded-xl bg-green-50 flex items-center justify-center text-green-500">
-                   <i class="fas fa-shield-alt text-sm"></i>
-               </div>
-
-               <span>PRIVACY</span>
-
-               <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
-
-             </a>
-
-            <!-- TERM FAQ -->
-
-         <a href="page/terms-and-conditions.html"
-               class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
-
-            <div class="w-8 h-8 rounded-xl bg-purple-50 flex items-center justify-center text-purple-500">
-                <i class="fas fa-file-contract text-sm"></i>
-            </div>
-
-            <span>TERM (FAQ)</span>
-
-            <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
-
-          </a>
-
-            <!-- ABOUT US -->
-
-            <a href="javascript:void(0)"
-
-               onclick="aboutUsAction()"
-
-               class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
-
-                <div class="w-8 h-8 rounded-xl bg-orange-50 flex items-center justify-center text-orange-500">
-
-                    <i class="fas fa-users text-sm"></i>
-
-                </div>
-
-                <span>ABOUT US</span>
-
-                <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
-
-            </a>
-
-            <!-- BLOG -->
-
-            <a href="javascript:void(0)"
-
-               onclick="blogAction()"
-
-               class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
-
-                <div class="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500">
-
-                    <i class="fas fa-newspaper text-sm"></i>
-
-                </div>
-
-                <span>BLOG</span>
-
-                <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
-
-            </a>
-
-            <!-- EMAIL -->
-
-            <a href="javascript:void(0)"
-               onclick="openEmailPopup()"
-               class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
-
-                <div class="w-8 h-8 rounded-xl bg-red-50 flex items-center justify-center text-red-500">
-                    <i class="fas fa-envelope text-sm"></i>
-                </div>
-
-                <span>EMAIL</span>
-
-                <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
-
-             </a>
-
-        <!-- ========================================= -->
-
-        <!-- DIVIDER -->
-
-        <!-- ========================================= -->
-
-        <div class="my-5 border-t border-gray-200"></div>
-
-        <!-- ========================================= -->
-
-        <!-- APPLY LOAN SECTION -->
-
-        <!-- ========================================= -->
-
-        <div class="rounded-2xl bg-gray-50 border border-gray-100 p-4 shadow-sm">
-
-            <p class="text-[11px] leading-relaxed text-gray-600 font-medium">
-
-                For Apply the Duitjom Loan, Please Visit Our Official Website at
-
-                <span class="font-bold text-sky-600">
-
-                    “www.duitjom.com”
-
-                </span>
-
-                or :
-
-            </p>
-
-            <p class="text-[10px] text-gray-500 font-semibold mt-3 mb-3 text-center">
-
-                Click Button Bellow
-
-            </p>
-
-            <!-- APPLY NOW BUTTON -->
-
-            <button type="button"
-
-                    onclick="applyNowAction()"
-
-                    class="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-sky-500 hover:bg-sky-600 active:scale-[0.98] text-white text-sm font-bold shadow-md shadow-sky-200 transition-all duration-200">
-
-                <i class="fas fa-external-link-alt text-xs"></i>
-
-                Apply Now
-
-            </button>
-
-            <!-- PACKAGE -->
-
-            <button type="button"
-
-                    onclick="packageAction()"
-
-                    class="w-full mt-2 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-white border border-gray-200 hover:bg-gray-50 active:scale-[0.98] text-gray-700 text-sm font-bold transition-all duration-200">
-
-                <i class="fas fa-box-open text-sm text-sky-500"></i>
-
-                PACKAGE
-
-            </button>
-
-        </div>
-
-    </div>
-
-    <!-- ========================================= -->
-
-    <!-- FOOTER SIDEBAR -->
-
-    <!-- ========================================= -->
-
-    <div class="p-4 text-center border-t border-red-600 text-[11px] text-gray-600 font-semibold bg-black-50 shrink-0">
-
-        &copy; 2026 DuitJom. Hak cipta terpelihara.
-
-    </div>
-
-</div>
-
-<!-- ====================================================== -->
-
-<!-- EMAIL POPUP OVERLAY -->
-
-<!-- ====================================================== -->
-
-<div id="emailPopupOverlay"
-
-     class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] hidden opacity-0 transition-opacity duration-300"
-
-     onclick="closeEmailPopup()">
-
-</div>
-
-<!-- EMAIL POPUP -->
-
-<div id="emailPopup"
-
-     class="fixed inset-0 z-[110] hidden items-center justify-center px-5">
-
-    <div id="emailPopupBox"
-
-         class="w-full max-w-[350px] bg-white rounded-2xl shadow-2xl border border-gray-100 transform scale-95 opacity-0 transition-all duration-300 overflow-hidden"
-
-         onclick="event.stopPropagation()">
-
-        <!-- POPUP HEADER -->
-
-        <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50/70">
-
-            <div class="flex items-center gap-2">
-
-                <div class="w-8 h-8 rounded-xl bg-sky-50 flex items-center justify-center text-sky-500">
-
-                    <i class="fas fa-envelope text-sm"></i>
-
-                </div>
-
-                <h3 class="text-sm font-extrabold text-gray-700">
-
-                    EMAIL US :
-
-                </h3>
-
-            </div>
-
-            <button type="button"
-
-                    onclick="closeEmailPopup()"
-
-                    class="w-7 h-7 rounded-full bg-gray-100 hover:bg-red-50 text-gray-500 hover:text-red-500 flex items-center justify-center transition">
-
-                <i class="fas fa-times text-xs"></i>
-
-            </button>
-
-        </div>
-
-        <!-- POPUP CONTENT -->
-
-        <div class="p-5">
-
-            <!-- EMAIL BOX -->
-
-            <div class="flex items-center gap-3 p-3 rounded-xl bg-sky-50 border border-sky-100">
-
-                <div class="flex-1 min-w-0">
-
-                    <p id="duitjomEmail"
-
-                       class="text-xs sm:text-sm font-bold text-gray-700 break-all">
-
-                        help.duitjomhq@hotmail.com
-
-                    </p>
-
-                </div>
-
-                <!-- COPY SVG BUTTON -->
-
-                <button id="copyEmailButton"
-
-                        type="button"
-
-                        onclick="copyDuitjomEmail()"
-
-                        class="shrink-0 w-9 h-9 rounded-xl bg-white border border-sky-100 hover:bg-sky-100 text-sky-500 flex items-center justify-center transition-all duration-200"
-
-                        aria-label="Copy Email">
-
-                    <!-- Copy SVG -->
-
-                    <svg id="copyIcon"
-
-                         xmlns="http://www.w3.org/2000/svg"
-
-                         width="17"
-
-                         height="17"
-
-                         viewBox="0 0 24 24"
-
-                         fill="none"
-
-                         stroke="currentColor"
-
-                         stroke-width="2"
-
-                         stroke-linecap="round"
-
-                         stroke-linejoin="round">
-
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-
-                    </svg>
-
-                    <!-- Success SVG -->
-
-                    <svg id="copiedIcon"
-
-                         class="hidden"
-
-                         xmlns="http://www.w3.org/2000/svg"
-
-                         width="17"
-
-                         height="17"
-
-                         viewBox="0 0 24 24"
-
-                         fill="none"
-
-                         stroke="currentColor"
-
-                         stroke-width="2.5"
-
-                         stroke-linecap="round"
-
-                         stroke-linejoin="round">
-
-                        <polyline points="20 6 9 17 4 12"></polyline>
-
-                    </svg>
-
+    <div id="sidebarMenu"
+         class="fixed top-0 right-0 w-[280px] h-full bg-white shadow-2xl z-[60] transform translate-x-full transition-transform duration-300 flex flex-col border-l border-gray-100 overflow-y-auto">
+        <!-- Header Sidebar -->
+        <div class="flex justify-between items-center px-4 py-4 border-b border-gray-100 bg-gray-50/50 shrink-0">
+            <div class="flex items-center gap-3">
+                <button onclick="closeSidebar()"
+                        class="text-xs font-bold text-gray-500 hover:text-blue-500 flex items-center gap-1 transition">
+                    <i class="fas fa-arrow-left"></i>
+                    Back
                 </button>
-
+                <div class="h-4 w-[1px] bg-gray-300"></div>
+                <img src="IMG_6715.png"
+                     alt="Logo DuitJom"
+                     class="h-6 object-contain">
             </div>
-
-            <!-- COPIED STATUS -->
-
-            <div id="copiedStatus"
-
-                 class="hidden text-center mt-3">
-
-                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-green-500">
-
-                    <i class="fas fa-check-circle"></i>
-
-                    Copied
-
-                </span>
-
-            </div>
-
-            <!-- CLOSE BUTTON -->
-
-            <button type="button"
-
-                    onclick="closeEmailPopup()"
-
-                    class="w-full mt-5 py-3 rounded-xl bg-gray-800 hover:bg-gray-900 active:scale-[0.98] text-white text-sm font-bold transition-all duration-200">
-
-                Close
-
+            <button onclick="closeSidebar()"
+                    class="text-red-500 hover:text-red-700 text-lg transition"
+                    aria-label="Close Sidebar">
+                <i class="fas fa-times"></i>
             </button>
-
         </div>
 
+        <!-- KANDUNGAN SIDEBAR -->
+        <div class="p-5 flex flex-col flex-grow">
+            <!-- ========================================= -->
+            <!-- GOOGLE SIGN IN GLASS OVERLAY BOX -->
+            <!-- ========================================= -->
+            <div class="w-full mb-6">
+                <div class="relative overflow-hidden rounded-2xl border border-sky-200/70 bg-sky-100/50 backdrop-blur-xl shadow-lg p-4">
+                    <!-- Glass Decorative Background -->
+                    <div class="absolute -top-10 -right-10 w-24 h-24 bg-sky-300/30 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="absolute -bottom-10 -left-10 w-24 h-24 bg-blue-300/20 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <!-- Sign In Title -->
+                        <div class="flex items-center justify-center gap-2 mb-3">
+                            <div class="w-7 h-7 rounded-full bg-white/80 shadow-sm flex items-center justify-center text-sky-600">
+                                <i class="fas fa-user-circle text-sm"></i>
+                            </div>
+                            <p class="text-xs font-extrabold text-gray-700 tracking-wide">
+                                Sign in as?
+                            </p>
+                        </div>
+                        <!-- GOOGLE OAUTH LOGIN -->
+                        <div class="flex justify-center w-full">
+                            <div class="g_id_signin"
+                                 data-type="standard"
+                                 data-size="large"
+                                 data-theme="outline">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================= -->
+            <!-- SIDEBAR NAVIGATION MENU -->
+            <!-- ========================================= -->
+            <div class="space-y-1">
+                <!-- HOME -->
+                <a href="javascript:void(0)"
+                   onclick="sidebarHomeAction()"
+                   class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
+                    <div class="w-8 h-8 rounded-xl bg-sky-50 flex items-center justify-center text-sky-500">
+                        <i class="fas fa-home text-sm"></i>
+                    </div>
+                    <span>HOME</span>
+                    <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
+                </a>
+
+                <!-- PRIVACY -->
+                <a href="page/privacy-policy.html"
+                   class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
+                    <div class="w-8 h-8 rounded-xl bg-green-50 flex items-center justify-center text-green-500">
+                        <i class="fas fa-shield-alt text-sm"></i>
+                    </div>
+                    <span>PRIVACY</span>
+                    <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
+                </a>
+
+                <!-- TERM FAQ -->
+                <a href="page/terms-and-conditions.html"
+                   class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
+                    <div class="w-8 h-8 rounded-xl bg-purple-50 flex items-center justify-center text-purple-500">
+                        <i class="fas fa-file-contract text-sm"></i>
+                    </div>
+                    <span>TERM (FAQ)</span>
+                    <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
+                </a>
+
+                <!-- ABOUT US -->
+                <a href="javascript:void(0)"
+                   onclick="aboutUsAction()"
+                   class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
+                    <div class="w-8 h-8 rounded-xl bg-orange-50 flex items-center justify-center text-orange-500">
+                        <i class="fas fa-users text-sm"></i>
+                    </div>
+                    <span>ABOUT US</span>
+                    <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
+                </a>
+
+                <!-- BLOG -->
+                <a href="javascript:void(0)"
+                   onclick="blogAction()"
+                   class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
+                    <div class="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500">
+                        <i class="fas fa-newspaper text-sm"></i>
+                    </div>
+                    <span>BLOG</span>
+                    <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
+                </a>
+
+                <!-- EMAIL -->
+                <a href="javascript:void(0)"
+                   onclick="openEmailPopup()"
+                   class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
+                    <div class="w-8 h-8 rounded-xl bg-red-50 flex items-center justify-center text-red-500">
+                        <i class="fas fa-envelope text-sm"></i>
+                    </div>
+                    <span>EMAIL</span>
+                    <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
+                </a>
+            </div>
+
+            <!-- ========================================= -->
+            <!-- DIVIDER -->
+            <!-- ========================================= -->
+            <div class="my-5 border-t border-gray-200"></div>
+
+            <!-- ========================================= -->
+            <!-- APPLY LOAN SECTION -->
+            <!-- ========================================= -->
+            <div class="rounded-2xl bg-gray-50 border border-gray-100 p-4 shadow-sm">
+                <p class="text-[11px] leading-relaxed text-gray-600 font-medium">
+                    For Apply the Duitjom Loan, Please Visit Our Official Website at
+                    <span class="font-bold text-sky-600">
+                        “www.duitjom.com”
+                    </span>
+                    or :
+                </p>
+                <p class="text-[10px] text-gray-500 font-semibold mt-3 mb-3 text-center">
+                    Click Button Bellow
+                </p>
+                <!-- APPLY NOW BUTTON -->
+                <button type="button"
+                        onclick="applyNowAction()"
+                        class="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-sky-500 hover:bg-sky-600 active:scale-[0.98] text-white text-sm font-bold shadow-md shadow-sky-200 transition-all duration-200">
+                    <i class="fas fa-external-link-alt text-xs"></i>
+                    Apply Now
+                </button>
+                <!-- PACKAGE -->
+                <button type="button"
+                        onclick="packageAction()"
+                        class="w-full mt-2 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-white border border-gray-200 hover:bg-gray-50 active:scale-[0.98] text-gray-700 text-sm font-bold transition-all duration-200">
+                    <i class="fas fa-box-open text-sm text-sky-500"></i>
+                    PACKAGE
+                </button>
+            </div>
+        </div>
+
+        <!-- ========================================= -->
+        <!-- FOOTER SIDEBAR -->
+        <!-- ========================================= -->
+        <div class="p-4 text-center border-t border-red-600 text-[11px] text-gray-600 font-semibold bg-black-50 shrink-0">
+            &copy; 2026 DuitJom. Hak cipta terpelihara.
+        </div>
     </div>
 
-</div>
+    <!-- ====================================================== -->
+    <!-- EMAIL POPUP OVERLAY -->
+    <!-- ====================================================== -->
+    <div id="emailPopupOverlay"
+         class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] hidden opacity-0 transition-opacity duration-300"
+         onclick="closeEmailPopup()">
+    </div>
+
+    <!-- EMAIL POPUP -->
+    <div id="emailPopup"
+         class="fixed inset-0 z-[110] hidden items-center justify-center px-5">
+        <div id="emailPopupBox"
+             class="w-full max-w-[350px] bg-white rounded-2xl shadow-2xl border border-gray-100 transform scale-95 opacity-0 transition-all duration-300 overflow-hidden"
+             onclick="event.stopPropagation()">
+            <!-- POPUP HEADER -->
+            <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50/70">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-xl bg-sky-50 flex items-center justify-center text-sky-500">
+                        <i class="fas fa-envelope text-sm"></i>
+                    </div>
+                    <h3 class="text-sm font-extrabold text-gray-700">
+                        EMAIL US :
+                    </h3>
+                </div>
+                <button type="button"
+                        onclick="closeEmailPopup()"
+                        class="w-7 h-7 rounded-full bg-gray-100 hover:bg-red-50 text-gray-500 hover:text-red-500 flex items-center justify-center transition">
+                    <i class="fas fa-times text-xs"></i>
+                </button>
+            </div>
+            <!-- POPUP CONTENT -->
+            <div class="p-5">
+                <!-- EMAIL BOX -->
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-sky-50 border border-sky-100">
+                    <div class="flex-1 min-w-0">
+                        <p id="duitjomEmail"
+                           class="text-xs sm:text-sm font-bold text-gray-700 break-all">
+                            help.duitjomhq@hotmail.com
+                        </p>
+                    </div>
+                    <!-- COPY SVG BUTTON -->
+                    <button id="copyEmailButton"
+                            type="button"
+                            onclick="copyDuitjomEmail()"
+                            class="shrink-0 w-9 h-9 rounded-xl bg-white border border-sky-100 hover:bg-sky-100 text-sky-500 flex items-center justify-center transition-all duration-200"
+                            aria-label="Copy Email">
+                        <!-- Copy SVG -->
+                        <svg id="copyIcon"
+                             xmlns="http://www.w3.org/2000/svg"
+                             width="17"
+                             height="17"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2"
+                             stroke-linecap="round"
+                             stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <!-- Success SVG -->
+                        <svg id="copiedIcon"
+                             class="hidden"
+                             xmlns="http://www.w3.org/2000/svg"
+                             width="17"
+                             height="17"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2.5"
+                             stroke-linecap="round"
+                             stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </button>
+                </div>
+                <!-- COPIED STATUS -->
+                <div id="copiedStatus"
+                     class="hidden text-center mt-3">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-bold text-green-500">
+                        <i class="fas fa-check-circle"></i>
+                        Copied
+                    </span>
+                </div>
+                <!-- CLOSE BUTTON -->
+                <button type="button"
+                        onclick="closeEmailPopup()"
+                        class="w-full mt-5 py-3 rounded-xl bg-gray-800 hover:bg-gray-900 active:scale-[0.98] text-white text-sm font-bold transition-all duration-200">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
     <!-- END SIDEBAR MENU -->
 
     <!-- LOADING SPINNER (SELEPAS GOOGLE SIGN IN - 5 SAAT) -->
@@ -591,53 +364,45 @@
                 </svg>
                 <span>FAST • ONLINE • SECURE</span>
             </div>
+
             <!-- PREMIUM ADMINISTRATION OVERLAY -->
-<div class="admin-glass-overlay">
-
-    <div class="admin-overlay-icon">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="1.8"
-             aria-hidden="true">
-            <path stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 3l7 4v5c0 4.8-3 7.9-7 9-4-1.1-7-4.2-7-9V7l7-4z"/>
-            <path stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M9.5 12l1.7 1.7 3.4-3.4"/>
-        </svg>
-    </div>
-
-    <div class="admin-overlay-content">
-
-        <span class="admin-overlay-label">
-            DIGITAL ADMINISTRATION
-        </span>
-
-        <h1>
-            Efficient Administration
-            <span>Control System</span>
-        </h1>
-
-        <p>
-            All administrative processes are managed digitally with
-            intelligent A.I. assistance for faster, accurate and
-            organized decisions.
-        </p>
-
-    </div>
-
-    <div class="admin-overlay-status">
-        <span class="status-dot"></span>
-        <span>System Online</span>
-    </div>
-
-</div>
+            <div class="admin-glass-overlay">
+                <div class="admin-overlay-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="1.8"
+                         aria-hidden="true">
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M12 3l7 4v5c0 4.8-3 7.9-7 9-4-1.1-7-4.2-7-9V7l7-4z"/>
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M9.5 12l1.7 1.7 3.4-3.4"/>
+                    </svg>
+                </div>
+                <div class="admin-overlay-content">
+                    <span class="admin-overlay-label">
+                        DIGITAL ADMINISTRATION
+                    </span>
+                    <h1>
+                        Efficient Administration
+                        <span>Control System</span>
+                    </h1>
+                    <p>
+                        All administrative processes are managed digitally with
+                        intelligent A.I. assistance for faster, accurate and
+                        organized decisions.
+                    </p>
+                </div>
+                <div class="admin-overlay-status">
+                    <span class="status-dot"></span>
+                    <span>System Online</span>
+                </div>
+            </div>
 
             <div class="w-full max-w-xs mb-16">
-                
                 <!-- Butang Pembayaran (Disembunyikan pada awalnya) -->
                 <button id="btnPembayaranPinjaman" onclick="goToPaymentPage()" class="hidden w-full bg-green-300 hover:bg-green-300 text-black font-semibold text-md px-6 py-4 rounded-xl shadow-lg shadow-gray-400/30 transition duration-200 mb-6 flex justify-center items-center gap-2">
                     Teruskan <i class="fas fa-arrow-right text-sm"></i>
@@ -646,480 +411,339 @@
                 <!-- GOOGLE OAUTH LOGIN (Halaman Utama) -->
                 <div id="googleSignInSection" class="border-t border-gray-300 relative mt-4 pt-8">
                     <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#FAF6F0] px-3 text-xs text-black-600 font-medium whitespace-nowrap">Log Masuk</span>
-                    
                     <!-- Arahan kepada pelanggan -->
                     <p class="text-[10px] text-red-600 font-medium mb-4 leading-tight">
                      Log masuk menggunakan akaun Google yang berdaftar di www.duitjom.com
                     </p>
-                    
                     <div class="flex justify-center w-full">
                         <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"></div>
                     </div>
                 </div>
                 <!-- END GOOGLE OAUTH LOGIN -->
-                
+
                 <!-- DUITJOM NEWS PREMIUM SLIDER -->
-<section class="duitjom-news">
-
-    <!-- News Header -->
-    <div class="news-header">
-
-        <div class="news-brand-icon">
-
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="1.8"
-                 aria-hidden="true">
-
-                <path stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M19 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/>
-
-                <path stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M7 8h10M7 12h7M7 16h5"/>
-
-            </svg>
-
-        </div>
-
-        <div class="news-heading">
-
-            <span class="news-kicker">
-                DUITJOM NEWS
-            </span>
-
-            <h2>
-                Latest Updates
-            </h2>
-
-            <p>
-                Sistem & perkhidmatan DuitJom
-            </p>
-
-        </div>
-
-        <div class="news-live-status">
-            <span></span>
-            LIVE
-        </div>
-
-    </div>
-
-
-    <!-- News Slider -->
-    <div class="news-slider">
-
-        <div class="news-track" id="newsTrack">
-
-            <!-- NEWS 1 -->
-            <article class="news-item">
-
-                <div class="news-item-top">
-
-                    <div class="news-icon latest-icon">
-
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8">
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M12 3v18M3 12h18"/>
-
-                        </svg>
-
+                <section class="duitjom-news">
+                    <!-- News Header -->
+                    <div class="news-header">
+                        <div class="news-brand-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8"
+                                 aria-hidden="true">
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M19 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/>
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M7 8h10M7 12h7M7 16h5"/>
+                            </svg>
+                        </div>
+                        <div class="news-heading">
+                            <span class="news-kicker">
+                                DUITJOM NEWS
+                            </span>
+                            <h2>
+                                Latest Updates
+                            </h2>
+                            <p>
+                                Sistem & perkhidmatan DuitJom
+                            </p>
+                        </div>
+                        <div class="news-live-status">
+                            <span></span>
+                            LIVE
+                        </div>
                     </div>
 
-                    <span class="news-label latest">
-                        BAHARU
-                    </span>
+                    <!-- News Slider -->
+                    <div class="news-slider">
+                        <div class="news-track" id="newsTrack">
+                            <!-- NEWS 1 -->
+                            <article class="news-item">
+                                <div class="news-item-top">
+                                    <div class="news-icon latest-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             viewBox="0 0 24 24"
+                                             fill="none"
+                                             stroke="currentColor"
+                                             stroke-width="1.8">
+                                            <path stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                  d="M12 3v18M3 12h18"/>
+                                        </svg>
+                                    </div>
+                                    <span class="news-label latest">
+                                        BAHARU
+                                    </span>
+                                </div>
+                                <h3>
+                                    Sistem Digital DuitJom x GitHub
+                                </h3>
+                                <p>
+                                    Sistem pembayaran digital moden yang direka untuk
+                                    memastikan transaksi lebih selamat dan efisien.
+                                </p>
+                                <div class="news-footer">
+                                    <span>
+                                        Jaminan Keselamatan
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 24 24"
+                                         fill="none"
+                                         stroke="currentColor"
+                                         stroke-width="1.8">
+                                        <path stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                              d="M5 12h14M13 6l6 6-6 6"/>
+                                    </svg>
+                                </div>
+                            </article>
 
-                </div>
+                            <!-- NEWS 2 -->
+                            <article class="news-item">
+                                <div class="news-item-top">
+                                    <div class="news-icon security-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             viewBox="0 0 24 24"
+                                             fill="none"
+                                             stroke="currentColor"
+                                             stroke-width="1.8">
+                                            <path stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                  d="M12 3l7 4v5c0 4.8-3 7.9-7 9-4-1.1-7-4.2-7-9V7l7-4z"/>
+                                            <path stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                  d="M9.5 12l1.7 1.7 3.4-3.4"/>
+                                        </svg>
+                                    </div>
+                                    <span class="news-label security">
+                                        KESELAMATAN
+                                    </span>
+                                </div>
+                                <h3>
+                                    Log Masuk Google
+                                </h3>
+                                <p>
+                                    Ciri khas log masuk menggunakan Google telah
+                                    ditambah baik untuk sistem pembayaran DuitJom.
+                                </p>
+                                <div class="news-footer">
+                                    <span>
+                                        Keselamatan Akaun
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 24 24"
+                                         fill="none"
+                                         stroke="currentColor"
+                                         stroke-width="1.8">
+                                        <path stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                              d="M5 12h14M13 6l6 6-6 6"/>
+                                    </svg>
+                                </div>
+                            </article>
 
-                <h3>
-                    Sistem Digital DuitJom x GitHub
-                </h3>
+                            <!-- NEWS 3 -->
+                            <article class="news-item">
+                                <div class="news-item-top">
+                                    <div class="news-icon info-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             viewBox="0 0 24 24"
+                                             fill="none"
+                                             stroke="currentColor"
+                                             stroke-width="1.8">
+                                            <circle cx="12" cy="12" r="9"/>
+                                            <path stroke-linecap="round"
+                                                  d="M12 11v5"/>
+                                            <circle cx="12" cy="8" r=".6"
+                                                    fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                    <span class="news-label info">
+                                        MAKLUMAN
+                                    </span>
+                                </div>
+                                <h3>
+                                    Pengumuman Awal
+                                </h3>
+                                <p>
+                                    Sebarang kerja baik pulih sistem akan dimaklumkan
+                                    melalui email pengguna yang berdaftar.
+                                </p>
+                                <div class="news-footer">
+                                    <span>
+                                        Notis Awal
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 24 24"
+                                         fill="none"
+                                         stroke="currentColor"
+                                         stroke-width="1.8">
+                                        <path stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                              d="M5 12h14M13 6l6 6-6 6"/>
+                                    </svg>
+                                </div>
+                            </article>
 
-                <p>
-                    Sistem pembayaran digital moden yang direka untuk
-                    memastikan transaksi lebih selamat dan efisien.
-                </p>
+                            <!-- NEWS 4 -->
+                            <article class="news-item">
+                                <div class="news-item-top">
+                                    <div class="news-icon important-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             viewBox="0 0 24 24"
+                                             fill="none"
+                                             stroke="currentColor"
+                                             stroke-width="1.8">
+                                            <path stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                  d="M12 9v4"/>
+                                            <path stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                  d="M12 17h.01"/>
+                                            <path stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                  d="M10.3 4.5L2.7 18a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 4.5a2 2 0 0 0-3.4 0z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="news-label important">
+                                        PENTING
+                                    </span>
+                                </div>
+                                <h3>
+                                    Perlindungan Data Pengguna Dipertingkatkan
+                                </h3>
+                                <p>
+                                    Sistem akan log keluar secara automatik selepas
+                                    5 minit tiada aktiviti bagi meningkatkan keselamatan akaun.
+                                </p>
+                                <div class="news-footer">
+                                    <span>
+                                        Kawalan Data Pengguna
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 24 24"
+                                         fill="none"
+                                         stroke="currentColor"
+                                         stroke-width="1.8">
+                                        <path stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                              d="M5 12h14M13 6l6 6-6 6"/>
+                                    </svg>
+                                </div>
+                            </article>
 
-                <div class="news-footer">
+                            <!-- NEWS 5 -->
+                            <article class="news-item">
+                                <div class="news-item-top">
+                                    <div class="news-icon feature-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             viewBox="0 0 24 24"
+                                             fill="none"
+                                             stroke="currentColor"
+                                             stroke-width="1.8">
+                                            <path stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                  d="M12 3v18M3 12h18"/>
+                                            <path stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                  d="M5 5l14 14M19 5L5 19"/>
+                                        </svg>
+                                    </div>
+                                    <span class="news-label feature">
+                                        CIRI BAHARU
+                                    </span>
+                                </div>
+                                <h3>
+                                    Fungsi Pinjaman Berulang (RELOAN)
+                                </h3>
+                                <p>
+                                    Ciri baharu RELOAN memudahkan pengguna membuat
+                                    permohonan pinjaman berulang dengan lebih pantas.
+                                </p>
+                                <div class="news-footer">
+                                    <span>
+                                        Proses RELOAN
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 24 24"
+                                         fill="none"
+                                         stroke="currentColor"
+                                         stroke-width="1.8">
+                                        <path stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                              d="M5 12h14M13 6l6 6-6 6"/>
+                                    </svg>
+                                </div>
+                            </article>
 
-                    <span>
-                        Jaminan Keselamatan
-                    </span>
-
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.8">
-
-                        <path stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 12h14M13 6l6 6-6 6"/>
-
-                    </svg>
-
-                </div>
-
-            </article>
-
-
-            <!-- NEWS 2 -->
-            <article class="news-item">
-
-                <div class="news-item-top">
-
-                    <div class="news-icon security-icon">
-
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8">
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M12 3l7 4v5c0 4.8-3 7.9-7 9-4-1.1-7-4.2-7-9V7l7-4z"/>
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M9.5 12l1.7 1.7 3.4-3.4"/>
-
-                        </svg>
-
+                            <!-- NEWS 6 -->
+                            <article class="news-item">
+                                <div class="news-item-top">
+                                    <div class="news-icon update-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             viewBox="0 0 24 24"
+                                             fill="none"
+                                             stroke="currentColor"
+                                             stroke-width="1.8">
+                                            <path stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                  d="M20 11a8.1 8.1 0 0 0-14.7-3.7L3 10"/>
+                                            <path stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                  d="M3 5v5h5"/>
+                                            <path stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                  d="M4 13a8.1 8.1 0 0 0 14.7 3.7L21 14"/>
+                                            <path stroke-linecap="round"
+                                                  stroke-linejoin="round"
+                                                  d="M21 19v-5h-5"/>
+                                        </svg>
+                                    </div>
+                                    <span class="news-label notice">
+                                        MAKLUMAN
+                                    </span>
+                                </div>
+                                <h3>
+                                    Penambahbaikan Upload Resit
+                                </h3>
+                                <p>
+                                    Fungsi muat naik resit telah dinaik taraf untuk
+                                    pengalaman pengguna yang lebih lancar.
+                                </p>
+                                <div class="news-footer">
+                                    <span>
+                                        Sistem Lebih Pantas
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 24 24"
+                                         fill="none"
+                                         stroke="currentColor"
+                                         stroke-width="1.8">
+                                        <path stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                              d="M5 12h14M13 6l6 6-6 6"/>
+                                    </svg>
+                                </div>
+                            </article>
+                        </div>
                     </div>
 
-                    <span class="news-label security">
-                        KESELAMATAN
-                    </span>
-
-                </div>
-
-                <h3>
-                    Log Masuk Google
-                </h3>
-
-                <p>
-                    Ciri khas log masuk menggunakan Google telah
-                    ditambah baik untuk sistem pembayaran DuitJom.
-                </p>
-
-                <div class="news-footer">
-
-                    <span>
-                        Keselamatan Akaun
-                    </span>
-
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.8">
-
-                        <path stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 12h14M13 6l6 6-6 6"/>
-
-                    </svg>
-
-                </div>
-
-            </article>
-
-
-            <!-- NEWS 3 -->
-            <article class="news-item">
-
-                <div class="news-item-top">
-
-                    <div class="news-icon info-icon">
-
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8">
-
-                            <circle cx="12" cy="12" r="9"/>
-
-                            <path stroke-linecap="round"
-                                  d="M12 11v5"/>
-
-                            <circle cx="12" cy="8" r=".6"
-                                    fill="currentColor"/>
-
-                        </svg>
-
+                    <!-- Slider Indicator -->
+                    <div class="news-slider-indicators" id="newsIndicators">
+                        <button class="news-dot active" data-slide="0"></button>
+                        <button class="news-dot" data-slide="1"></button>
+                        <button class="news-dot" data-slide="2"></button>
+                        <button class="news-dot" data-slide="3"></button>
+                        <button class="news-dot" data-slide="4"></button>
+                        <button class="news-dot" data-slide="5"></button>
                     </div>
-
-                    <span class="news-label info">
-                        MAKLUMAN
-                    </span>
-
-                </div>
-
-                <h3>
-                    Pengumuman Awal
-                </h3>
-
-                <p>
-                    Sebarang kerja baik pulih sistem akan dimaklumkan
-                    melalui email pengguna yang berdaftar.
-                </p>
-
-                <div class="news-footer">
-
-                    <span>
-                        Notis Awal
-                    </span>
-
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.8">
-
-                        <path stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 12h14M13 6l6 6-6 6"/>
-
-                    </svg>
-
-                </div>
-
-            </article>
-
-
-            <!-- NEWS 4 -->
-            <article class="news-item">
-
-                <div class="news-item-top">
-
-                    <div class="news-icon important-icon">
-
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8">
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M12 9v4"/>
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M12 17h.01"/>
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M10.3 4.5L2.7 18a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 4.5a2 2 0 0 0-3.4 0z"/>
-
-                        </svg>
-
-                    </div>
-
-                    <span class="news-label important">
-                        PENTING
-                    </span>
-
-                </div>
-
-                <h3>
-                    Perlindungan Data Pengguna Dipertingkatkan
-                </h3>
-
-                <p>
-                    Sistem akan log keluar secara automatik selepas
-                    5 minit tiada aktiviti bagi meningkatkan keselamatan akaun.
-                </p>
-
-                <div class="news-footer">
-
-                    <span>
-                        Kawalan Data Pengguna
-                    </span>
-
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.8">
-
-                        <path stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 12h14M13 6l6 6-6 6"/>
-
-                    </svg>
-
-                </div>
-
-            </article>
-
-
-            <!-- NEWS 5 -->
-            <article class="news-item">
-
-                <div class="news-item-top">
-
-                    <div class="news-icon feature-icon">
-
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8">
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M12 3v18M3 12h18"/>
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M5 5l14 14M19 5L5 19"/>
-
-                        </svg>
-
-                    </div>
-
-                    <span class="news-label feature">
-                        CIRI BAHARU
-                    </span>
-
-                </div>
-
-                <h3>
-                    Fungsi Pinjaman Berulang (RELOAN)
-                </h3>
-
-                <p>
-                    Ciri baharu RELOAN memudahkan pengguna membuat
-                    permohonan pinjaman berulang dengan lebih pantas.
-                </p>
-
-                <div class="news-footer">
-
-                    <span>
-                        Proses RELOAN
-                    </span>
-
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.8">
-
-                        <path stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 12h14M13 6l6 6-6 6"/>
-
-                    </svg>
-
-                </div>
-
-            </article>
-
-
-            <!-- NEWS 6 -->
-            <article class="news-item">
-
-                <div class="news-item-top">
-
-                    <div class="news-icon update-icon">
-
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8">
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M20 11a8.1 8.1 0 0 0-14.7-3.7L3 10"/>
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M3 5v5h5"/>
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M4 13a8.1 8.1 0 0 0 14.7 3.7L21 14"/>
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M21 19v-5h-5"/>
-
-                        </svg>
-
-                    </div>
-
-                    <span class="news-label notice">
-                        MAKLUMAN
-                    </span>
-
-                </div>
-
-                <h3>
-                    Penambahbaikan Upload Resit
-                </h3>
-
-                <p>
-                    Fungsi muat naik resit telah dinaik taraf untuk
-                    pengalaman pengguna yang lebih lancar.
-                </p>
-
-                <div class="news-footer">
-
-                    <span>
-                        Sistem Lebih Pantas
-                    </span>
-
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="currentColor"
-                         stroke-width="1.8">
-
-                        <path stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 12h14M13 6l6 6-6 6"/>
-
-                    </svg>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
-
-    <!-- Slider Indicator -->
-    <div class="news-slider-indicators" id="newsIndicators">
-
-        <button class="news-dot active" data-slide="0"></button>
-        <button class="news-dot" data-slide="1"></button>
-        <button class="news-dot" data-slide="2"></button>
-        <button class="news-dot" data-slide="3"></button>
-        <button class="news-dot" data-slide="4"></button>
-        <button class="news-dot" data-slide="5"></button>
-
-    </div>
-
-</section>
+                </section>
             </div>
         </main>
-        
+
         <!-- FOOTER LEGAL LINKS -->
         <footer class="bg-[#111827] text-gray-400 py-6 text-xs text-center border-t border-gray-800">
             <p>&copy; 2026 DuitJom. Hak cipta terpelihara.</p>
@@ -1214,476 +838,341 @@
     </div>
 
     <!-- PAYMENT PAGE (Borang Maklumat Diri) -->
-<div id="paymentPage" class="hidden flex-col min-h-screen bg-white -mt-[72px] pt-[72px]">
-
-    <main class="max-w-md w-full mx-auto px-4 py-6 flex-grow flex flex-col items-center">
-
-        <!-- LOGO -->
-        <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs mb-4 flex items-center justify-center">
-            <img src="IMG_6715.png"
-                 alt="Logo DuitJom"
-                 class="w-full h-full object-contain">
-        </div>
-
-        <!-- PAGE DESCRIPTION -->
-        <h2 class="text-gray-500 font-semibold text-center text-xs max-w-xs mb-6 leading-relaxed">
-            Halaman Pembayaran DuitJom
-        </h2>
-
-        <div class="w-full bg-white rounded-2xl p-1">
-
-            <!-- SECTION TITLE -->
-            <div class="text-lg font-bold text-slate-900 flex items-center gap-3 mb-6 px-1">
-
-                <!-- User / Form SVG -->
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     class="w-6 h-6 text-blue-500 flex-shrink-0"
-                     aria-hidden="true">
-
-                    <path stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M15.75 6.75a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
-
-                    <path stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M4.5 20.25a7.5 7.5 0 0 1 15 0"/>
-
-                </svg>
-
-                <h3>
-                    Pertama: Masukkan Butiran Maklumat Diri
-                </h3>
-
+    <div id="paymentPage" class="hidden flex-col min-h-screen bg-white -mt-[72px] pt-[72px]">
+        <main class="max-w-md w-full mx-auto px-4 py-6 flex-grow flex flex-col items-center">
+            <!-- LOGO -->
+            <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs mb-4 flex items-center justify-center">
+                <img src="IMG_6715.png"
+                     alt="Logo DuitJom"
+                     class="w-full h-full object-contain">
             </div>
 
+            <!-- PAGE DESCRIPTION -->
+            <h2 class="text-gray-500 font-semibold text-center text-xs max-w-xs mb-6 leading-relaxed">
+                Halaman Pembayaran DuitJom
+            </h2>
 
-            <form onsubmit="goToNextStepPage(event)" class="space-y-5">
-
-
-                <!-- ===================================== -->
-                <!-- NAMA PENUH -->
-                <!-- ===================================== -->
-                <div>
-
-                    <label class="flex items-center gap-2 text-xs font-bold text-slate-800 mb-1.5">
-
-                        <!-- User SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8"
-                             class="w-4 h-4 text-blue-500"
-                             aria-hidden="true">
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M15.75 6.75a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M4.5 20.25a7.5 7.5 0 0 1 15 0"/>
-
-                        </svg>
-
-                        <span>Nama Penuh (IC)</span>
-
-                        <span class="text-red-500">*</span>
-
-                    </label>
-
-                    <input
-                        type="text"
-                        id="inputNama"
-                        required
-                        placeholder="Ali Bin Abu"
-                        autocomplete="name"
-                        class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm"
-                    >
-
+            <div class="w-full bg-white rounded-2xl p-1">
+                <!-- SECTION TITLE -->
+                <div class="text-lg font-bold text-slate-900 flex items-center gap-3 mb-6 px-1">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="1.8"
+                         class="w-6 h-6 text-blue-500 flex-shrink-0"
+                         aria-hidden="true">
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M15.75 6.75a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M4.5 20.25a7.5 7.5 0 0 1 15 0"/>
+                    </svg>
+                    <h3>
+                        Pertama: Masukkan Butiran Maklumat Diri
+                    </h3>
                 </div>
 
-
-                <!-- ===================================== -->
-                <!-- NOMBOR KAD PENGENALAN -->
-                <!-- ===================================== -->
-                <div>
-
-                    <label class="flex items-center gap-2 text-xs font-bold text-slate-800 mb-1.5">
-
-                        <!-- ID Card SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8"
-                             class="w-4 h-4 text-blue-500"
-                             aria-hidden="true">
-
-                            <rect x="3" y="5" width="18" height="14" rx="2"/>
-
-                            <circle cx="8" cy="12" r="2"/>
-
-                            <path stroke-linecap="round"
-                                  d="M13 10h5M13 14h4"/>
-
-                        </svg>
-
-                        <span>Nombor Kad Pengenalan</span>
-
-                        <span class="text-red-500">*</span>
-
-                    </label>
-
-                    <input
-                        type="text"
-                        id="inputIC"
-                        required
-                        placeholder="000000-00-0000"
-                        maxlength="14"
-                        inputmode="numeric"
-                        autocomplete="off"
-                        class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm"
-                        oninput="formatIC(this)"
-                    >
-
-                    <!-- IC ERROR -->
-                    <p id="icError"
-                       class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
-
-                        <!-- Warning SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8"
-                             class="w-4 h-4 flex-shrink-0 mt-0.5"
-                             aria-hidden="true">
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M12 9v4"/>
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M12 17h.01"/>
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M10.3 4.5 2.7 18a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 4.5a2 2 0 0 0-3.4 0Z"/>
-
-                        </svg>
-
-                        <span>
-                            Nombor kad pengenalan mesti mengikut format 000000-00-0000.
-                        </span>
-
-                    </p>
-
-                </div>
-
-
-                <!-- ===================================== -->
-                <!-- ID LOAN -->
-                <!-- ===================================== -->
-                <div>
-
-                    <label class="flex items-center gap-2 text-xs font-bold text-slate-800 mb-1.5">
-
-                        <!-- Document / Loan SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8"
-                             class="w-4 h-4 text-blue-500"
-                             aria-hidden="true">
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M6 3.75h8.25L18 7.5v12.75H6z"/>
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M14.25 3.75V7.5H18"/>
-
-                            <path stroke-linecap="round"
-                                  d="M9 11h6M9 14.5h6"/>
-
-                        </svg>
-
-                        <span>ID Loan DJ / CUST</span>
-
-                        <span class="text-red-500">*</span>
-
-                    </label>
-
-                    <input
-                        type="text"
-                        id="inputLoanID"
-                        required
-                        placeholder="DJ30001234 atau CUST20260000"
-                        autocomplete="off"
-                        class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm"
-                        oninput="validateDJCust(this)"
-                    >
-
-                    <!-- LOAN ID ERROR -->
-                    <p id="djcustError"
-                       class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
-
-                        <!-- Warning SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8"
-                             class="w-4 h-4 flex-shrink-0 mt-0.5"
-                             aria-hidden="true">
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M12 9v4"/>
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M12 17h.01"/>
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M10.3 4.5 2.7 18a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 4.5a2 2 0 0 0-3.4 0Z"/>
-
-                        </svg>
-
-                        <span>
-                            Masukkan ID Loan "DJ" atau "CUST" yang sah.
-                        </span>
-
-                    </p>
-
-
-                    <!-- INFO -->
-                    <p class="text-blue-500 text-xs mt-1.5 flex items-start gap-1">
-
-                        <!-- Info SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8"
-                             class="w-4 h-4 flex-shrink-0 mt-0.5"
-                             aria-hidden="true">
-
-                            <circle cx="12" cy="12" r="9"/>
-
-                            <path stroke-linecap="round"
-                                  d="M12 11v5"/>
-
-                            <circle cx="12" cy="8" r=".6"
-                                    fill="currentColor"/>
-
-                        </svg>
-
-                        <span>
-                            Layari laman web www.duitjom.com untuk dapatkan ID Loan "DJ" "CUST".
-                        </span>
-
-                    </p>
-
-                </div>
-
-
-                <!-- ===================================== -->
-                <!-- NOMBOR TELEFON -->
-                <!-- ===================================== -->
-                <div>
-
-                    <label class="flex items-center gap-2 text-xs font-bold text-slate-800 mb-1.5">
-
-                        <!-- Phone SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8"
-                             class="w-4 h-4 text-blue-500"
-                             aria-hidden="true">
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M6.5 3.75h3l1.5 4-2 1.5a14 14 0 0 0 5.75 5.75l1.5-2 4 1.5v3c0 1.1-.9 2-2 2C11.04 19.5 4.5 12.96 4.5 4.75c0-1.1.9-1 2-1Z"/>
-
-                        </svg>
-
-                        <span>Nombor Telefon</span>
-
-                        <span class="text-red-500">*</span>
-
-                    </label>
-
-
-                    <!-- PHONE INPUT + MALAYSIA PREFIX -->
-                    <div class="flex w-full rounded-xl border border-gray-300 overflow-hidden focus-within:ring-2 focus-within:ring-blue-400 focus-within:border-blue-400">
-
-                        <!-- COUNTRY PREFIX -->
-                        <div class="flex items-center gap-1.5 px-3 bg-gray-50 border-r border-gray-300 text-sm font-semibold text-slate-700 select-none">
-
-                            <span class="text-base">🇲🇾</span>
-
-                            <span>+60</span>
-
+                <form onsubmit="goToNextStepPage(event)" class="space-y-5">
+                    <!-- ===================================== -->
+                    <!-- NAMA PENUH -->
+                    <!-- ===================================== -->
+                    <div>
+                        <label class="flex items-center gap-2 text-xs font-bold text-slate-800 mb-1.5">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8"
+                                 class="w-4 h-4 text-blue-500"
+                                 aria-hidden="true">
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M15.75 6.75a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M4.5 20.25a7.5 7.5 0 0 1 15 0"/>
+                            </svg>
+                            <span>Nama Penuh (IC)</span>
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="inputNama"
+                            required
+                            placeholder="Ali Bin Abu"
+                            autocomplete="name"
+                            class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm"
+                        >
+                    </div>
+
+                    <!-- ===================================== -->
+                    <!-- NOMBOR KAD PENGENALAN -->
+                    <!-- ===================================== -->
+                    <div>
+                        <label class="flex items-center gap-2 text-xs font-bold text-slate-800 mb-1.5">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8"
+                                 class="w-4 h-4 text-blue-500"
+                                 aria-hidden="true">
+                                <rect x="3" y="5" width="18" height="14" rx="2"/>
+                                <circle cx="8" cy="12" r="2"/>
+                                <path stroke-linecap="round"
+                                      d="M13 10h5M13 14h4"/>
+                            </svg>
+                            <span>Nombor Kad Pengenalan</span>
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="inputIC"
+                            required
+                            placeholder="000000-00-0000"
+                            maxlength="14"
+                            inputmode="numeric"
+                            autocomplete="off"
+                            class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm"
+                            oninput="formatIC(this)"
+                        >
+                        <!-- IC ERROR -->
+                        <p id="icError"
+                           class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8"
+                                 class="w-4 h-4 flex-shrink-0 mt-0.5"
+                                 aria-hidden="true">
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M12 9v4"/>
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M12 17h.01"/>
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M10.3 4.5 2.7 18a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 4.5a2 2 0 0 0-3.4 0Z"/>
+                            </svg>
+                            <span>
+                                Nombor kad pengenalan mesti mengikut format 000000-00-0000.
+                            </span>
+                        </p>
+                    </div>
+
+                    <!-- ===================================== -->
+                    <!-- ID LOAN -->
+                    <!-- ===================================== -->
+                    <div>
+                        <label class="flex items-center gap-2 text-xs font-bold text-slate-800 mb-1.5">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8"
+                                 class="w-4 h-4 text-blue-500"
+                                 aria-hidden="true">
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M6 3.75h8.25L18 7.5v12.75H6z"/>
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M14.25 3.75V7.5H18"/>
+                                <path stroke-linecap="round"
+                                      d="M9 11h6M9 14.5h6"/>
+                            </svg>
+                            <span>ID Loan DJ / CUST</span>
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="inputLoanID"
+                            required
+                            placeholder="DJ30001234 atau CUST20260000"
+                            autocomplete="off"
+                            class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm"
+                            oninput="validateDJCust(this)"
+                        >
+                        <!-- LOAN ID ERROR -->
+                        <p id="djcustError"
+                           class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8"
+                                 class="w-4 h-4 flex-shrink-0 mt-0.5"
+                                 aria-hidden="true">
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M12 9v4"/>
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M12 17h.01"/>
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M10.3 4.5 2.7 18a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 4.5a2 2 0 0 0-3.4 0Z"/>
+                            </svg>
+                            <span>
+                                Masukkan ID Loan "DJ" atau "CUST" yang sah.
+                            </span>
+                        </p>
+                        <!-- INFO -->
+                        <p class="text-blue-500 text-xs mt-1.5 flex items-start gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8"
+                                 class="w-4 h-4 flex-shrink-0 mt-0.5"
+                                 aria-hidden="true">
+                                <circle cx="12" cy="12" r="9"/>
+                                <path stroke-linecap="round"
+                                      d="M12 11v5"/>
+                                <circle cx="12" cy="8" r=".6"
+                                        fill="currentColor"/>
+                            </svg>
+                            <span>
+                                Layari laman web www.duitjom.com untuk dapatkan ID Loan "DJ" "CUST".
+                            </span>
+                        </p>
+                    </div>
+
+                    <!-- ===================================== -->
+                    <!-- NOMBOR TELEFON -->
+                    <!-- ===================================== -->
+                    <div>
+                        <label class="flex items-center gap-2 text-xs font-bold text-slate-800 mb-1.5">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8"
+                                 class="w-4 h-4 text-blue-500"
+                                 aria-hidden="true">
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M6.5 3.75h3l1.5 4-2 1.5a14 14 0 0 0 5.75 5.75l1.5-2 4 1.5v3c0 1.1-.9 2-2 2C11.04 19.5 4.5 12.96 4.5 4.75c0-1.1.9-1 2-1Z"/>
+                            </svg>
+                            <span>Nombor Telefon</span>
+                            <span class="text-red-500">*</span>
+                        </label>
+
+                        <!-- PHONE INPUT + MALAYSIA PREFIX -->
+                        <div class="flex w-full rounded-xl border border-gray-300 overflow-hidden focus-within:ring-2 focus-within:ring-blue-400 focus-within:border-blue-400">
+                            <!-- COUNTRY PREFIX -->
+                            <div class="flex items-center gap-1.5 px-3 bg-gray-50 border-r border-gray-300 text-sm font-semibold text-slate-700 select-none">
+                                <span class="text-base">🇲🇾</span>
+                                <span>+60</span>
+                            </div>
+
+                            <!-- PHONE NUMBER -->
+                            <input
+                                type="tel"
+                                id="inputPhone"
+                                required
+                                placeholder="123456789 / 1234567890"
+                                maxlength="10"
+                                inputmode="numeric"
+                                autocomplete="tel"
+                                class="flex-1 min-w-0 px-4 py-2.5 border-0 focus:ring-0 focus:outline-none text-sm"
+                                oninput="validatePhone(this)"
+                            >
                         </div>
 
-
-                        <!-- PHONE NUMBER -->
-                        <input
-                            type="tel"
-                            id="inputPhone"
-                            required
-                            placeholder="123456789 / 1234567890"
-                            maxlength="10"
-                            inputmode="numeric"
-                            autocomplete="tel"
-                            class="flex-1 min-w-0 px-4 py-2.5 
-                            border-0 focus:ring-0 focus:outline-none text-sm"
-                            oninput="validatePhone(this)".                         
-                        >
-    
-
+                        <!-- PHONE ERROR -->
+                        <p id="phoneError"
+                           class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8"
+                                 class="w-4 h-4 flex-shrink-0 mt-0.5"
+                                 aria-hidden="true">
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M12 9v4"/>
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M12 17h.01"/>
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M10.3 4.5 2.7 18a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 4.5a2 2 0 0 0-3.4 0Z"/>
+                            </svg>
+                            <span>
+                                Nombor telefon tidak sah
+                            </span>
+                        </p>
                     </div>
 
-
-                    <!-- PHONE ERROR -->
-                    <p id="phoneError"
-                       class="text-red-500 text-xs mt-1.5 hidden flex items-start gap-1">
-
-                        <!-- Warning SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8"
-                             class="w-4 h-4 flex-shrink-0 mt-0.5"
-                             aria-hidden="true">
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M12 9v4"/>
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M12 17h.01"/>
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M10.3 4.5 2.7 18a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7 3L13.7 4.5a2 2 0 0 0-3.4 0Z"/>
-
-                        </svg>
-
-                        <span>
-                            Nombor telefon tidak sah
-                        </span>
-
-                    </p>
-
-                </div>
-
-
-                <!-- ===================================== -->
-                <!-- JUMLAH BAYARAN -->
-                <!-- ===================================== -->
-                <div>
-
-                    <label class="flex items-center gap-2 text-xs font-bold text-slate-800 mb-1.5">
-
-                        <!-- Money SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8"
-                             class="w-4 h-4 text-blue-500"
-                             aria-hidden="true">
-
-                            <rect x="3" y="6" width="18" height="12" rx="2"/>
-
-                            <circle cx="12" cy="12" r="2.5"/>
-
-                            <path stroke-linecap="round"
-                                  d="M7 9h.01M17 15h.01"/>
-
-                        </svg>
-
-                        <span>Jumlah Bayaran</span>
-
-                        <span class="text-red-500">*</span>
-
-                    </label>
-
-                    <div class="relative">
-
-                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500 pointer-events-none">
-                            RM
-                        </span>
-
-                        <input
-                            type="number"
-                            step="0.01"
-                            min="0.01"
-                            id="inputAmaun"
-                            required
-                            placeholder="0.00"
-                            inputmode="decimal"
-                            class="w-full pl-12 pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm"
-                        >
-
+                    <!-- ===================================== -->
+                    <!-- JUMLAH BAYARAN -->
+                    <!-- ===================================== -->
+                    <div>
+                        <label class="flex items-center gap-2 text-xs font-bold text-slate-800 mb-1.5">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8"
+                                 class="w-4 h-4 text-blue-500"
+                                 aria-hidden="true">
+                                <rect x="3" y="6" width="18" height="12" rx="2"/>
+                                <circle cx="12" cy="12" r="2.5"/>
+                                <path stroke-linecap="round"
+                                      d="M7 9h.01M17 15h.01"/>
+                            </svg>
+                            <span>Jumlah Bayaran</span>
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500 pointer-events-none">
+                                RM
+                            </span>
+                            <input
+                                type="number"
+                                step="0.01"
+                                min="0.01"
+                                id="inputAmaun"
+                                required
+                                placeholder="0.00"
+                                inputmode="decimal"
+                                class="w-full pl-12 pr-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none text-sm"
+                            >
+                        </div>
                     </div>
 
-                </div>
-
-
-                <!-- ===================================== -->
-                <!-- NEXT BUTTON -->
-                <!-- ===================================== -->
-                <div class="pt-4">
-
-                    <button
-                        type="submit"
-                        class="w-full bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold text-sm py-3 px-6 rounded-xl shadow-lg flex items-center justify-center gap-2 transition duration-200 hover:from-blue-500 hover:to-blue-700"
-                    >
-
-                        Seterusnya
-
-                        <!-- Arrow SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="1.8"
-                             class="w-4 h-4"
-                             aria-hidden="true">
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M5 12h14M13 6l6 6-6 6"/>
-
-                        </svg>
-
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
-
-    </main>
-
-</div>
+                    <!-- ===================================== -->
+                    <!-- NEXT BUTTON -->
+                    <!-- ===================================== -->
+                    <div class="pt-4">
+                        <button
+                            type="submit"
+                            class="w-full bg-gradient-to-r from-blue-400 to-blue-600 text-white font-bold text-sm py-3 px-6 rounded-xl shadow-lg flex items-center justify-center gap-2 transition duration-200 hover:from-blue-500 hover:to-blue-700"
+                        >
+                            Seterusnya
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="1.8"
+                                 class="w-4 h-4"
+                                 aria-hidden="true">
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M5 12h14M13 6l6 6-6 6"/>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
 
     <!-- NEXT STEP PAGE -->
     <div id="nextStepPage" class="hidden flex-col min-h-screen bg-white -mt-[72px] pt-[72px]">
@@ -1723,7 +1212,7 @@
                 <div class="flex justify-between items-start text-xs font-semibold text-slate-900 mb-2">
                     <span>Jumlah Bayaran</span>
                     <div class="text-right">
-                        <span class="text-gray-500 font-normal">ID DJ,CUST-00000 (e.g DJ30001234):</span> 
+                        <span class="text-gray-500 font-normal">ID DJ,CUST-00000 (e.g DJ30001234):</span>
                         <span id="displayLoanID" class="text-slate-900 font-bold ml-1">-</span>
                     </div>
                 </div>
@@ -1737,7 +1226,8 @@
                     <span id="displaySubAmaun">RM 0.00</span>
                 </div>
             </div>
-            <div class="bg-green-300 text-red text-[10px] font-medium p-3 rounded-lg flex items-start gap-2 mb-6 shadow-xs leading-relaxed">
+            <!-- ✅ BETUL: text-red-600 bukan text-red -->
+            <div class="bg-green-300 text-red-600 text-[10px] font-medium p-3 rounded-lg flex items-start gap-2 mb-6 shadow-xs leading-relaxed">
                 <i class="fas fa-exclamation-triangle mt-0.5 flex-shrink-0"></i>
                 <span>Pembayaran hanya melalui Perkhidmatan Bank yang Tersedia dengan Jumlah Trasaksi Asal .</span>
             </div>
