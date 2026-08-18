@@ -196,33 +196,221 @@
             <!-- ========================================= -->
             <!-- APPLY LOAN SECTION -->
             <!-- ========================================= -->
-            <div class="rounded-2xl bg-gray-50 border border-gray-100 p-4 shadow-sm">
-                <p class="text-[11px] leading-relaxed text-gray-600 font-medium">
-                    For Apply the Duitjom Loan, Please Visit Our Official Website at
-                    <span class="font-bold text-sky-600">
-                        “www.duitjom.com”
-                    </span>
-                    or :
-                </p>
-                <p class="text-[10px] text-gray-500 font-semibold mt-3 mb-3 text-center">
-                    Click Button Bellow
-                </p>
-                <!-- APPLY NOW BUTTON -->
-                <button type="button"
-                        onclick="applyNowAction()"
-                        class="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-sky-500 hover:bg-sky-600 active:scale-[0.98] text-white text-sm font-bold shadow-md shadow-sky-200 transition-all duration-200">
-                    <i class="fas fa-external-link-alt text-xs"></i>
-                    Apply Now
-                </button>
-                <!-- PACKAGE -->
-                <button type="button"
-                        onclick="packageAction()"
-                        class="w-full mt-2 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-white border border-gray-200 hover:bg-gray-50 active:scale-[0.98] text-gray-700 text-sm font-bold transition-all duration-200">
-                    <i class="fas fa-box-open text-sm text-sky-500"></i>
-                    PACKAGE
-                </button>
-            </div>
+            <!-- APPLY DUITJOM CARD -->
+<div class="rounded-2xl
+            bg-sky-50/60
+            backdrop-blur-xl
+            border border-white/70
+            p-5
+            shadow-lg shadow-sky-100/60">
+
+    <!-- WEBSITE / GLOBE ICON -->
+    <div class="flex justify-center mb-3">
+        <div class="w-11 h-11
+                    rounded-full
+                    bg-white/70
+                    backdrop-blur-md
+                    border border-white/80
+                    shadow-sm
+                    flex items-center justify-center">
+
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.8"
+                 class="w-6 h-6 text-sky-500">
+
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M3 12h18"></path>
+                <path d="M12 3c2.2 2.45 3.3 5.45 3.3 9s-1.1 6.55-3.3 9"></path>
+                <path d="M12 3c-2.2 2.45-3.3 5.45-3.3 9s1.1 6.55 3.3 9"></path>
+
+            </svg>
+
         </div>
+    </div>
+
+
+    <!-- DUITJOM HEADER -->
+    <div class="text-center mb-2">
+
+        <p class="text-[15px]
+                  font-extrabold
+                  tracking-tight
+                  text-gray-400">
+
+            DuitJom.com
+
+        </p>
+
+    </div>
+
+
+    <!-- DESCRIPTION -->
+    <div class="text-center px-2">
+
+        <p class="text-[12px]
+                  leading-relaxed
+                  text-gray-600
+                  font-medium">
+
+            For Apply the DuitJom Loan, Please Visit Our
+            Official Website at
+
+        </p>
+
+
+        <!-- WEBSITE -->
+        <div class="mt-2">
+
+            <span class="inline-flex
+                         items-center
+                         px-3 py-1.5
+                         rounded-lg
+                         bg-white/60
+                         backdrop-blur-md
+                         border border-white/80
+                         shadow-sm
+                         text-[12px]
+                         font-extrabold
+                         tracking-wide
+                         text-gray-400">
+
+                “www.duitjom.com”
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- OR DIVIDER -->
+    <div class="flex items-center gap-3 my-4">
+
+        <div class="flex-1 h-px bg-white/80"></div>
+
+        <span class="text-[9px]
+                     font-bold
+                     text-gray-400
+                     tracking-wide">
+
+            OR
+
+        </span>
+
+        <div class="flex-1 h-px bg-white/80"></div>
+
+    </div>
+
+
+    <!-- CLICK BUTTON BELOW GLASS BOX -->
+    <div class="rounded-xl
+                bg-white/45
+                backdrop-blur-xl
+                border border-white/70
+                px-4 py-3
+                shadow-sm">
+
+        <p class="text-[10px]
+                  text-gray-500
+                  font-bold
+                  text-center
+                  uppercase
+                  tracking-wider">
+
+            Click Button Below
+
+        </p>
+
+    </div>
+
+
+    <!-- APPLY NOW BUTTON -->
+    <button type="button"
+            onclick="applyNowAction()"
+            class="w-full
+                   mt-3
+                   flex items-center justify-center gap-2
+                   py-3 px-4
+                   rounded-xl
+                   bg-sky-500/90
+                   hover:bg-sky-600
+                   active:scale-[0.98]
+                   text-white
+                   text-sm
+                   font-bold
+                   shadow-md
+                   shadow-sky-200
+                   border border-sky-400/30
+                   transition-all
+                   duration-200">
+
+        <!-- EXTERNAL LINK SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             class="w-4 h-4">
+
+            <path d="M14 3h7v7"></path>
+            <path d="M10 14L21 3"></path>
+            <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"></path>
+
+        </svg>
+
+        Apply Now
+
+    </button>
+
+
+    <!-- PACKAGE BUTTON -->
+    <button type="button"
+            onclick="packageAction()"
+            class="w-full
+                   mt-2
+                   flex items-center justify-center gap-2
+                   py-3 px-4
+                   rounded-xl
+                   bg-white/55
+                   hover:bg-white/75
+                   backdrop-blur-xl
+                   border border-white/80
+                   active:scale-[0.98]
+                   text-gray-600
+                   text-sm
+                   font-bold
+                   shadow-sm
+                   transition-all
+                   duration-200">
+
+        <!-- PACKAGE / BOX SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="1.8"
+             class="w-4 h-4 text-sky-500">
+
+            <path d="M21 8.5 12 3 3 8.5"></path>
+
+            <path d="M3 8.5v7L12 21l9-5.5v-7"></path>
+
+            <path d="M12 21V10"></path>
+
+            <path d="M3.5 8.5 12 14l8.5-5.5"></path>
+
+            <path d="M8 5.5 16.5 11"></path>
+
+        </svg>
+
+        PAKEJ KAMI
+
+    </button>
+
+</div>
 
         <!-- ========================================= -->
         <!-- FOOTER SIDEBAR -->
