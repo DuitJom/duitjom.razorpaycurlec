@@ -1054,3 +1054,22 @@ document.addEventListener(
 
     }
 );
+
+// =========================================================
+// TAMBAHAN: FUNGSI SEMAKAN ID LOAN YANG HILANG
+// =========================================================
+function validateDJCust(input) {
+    const errorElement = document.getElementById('djcustError');
+    // Tukar huruf kecil kepada huruf besar secara automatik
+    const value = input.value.toUpperCase();
+    input.value = value;
+    
+    // Semak jika input bermula dengan 'DJ' atau 'CUST'
+    if (value.length > 0 && !/^(DJ|CUST)/.test(value)) {
+        errorElement.classList.remove('hidden');
+        input.classList.add('border-red-500');
+    } else {
+        errorElement.classList.add('hidden');
+        input.classList.remove('border-red-500');
+    }
+}
