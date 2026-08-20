@@ -774,27 +774,6 @@
 }
 
 /* =========================================================
-   DUITJOM PAGE TRANSITION PROGRESS BAR
-   ========================================================= */
-
-#pageTransitionSpinner {
-    transition: opacity .3s ease;
-}
-
-#pageLoadingProgress {
-    width: 0%;
-    min-width: 0%;
-    will-change: width;
-    box-shadow:
-        0 0 10px rgba(37,99,235,.25);
-}
-
-#pageLoadingPercentage {
-    min-width: 32px;
-    text-align: right;
-}
-
-/* =========================================================
    DUITJOM PREMIUM PAGE LOADING PROGRESS
    ========================================================= */
 

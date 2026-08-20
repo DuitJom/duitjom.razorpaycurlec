@@ -774,6 +774,7 @@ function applyNowAction() {
 // PACKAGE
 function packageAction() {
     closeSidebar();
+    window.open('https://www.duitjom.com/', '_blank', 'noopener,noreferrer');
 }
 
 

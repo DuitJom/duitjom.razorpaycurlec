@@ -42,12 +42,12 @@
                     </button>
                     <!-- Senarai Dropdown -->
                     <div class="absolute right-0 mt-2 w-36 bg-white border border-gray-200 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
-                        <a href="javascript:void(0)" class="block px-4 py-2.5 text-xs font-bold text-blue-600 bg-blue-50 border-b border-gray-50 hover:bg-blue-100">
+                        <button type="button" disabled aria-current="page" class="w-full text-left block px-4 py-2.5 text-xs font-bold text-blue-600 bg-blue-50 border-b border-gray-50">
                             <span class="mr-2">🇲🇾</span> Bahasa Malaysia
-                        </a>
-                        <a href="javascript:void(0)" class="block px-4 py-2.5 text-xs font-bold text-gray-500 hover:bg-gray-50">
+                        </button>
+                        <button type="button" onclick="alert('Versi Bahasa Inggeris belum tersedia buat masa ini.')" class="w-full text-left block px-4 py-2.5 text-xs font-bold text-gray-500 hover:bg-gray-50">
                             <span class="mr-2">🇺🇸</span> English
-                        </a>
+                        </button>
                     </div>
                 </div>
 
@@ -124,7 +124,7 @@
             <!-- ========================================= -->
             <div class="space-y-1">
                 <!-- HOME -->
-                <a href="javascript:void(0)"
+                <a href="index.html"
                    onclick="sidebarHomeAction()"
                    class="flex items-center gap-3 text-sm font-medium text-gray-400 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
                     <div class="w-8 h-8 rounded-xl bg-sky-50 flex items-center justify-center text-sky-500">
@@ -145,7 +145,7 @@
                 </a>
 
                 <!-- TERM FAQ -->
-                <a href="page/terms-and-conditions.html"
+                <a href="page/term-conditional.html"
                    class="flex items-center gap-3 text-sm font-medium text-gray-400 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
                     <div class="w-8 h-8 rounded-xl bg-purple-50 flex items-center justify-center text-purple-500">
                         <i class="fas fa-file-contract text-sm"></i>
@@ -155,7 +155,7 @@
                 </a>
 
                 <!-- ABOUT US -->
-                <a href="javascript:void(0)"
+                <a href="page/about-us.html"
                    onclick="aboutUsAction()"
                    class="flex items-center gap-3 text-sm font-medium text-gray-400 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
                     <div class="w-8 h-8 rounded-xl bg-orange-50 flex items-center justify-center text-orange-500">
@@ -166,7 +166,7 @@
                 </a>
 
                 <!-- BLOG -->
-                <a href="javascript:void(0)"
+                <a href="page/blog.html"
                    onclick="blogAction()"
                    class="flex items-center gap-3 text-sm font-medium
                     text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
@@ -178,7 +178,7 @@
                 </a>
 
                 <!-- EMAIL -->
-                <a href="javascript:void(0)"
+                <button type="button"
                    onclick="openEmailPopup()"
                    class="flex items-center gap-3 text-sm font-semibold text-gray-700 hover:bg-sky-50 hover:text-sky-600 px-3 py-3 rounded-xl transition-all duration-200">
                     <div class="w-8 h-8 rounded-xl bg-red-50 flex items-center justify-center text-red-500">
@@ -186,7 +186,7 @@
                     </div>
                     <span>EMAIL</span>
                     <i class="fas fa-chevron-right text-[10px] text-gray-400 ml-auto"></i>
-                </a>
+                </button>
             </div>
 
             <!-- ========================================= -->
@@ -420,6 +420,7 @@
             &copy; 2026 DuitJom. Hak cipta terpelihara.
         </div>
     </div>
+</div>
 
     <!-- ====================================================== -->
     <!-- EMAIL POPUP OVERLAY -->
@@ -607,11 +608,10 @@
          MAIN PAGE — DIPERBAIKI
          ========================================================= -->
      <div id="mainPage" 
-         class="flex flex-col min-h-screen justify-between mt-[72px]" 
-         style="display: flex !important; opacity: 1 !important; visibility: visible !important;">
+         class="flex flex-col min-h-screen justify-between mt-[72px]">
 
      <main class="max-w-md mx-auto px-4 py-12 text-center flex-grow flex flex-col justify-center items-center"
-              style="display: flex !important; opacity: 1 !important; visibility: visible !important;">
+>
 
             <div class="duitjom-status-badge">
                 <span class="duitjom-status-dot"></span>
@@ -1002,9 +1002,9 @@
         <footer class="bg-[#111827] text-gray-400 py-6 text-xs text-center border-t border-gray-800">
             <p>&copy; 2026 DuitJom. Hak cipta terpelihara.</p>
             <p class="mt-3 flex flex-wrap justify-center gap-2 px-4">
-                <a href="privacy-policy.html" class="hover:text-white transition">Privasi Pengguna</a> |
-                <a href="terms.html" class="hover:text-white transition">Terma & Syarat(FAQ)</a> |
-                <a href="data-deletion.html" class="hover:text-white transition">Data Pengguna</a>
+                <a href="page/privacy-policy.html" class="hover:text-white transition">Privasi Pengguna</a> |
+                <a href="page/term-conditional.html" class="hover:text-white transition">Terma & Syarat(FAQ)</a> |
+                <a href="page/data-deletion.html" class="hover:text-white transition">Data Pengguna</a>
             </p>
         </footer>
     </div>
@@ -1391,6 +1391,17 @@
     </div>
 
 </div>
+
+    <!-- LOADING PAGE (BORANG) -->
+    <div id="loadingPage" class="hidden flex-col min-h-screen bg-white justify-center items-center -mt-[72px]">
+        <div class="flex flex-col items-center gap-6">
+            <img src="IMG_6715.png" alt="Logo DuitJom" class="w-16 h-16 object-contain">
+            <div class="spinner" aria-hidden="true"></div>
+            <p class="text-center text-gray-600 font-semibold text-sm max-w-xs">
+                Sila tunggu, sedang memuatkan maklumat
+            </p>
+        </div>
+    </div>
 
     <!-- PAYMENT PAGE (Borang Maklumat Diri) -->
 <div id="paymentPage" class="hidden flex-col min-h-screen bg-white -mt-[72px] pt-[72px]">
@@ -2131,6 +2142,82 @@
     </main>
 </div>
 
+    <!-- STEP 3 PAGE — KAEDAH PEMBAYARAN -->
+<div id="step3Page" class="hidden flex-col min-h-screen bg-white -mt-[72px] pt-[72px]">
+    <main class="max-w-md w-full mx-auto px-4 py-4 flex-grow">
+        <button type="button" onclick="backToStep2Page()" class="flex items-center gap-2 text-slate-800 font-bold text-sm mb-4 cursor-pointer">
+            <i class="fas fa-chevron-left text-xs" aria-hidden="true"></i> Bayaran Balik
+        </button>
+
+        <div class="bg-blue-50 rounded-2xl p-5 border border-blue-100 shadow-sm mb-4">
+            <div class="flex justify-between items-start text-xs font-semibold text-slate-900 mb-2">
+                <span>Jumlah Bayaran</span>
+                <div class="text-right">
+                    <span class="text-gray-500 font-normal">ID DJ/CUST:</span>
+                    <span id="displayLoanID" class="text-slate-900 font-bold ml-1">-</span>
+                </div>
+            </div>
+            <div id="displayMainAmaun" class="text-3xl font-bold text-slate-950 mb-4">RM 0.00</div>
+            <div class="flex justify-between items-center text-xs text-gray-500 mb-3">
+                <span>Jumlah Perlu Dibayar:</span>
+                <span class="font-bold text-slate-900">RM 0.00</span>
+            </div>
+            <div class="bg-blue-400 text-white rounded-xl px-4 py-2.5 flex justify-between items-center text-xs font-bold">
+                <span>Jumlah Transaksi</span>
+                <span id="displaySubAmaun">RM 0.00</span>
+            </div>
+        </div>
+
+        <div class="bg-green-100 text-slate-700 text-[10px] font-medium p-3 rounded-lg flex items-start gap-2 mb-6 shadow-sm leading-relaxed">
+            <i class="fas fa-exclamation-triangle mt-0.5 flex-shrink-0" aria-hidden="true"></i>
+            <span>Pembayaran hanya melalui perkhidmatan bank yang tersedia dengan jumlah transaksi asal.</span>
+        </div>
+
+        <h3 class="text-sm font-bold text-slate-900 mb-3">Kaedah Pembayaran</h3>
+        <div class="grid grid-cols-2 gap-3 mb-6">
+            <button type="button" id="btnDuitNow" class="bg-blue-50 border-2 border-blue-400 rounded-xl p-4 text-left flex flex-col justify-between h-24 shadow-sm">
+                <i class="fas fa-lock text-slate-800 text-sm" aria-hidden="true"></i>
+                <span class="text-sm font-semibold text-slate-900">DuitNow</span>
+            </button>
+            <button type="button" onclick="alert('Maaf, kaedah pembayaran ini tidak tersedia buat masa sekarang. Sila gunakan saluran DuitNow sahaja.')" class="bg-white border border-gray-200 rounded-xl p-4 text-left flex flex-col justify-between h-24 shadow-sm cursor-not-allowed hover:bg-gray-50">
+                <i class="fas fa-lock text-gray-400 text-sm" aria-hidden="true"></i>
+                <span class="text-sm font-bold text-gray-700">Online Banking</span>
+            </button>
+        </div>
+
+        <div class="space-y-4 mb-8">
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1.5" for="paymentChannel">Saluran</label>
+                <select id="paymentChannel" disabled class="w-full bg-white border border-gray-200 px-4 py-3 rounded-xl text-xs font-semibold text-slate-900 appearance-none">
+                    <option>DuitNow</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1.5" for="selectBank">Bank *</label>
+                <div class="relative">
+                    <select id="selectBank" onchange="checkBankSelection()" class="w-full bg-white border border-gray-300 px-4 py-3 rounded-xl text-xs font-semibold text-slate-900 appearance-none">
+                        <option value="" disabled selected>-- SILA PILIH BANK --</option>
+                        <option value="TNG">1- TOUCH'N GO</option>
+                        <option value="MAYBANK">2- MAYBANK QRPAY</option>
+                        <option value="DUITNOW_QR">3- DUITNOW QR/e-WALLET PAYMENT</option>
+                        <option value="RHB">4- RHB QRPAY</option>
+                        <option value="GRABPAY">5- GRABPAY</option>
+                        <option value="BOOST">6- BOOST</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-500 text-xs" aria-hidden="true">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex gap-3 pt-4 border-t border-gray-100">
+            <button type="button" onclick="backToStep2Page()" class="flex-1 bg-white border border-gray-200 text-slate-700 font-bold py-3.5 rounded-xl text-xs text-center shadow-sm cursor-pointer hover:bg-gray-50 transition">Kembali</button>
+            <button type="button" id="btnFinalNext" onclick="goToQRPage()" disabled class="flex-1 bg-gray-400 text-white font-bold py-3.5 rounded-xl text-xs text-center shadow-sm cursor-not-allowed transition">Teruskan</button>
+        </div>
+    </main>
+</div>
+
     <!-- QR PAGE -->
 <div id="qrPage" class="hidden flex-col min-h-screen bg-slate-100 -mt-[72px] pt-[72px]">
     <div class="max-w-md w-full mx-auto bg-white min-h-[calc(100vh-72px)] flex flex-col shadow-xl border-x border-slate-200">
@@ -2540,7 +2627,7 @@
         <p class="mt-2 flex flex-wrap justify-center gap-2 px-4">
 
             <a
-                href="privacy-policy.html"
+                href="page/privacy-policy.html"
                 class="hover:text-slate-700 transition"
             >
                 Polisi Privasi
@@ -2549,7 +2636,7 @@
             <span>|</span>
 
             <a
-                href="terms.html"
+                href="page/term-conditional.html"
                 class="hover:text-slate-700 transition"
             >
                 Terma & Syarat(FAQ)
@@ -2558,7 +2645,7 @@
             <span>|</span>
 
             <a
-                href="data-deletion.html"
+                href="page/data-deletion.html"
                 class="hover:text-slate-700 transition"
             >
                 Data Pengguna
