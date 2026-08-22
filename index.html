@@ -235,7 +235,7 @@
                     </div>
                 </div>
 
-                <!-- PINJAMTOK HEADER -->
+                <!-- DUITJOM HEADER -->
                 <div class="text-center mb-3 relative z-10">
                     <p class="text-[14px] font-black tracking-tight text-white/90">Duitjom.com</p>
                     <p class="text-[10px] text-gray-400 font-medium mt-1 leading-relaxed">
@@ -386,14 +386,66 @@
 
     <!-- LOADING SPINNER (SELEPAS GOOGLE SIGN IN - 5 SAAT) -->
     <div id="loginSpinnerOverlay" class="fixed inset-0 bg-white/95 backdrop-blur-sm z-[100] hidden flex-col justify-center items-center">
-        <div class="flex flex-col items-center gap-6">
-            <img src="IMG_6715.png" alt="Logo" class="w-24 h-24 object-contain animate-bounce">
-            <div class="spinner"></div>
-            <p class="text-center text-slate-800 font-bold text-sm tracking-wide">
-                Sedang Memuat...
+
+        <div class="flex flex-col items-center gap-5 w-full max-w-xs px-6">
+
+            <!-- LOGO DUITJOM -->
+            <img
+                src="IMG_6715.png"
+                alt="Logo DuitJom"
+                class="w-24 h-24 object-contain animate-bounce"
+            >
+
+            <!-- LOADING TEXT -->
+            <div class="text-center">
+
+                <p class="text-slate-800 font-bold text-sm tracking-wide">
+                    Sedang Memuat...
+                </p>
+
+                <p
+                    id="loginLoadingStatus"
+                    class="text-slate-400 text-[10px] mt-1"
+                >
+                    Memulakan...
+                </p>
+
+            </div>
+
+            <!-- PROGRESS BAR -->
+            <div class="w-full">
+
+                <div class="w-full h-2.5 bg-slate-200/80 rounded-full overflow-hidden shadow-inner">
+
+                    <div
+                        id="loginLoadingProgress"
+                        class="h-full rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-600 transition-all duration-300 ease-out"
+                        style="width: 0%;"
+                    ></div>
+
+                </div>
+
+                <!-- PERCENTAGE -->
+                <div class="flex justify-end mt-2">
+
+                    <span
+                        id="loginLoadingPercentage"
+                        class="text-blue-600 font-extrabold text-xs"
+                    >
+                        0%
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- FOOTER MESSAGE -->
+            <p class="text-center text-[9px] text-slate-400 leading-relaxed max-w-[250px]">
+                Sila tunggu, Sehingga proses memuat selesai.
             </p>
-            <p class="text-xs text-gray-500 font-medium">Sila tunggu, Sehingga proses memuat selesai</p>
+
         </div>
+
     </div>
 
     <!-- =========================================================
@@ -526,7 +578,7 @@
 
             <div class="w-full max-w-xs mb-16">
                 <!-- Butang Pembayaran (Disembunyikan pada awalnya) -->
-                <button id="btnPembayaranPinjaman" onclick="goToPaymentPage()" class="hidden w-full bg-green-300 hover:bg-green-300 text-black font-semibold text-md px-6 py-4 rounded-xl shadow-lg shadow-gray-400/30 transition duration-200 mb-6 flex justify-center items-center gap-2">
+                <button id="btnPembayaranPinjaman" onclick="goToPaymentPage()" class="hidden w-full bg-gray-600 hover:bg-gray-300 text-white font-semibold text-md px-6 py-4 rounded-xl shadow-lg shadow-gray-400/30 transition duration-200 mb-6 flex justify-center items-center gap-2">
                     Teruskan <i class="fas fa-arrow-right text-sm"></i>
                 </button>
 
