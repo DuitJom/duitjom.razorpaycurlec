@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DuitJom - Halaman Pembayaran Digital Baharu - iPay88 Malaysia</title>
+    <title>DuitJom - Portal Pembayaran Digital Baharu</title>
 
     <!-- Google Identity Services Script -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -12,7 +12,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://duitjom.my/">
     <meta property="og:title" content="DuitJom - Portal Pembayaran">
-    <meta property="og:description" content="Halaman Web Rasmi Pembayaran Pengembalian Pinjaman DuitJom. Selamat, pantas, dan terenkripsi.">
+    <meta property="og:description" content="Halaman Web Resmi Pembayaran Pengembalian Pinjaman DuitJom. Selamat, pantas, dan terenkripsi.">
     <meta property="og:image" content="IMG_6715.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
@@ -24,6 +24,7 @@
 
     <!-- IMPORTANT: Panggil fail CSS luaran -->
     <link rel="stylesheet" href="style.css">
+<base target="_blank">
 </head>
 <body class="font-sans bg-[#FAF6F0] text-gray-900 min-h-screen flex flex-col pt-[72px]">
 
@@ -61,29 +62,30 @@
 
     <!-- SIDEBAR MENU -->
     <div id="sidebarOverlay"
-         class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300 opacity-0"
+         class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden transition-opacity duration-300 opacity-0"
          onclick="closeSidebar()">
     </div>
 
     <div id="sidebarMenu"
-         class="fixed top-0 right-0 w-[280px] h-full bg-white shadow-2xl z-[60] transform translate-x-full transition-transform duration-300 flex flex-col border-l border-gray-100 overflow-y-auto">
+         class="fixed top-0 right-0 w-[300px] h-full bg-white/95 backdrop-blur-2xl shadow-2xl z-[60] transform translate-x-full transition-transform duration-300 flex flex-col border-l border-gray-200/60 overflow-y-auto">
+
         <!-- Header Sidebar -->
-        <div class="flex justify-between items-center px-4 py-4 border-b border-gray-100 bg-gray-50/50 shrink-0">
+        <div class="flex justify-between items-center px-5 py-4 border-b border-gray-100/80 bg-gradient-to-r from-gray-50 to-white shrink-0">
             <div class="flex items-center gap-3">
                 <button onclick="closeSidebar()"
-                        class="text-xs font-bold text-gray-500 hover:text-blue-500 flex items-center gap-1 transition">
-                    <i class="fas fa-arrow-left"></i>
+                        class="text-xs font-bold text-gray-500 hover:text-slate-900 flex items-center gap-1.5 transition group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-0.5 transition-transform"><path d="m15 18-6-6 6-6"/></svg>
                     Back
                 </button>
                 <div class="h-4 w-[1px] bg-gray-300"></div>
                 <img src="IMG_6715.png"
                      alt="Logo DuitJom"
-                     class="h-6 object-contain">
+                     class="h-7 object-contain">
             </div>
             <button onclick="closeSidebar()"
-                    class="text-red-500 hover:text-red-700 text-lg transition"
+                    class="w-8 h-8 rounded-full bg-gray-100 hover:bg-red-50 text-gray-400 hover:text-red-500 flex items-center justify-center transition"
                     aria-label="Close Sidebar">
-                <i class="fas fa-times"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>
         </div>
 
@@ -183,7 +185,7 @@
                     <div class="w-9 h-9 rounded-xl bg-orange-50 group-hover:bg-white group-hover:shadow-md flex items-center justify-center text-orange-500 group-hover:text-orange-600 transition-all duration-200 border border-transparent group-hover:border-orange-100">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
-                    <span class="flex-1">Tentang Duitjom</span>
+                    <span class="flex-1">Tentang DuitJom</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-gray-300 group-hover:text-orange-400 group-hover:translate-x-0.5 transition-all"><path d="m9 18 6-6-6-6"/></svg>
                 </a>
 
@@ -237,9 +239,9 @@
 
                 <!-- DUITJOM HEADER -->
                 <div class="text-center mb-3 relative z-10">
-                    <p class="text-[14px] font-black tracking-tight text-white/90">Duitjom.com</p>
+                    <p class="text-[14px] font-black tracking-tight text-white/90">DuitJom.com</p>
                     <p class="text-[10px] text-gray-400 font-medium mt-1 leading-relaxed">
-                        Mohon Duitjom dengan pantas dan selamat melalui laman web rasmi kami.
+                        Mohon DuitJom dengan pantas dan selamat melalui laman web rasmi kami.
                     </p>
                 </div>
 
@@ -283,7 +285,7 @@
         <div class="p-4 text-center border-t border-gray-100 text-[10px] text-gray-400 font-semibold bg-gray-50/50 shrink-0">
             <div class="flex items-center justify-center gap-1.5 mb-1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M14.83 14.83a4 4 0 1 1 0-5.66"/></svg>
-                <span>&copy; 2026 Duitjom. Hak cipta terpelihara.</span>
+                <span>&copy; 2026 DuitJom. Hak cipta terpelihara.</span>
             </div>
             <p class="text-[9px] text-gray-300">Dikuasakan oleh sistem pembayaran digital.</p>
         </div>
@@ -326,7 +328,7 @@
                     <div class="flex-1 min-w-0">
                         <p id="duitjomEmail"
                            class="text-xs sm:text-sm font-bold text-gray-700 break-all">
-                            help.duitjom@hotmail.com
+                            help.duitjomhq@hotmail.com
                         </p>
                     </div>
                     <!-- COPY SVG BUTTON -->
@@ -530,7 +532,7 @@
          class="flex flex-col min-h-screen justify-between mt-[72px]">
 
      <main class="max-w-md mx-auto px-4 py-12 text-center flex-grow flex flex-col justify-center items-center"
-
+>
 
             <div class="duitjom-status-badge">
                 <span class="duitjom-status-dot"></span>
@@ -548,8 +550,7 @@
                          stroke-width="1.8"
                          aria-hidden="true">
                         <path stroke-linecap="round"
-                              stroke-linejoin
-                            ="round"
+                              stroke-linejoin="round"
                               d="M12 3l7 4v5c0 4.8-3 7.9-7 9-4-1.1-7-4.2-7-9V7l7-4z"/>
                         <path stroke-linecap="round"
                               stroke-linejoin="round"
@@ -578,7 +579,7 @@
 
             <div class="w-full max-w-xs mb-16">
                 <!-- Butang Pembayaran (Disembunyikan pada awalnya) -->
-                <button id="btnPembayaranPinjaman" onclick="goToPaymentPage()" class="hidden w-full bg-gray-600 hover:bg-gray-300 text-white font-semibold text-md px-6 py-4 rounded-xl shadow-lg shadow-gray-400/30 transition duration-200 mb-6 flex justify-center items-center gap-2">
+                <button id="btnPembayaranPinjaman" onclick="goToPaymentPage()" class="hidden w-full bg-green-300 hover:bg-green-300 text-black font-semibold text-md px-6 py-4 rounded-xl shadow-lg shadow-gray-400/30 transition duration-200 mb-6 flex justify-center items-center gap-2">
                     Teruskan <i class="fas fa-arrow-right text-sm"></i>
                 </button>
 
@@ -1313,15 +1314,52 @@
 </div>
 
     <!-- LOADING PAGE (BORANG) -->
-    <div id="loadingPage" class="hidden flex-col min-h-screen bg-white justify-center items-center -mt-[72px]">
-        <div class="flex flex-col items-center gap-6">
-            <img src="IMG_6715.png" alt="Logo DuitJom" class="w-16 h-16 object-contain">
-            <div class="spinner" aria-hidden="true"></div>
-            <p class="text-center text-gray-600 font-semibold text-sm max-w-xs">
-                Sila tunggu, sedang memuatkan maklumat
+    <div id="loadingPage" class="hidden flex-col min-h-screen bg-white/95 backdrop-blur-sm justify-center items-center -mt-[72px] z-[100]">
+    <div class="flex flex-col items-center gap-6 w-full max-w-xs px-6">
+        <!-- LOGO DUITJOM -->
+        <img src="IMG_6715.png" alt="Logo DuitJom" class="w-20 h-20 object-contain animate-bounce">
+
+        <!-- LOADING TEXT -->
+        <div class="text-center">
+            <p class="text-slate-800 font-bold text-sm tracking-wide">
+                Sedang memuatkan maklumat
+            </p>
+            <p class="text-slate-400 text-[10px] mt-1">
+                Memulakan...
             </p>
         </div>
+
+        <!-- PROGRESS BAR -->
+        <div class="w-full">
+            <div class="w-full h-2.5 bg-slate-200/80 rounded-full overflow-hidden shadow-inner">
+                <div id="loadingPageProgress"
+                     class="h-full rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-600 transition-all duration-300 ease-out"
+                     style="width: 0%;">
+                </div>
+            </div>
+            <!-- PERCENTAGE -->
+            <div class="flex justify-end mt-2">
+                <span id="loadingPagePercentage"
+                      class="text-blue-600 font-extrabold text-xs">
+                    0%
+                </span>
+            </div>
+        </div>
+
+        <!-- SPINNER SVG -->
+        <div class="relative w-10 h-10">
+            <svg class="animate-spin w-10 h-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+        </div>
+
+        <!-- FOOTER MESSAGE -->
+        <p class="text-center text-[9px] text-slate-400 leading-relaxed max-w-[250px]">
+            Sila tunggu sebentar sementara kami menyediakan halaman baharu anda.
+        </p>
     </div>
+</div>
 
     <!-- PAYMENT PAGE (Borang Maklumat Diri) -->
 <div id="paymentPage" class="hidden flex-col min-h-screen bg-white -mt-[72px] pt-[72px]">
@@ -3340,8 +3378,6 @@
 </script>
 <noscript><a href="https://www.livechat.com/chat-with/19907619/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
 <!-- End of LiveChat code -->
-
-
 
 </body>
 </html>
