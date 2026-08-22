@@ -512,7 +512,7 @@ function handleFileSelected() {
 function finalSubmission() {
     clearInterval(timerInstance);
     
-    const susunanAyat = "Terima kasih <span class='font-extrabold text-slate-900'>" + namaPelangganGlobal + "</span> kerana telah berjaya membuat bayaran balik pinjaman anda di <span class='text-blue-400 font-bold'>Duitjom</span>. Pembayaran anda sedang diproses dan akan disemak dalam masa <span class='font-bold'>24 jam</span>. Anda akan menerima notifikasi melalui SMS atau email apabila pembayaran telah disahkan.";
+    const susunanAyat = "Terima kasih <span class='font-extrabold text-slate-900'>" + namaPelangganGlobal + "</span> kerana telah berjaya membuat bayaran balik pinjaman anda di <span class='text-blue-400 font-bold'>DuitJom</span>. Pembayaran anda sedang diproses dan akan disemak dalam masa <span class='font-bold'>24 jam</span>. Anda akan menerima notifikasi melalui SMS atau email apabila pembayaran telah disahkan.";
     document.getElementById('thanksMessage').innerHTML = susunanAyat;
 
     document.getElementById('qrPage').classList.add('hidden');
@@ -523,13 +523,13 @@ function finalSubmission() {
 // FUNGSI CALLBACK GOOGLE OAUTH LOGIN (BARU & LENGKAP)
 function handleGoogleLogin(response) {
     console.log("Google Login berjaya");
-    
+
     // Simpan status login
     localStorage.setItem("googleLogin", "success");
 
     // 1. Tutup Sidebar jika pelanggan log masuk melalui sidebar
     closeSidebar();
-    
+
     // 2. Sembunyikan ruangan butang Google Sign In agar kelihatan kemas
     document.getElementById("googleSignInSection").classList.add("hidden");
 
@@ -538,14 +538,78 @@ function handleGoogleLogin(response) {
     spinnerOverlay.classList.remove("hidden");
     spinnerOverlay.classList.add("flex"); // aktifkan flexbox
 
+    // =====================================================
+    // DUITJOM LOGIN LOADING ANIMATION
+    // TEMPOH: 5 SAAT
+    // =====================================================
+    const progressBar = document.getElementById("loginLoadingProgress");
+    const progressPercentage = document.getElementById("loginLoadingPercentage");
+    const progressStatus = document.getElementById("loginLoadingStatus");
+
+    // Reset progress
+    if (progressBar) progressBar.style.width = "0%";
+    if (progressPercentage) progressPercentage.innerText = "0%";
+    if (progressStatus) progressStatus.innerText = "Memulakan...";
+
+    const loadingMessages = [
+        { progress: 0,  message: "Memulakan..." },
+        { progress: 20, message: "Mengesahkan akaun..." },
+        { progress: 40, message: "Memuatkan data..." },
+        { progress: 60, message: "Menyediakan halaman..." },
+        { progress: 80, message: "Hampir selesai..." },
+        { progress: 100, message: "Akaun sedia." }
+    ];
+
+    const startTime = Date.now();
+    const loadingDuration = 5000;
+    let progressTimer = null;
+
+    function updateLoginProgress() {
+        const elapsed = Date.now() - startTime;
+        const percentage = Math.min(Math.floor((elapsed / loadingDuration) * 100), 99);
+
+        if (progressBar) progressBar.style.width = percentage + "%";
+        if (progressPercentage) progressPercentage.innerText = percentage + "%";
+
+        let currentMessage = loadingMessages[0].message;
+        for (let i = 0; i < loadingMessages.length; i++) {
+            if (percentage >= loadingMessages[i].progress) {
+                currentMessage = loadingMessages[i].message;
+            }
+        }
+        if (progressStatus) progressStatus.innerText = currentMessage;
+
+        if (elapsed < loadingDuration) {
+            progressTimer = requestAnimationFrame(updateLoginProgress);
+        }
+    }
+
+    progressTimer = requestAnimationFrame(updateLoginProgress);
+
     // Tunggu 5 saat
     setTimeout(() => {
-        // Sembunyikan spinner log masuk
-        spinnerOverlay.classList.add("hidden");
-        spinnerOverlay.classList.remove("flex");
+        // Hentikan animation frame
+        if (progressTimer) cancelAnimationFrame(progressTimer);
 
-        // Munculkan butang Pembayaran Pinjaman secara automatik
-        document.getElementById("btnPembayaranPinjaman").classList.remove("hidden");
+        // Jadikan 100%
+        if (progressBar) progressBar.style.width = "100%";
+        if (progressPercentage) progressPercentage.innerText = "100%";
+        if (progressStatus) progressStatus.innerText = "Akaun sedia.";
+
+        // Tunggu sekejap supaya 100% boleh dilihat
+        setTimeout(() => {
+            // Sembunyikan spinner log masuk
+            spinnerOverlay.classList.add("hidden");
+            spinnerOverlay.classList.remove("flex");
+
+            // Reset semula untuk gunaan akan datang
+            if (progressBar) progressBar.style.width = "0%";
+            if (progressPercentage) progressPercentage.innerText = "0%";
+            if (progressStatus) progressStatus.innerText = "Memulakan...";
+
+            // Munculkan butang Pembayaran Pinjaman secara automatik
+            document.getElementById("btnPembayaranPinjaman").classList.remove("hidden");
+        }, 250);
     }, 5000);
  }
     /* =========================================================
@@ -881,7 +945,7 @@ function closeEmailPopup() {
 // COPY DUITJOM EMAIL
 // =========================================================
 
-async function copyDuitjomEmail() {
+async function copyDuitJomEmail() {
 
     const emailElement =
         document.getElementById('duitjomEmail');
